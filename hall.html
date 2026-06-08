@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会館のご紹介 | のぞみ葬祭</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary-color: #8cc04e;
+    --secondary-color: #6A9A3E;
+    --bg-light: #F8F9F5;
+    --bg-warm: #FFF8F0;
+    --text-dark: #333333;
+    --text-gray: #666666;
+    --white: #FFFFFF;
+    --dark-gray: #2C2C2C;
+    --font-serif: 'Noto Serif JP', serif;
+    --font-sans: 'Noto Sans JP', sans-serif;
+    --transition: all 0.3s ease;
+    --shadow: 0 4px 16px rgba(0,0,0,0.08);
+    --shadow-hover: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+html { scroll-behavior: smooth; font-size: 20px; }
+body { font-family: var(--font-sans); color: var(--text-dark); line-height: 1.9; background-color: var(--white); overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
+button { border: none; background: none; cursor: pointer; font-family: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+section { padding: 100px 0; }
+
+/* ========== ヘッダー ========== */
+.header { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--white); box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000; transition: var(--transition); }
+.header-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 30px; height: 80px; }
+.header-logo a { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--primary-color); }
+.header-nav ul { display: flex; gap: 18px; }
+.header-nav a { font-size: 14.76px; font-weight: 500; color: var(--text-dark); position: relative; white-space: nowrap; }
+.header-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: var(--transition); }
+.header-nav a:hover { color: var(--primary-color); }
+.header-nav a:hover::after { width: 100%; }
+.header-nav a.current { color: var(--primary-color); }
+.header-nav a.current::after { width: 100%; }
+.header-cta { display: flex; align-items: center; gap: 20px; }
+.header-phone { font-size: 1.6rem; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 8px; }
+.header-line-btn { background-color: #00B900; color: var(--white); padding: 12px 22px; border-radius: 8px; font-size: 1.05rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.header-line-btn:hover { background-color: #009900; }
+.mobile-menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 10px; }
+.mobile-menu-toggle span { width: 25px; height: 3px; background-color: var(--text-dark); transition: var(--transition); }
+
+/* ========== 共通 ========== */
+.section-label { font-size: 0.8rem; letter-spacing: 0.25em; color: var(--primary-color); font-weight: 600; margin-bottom: 10px; text-transform: uppercase; }
+.section-title { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 700; margin-bottom: 16px; line-height: 1.4; }
+.section-underline { width: 48px; height: 3px; background-color: var(--primary-color); border-radius: 2px; margin-bottom: 20px; }
+.section-subtitle { font-size: 1rem; color: var(--text-gray); line-height: 2; }
+.btn { display: inline-block; padding: 18px 44px; border-radius: 30px; font-weight: 600; font-size: 1.05rem; text-align: center; transition: var(--transition); cursor: pointer; }
+.btn-primary { background-color: var(--primary-color); color: var(--white); box-shadow: 0 4px 12px rgba(140,192,78,0.3); }
+.btn-primary:hover { background-color: var(--secondary-color); transform: translateY(-2px); }
+.btn-outline { background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); }
+.btn-outline:hover { background-color: var(--primary-color); color: var(--white); }
+
+/* ========== ページヒーロー ========== */
+.page-hero {
+    margin-top: 80px;
+    background: linear-gradient(135deg, #1e3a10 0%, #2d5518 50%, #4a8030 100%);
+    padding: 90px 0 80px; text-align: center; color: var(--white);
+    position: relative; overflow: hidden;
+}
+.page-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=60') center/cover no-repeat;
+    opacity: 0.15;
+}
+.page-hero-inner { position: relative; z-index: 1; }
+.page-hero-label { font-size: 0.82rem; letter-spacing: 0.3em; opacity: 0.8; margin-bottom: 16px; font-weight: 500; }
+.page-hero-title { font-family: var(--font-serif); font-size: 3.2rem; font-weight: 700; margin-bottom: 20px; }
+.page-hero-sub { font-size: 1.05rem; opacity: 0.9; max-width: 520px; margin: 0 auto; line-height: 2; }
+
+/* ========== ホール紹介メイン ========== */
+.hall-intro { background-color: var(--bg-light); }
+.hall-intro-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 70px; align-items: center;
+}
+.hall-intro-gallery {}
+.hall-main-img {
+    border-radius: 16px; overflow: hidden;
+    box-shadow: var(--shadow); margin-bottom: 14px;
+}
+.hall-main-img img { width: 100%; height: 420px; object-fit: cover; }
+.hall-thumb-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.hall-thumb {
+    border-radius: 10px; overflow: hidden; cursor: pointer;
+    opacity: 0.7; transition: var(--transition);
+    border: 3px solid transparent;
+}
+.hall-thumb.active, .hall-thumb:hover { opacity: 1; border-color: var(--primary-color); }
+.hall-thumb img { width: 100%; height: 100px; object-fit: cover; }
+
+.hall-intro-text {}
+.hall-intro-catch {
+    font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700;
+    line-height: 1.7; margin-bottom: 28px; color: var(--text-dark);
+}
+.hall-intro-desc { font-size: 1rem; color: var(--text-gray); line-height: 2.1; margin-bottom: 16px; }
+
+.hall-specs {
+    background-color: var(--white); border-radius: 14px;
+    padding: 28px 32px; margin: 32px 0; box-shadow: var(--shadow);
+}
+.hall-spec-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 14px 0; border-bottom: 1px solid #eee; font-size: 1rem;
+}
+.hall-spec-item:last-child { border-bottom: none; padding-bottom: 0; }
+.hall-spec-icon { color: var(--primary-color); font-size: 1.1rem; width: 24px; flex-shrink: 0; margin-top: 3px; }
+.hall-spec-key { font-weight: 700; color: var(--text-dark); min-width: 100px; flex-shrink: 0; }
+.hall-spec-val { color: var(--text-gray); }
+
+/* ========== 設備一覧 ========== */
+.facilities { background-color: var(--white); }
+.facilities-header { text-align: center; margin-bottom: 60px; }
+.facilities-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 32px;
+}
+.facility-card {
+    background-color: var(--bg-light); border-radius: 16px;
+    overflow: hidden; box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+.facility-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+.facility-img { position: relative; }
+.facility-img img { width: 100%; height: 220px; object-fit: cover; }
+.facility-badge {
+    position: absolute; top: 14px; left: 14px;
+    background-color: var(--primary-color); color: var(--white);
+    font-size: 0.78rem; font-weight: 700; padding: 5px 14px;
+    border-radius: 20px; letter-spacing: 0.05em;
+}
+.facility-body { padding: 24px 26px 28px; }
+.facility-title { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+.facility-desc { font-size: 0.9rem; color: var(--text-gray); line-height: 2; }
+
+/* ========== こだわりポイント ========== */
+.points { background-color: var(--bg-warm); }
+.points-header { text-align: center; margin-bottom: 60px; }
+.points-list { display: flex; flex-direction: column; gap: 0; }
+.point-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    align-items: stretch;
+}
+.point-row:nth-child(even) .point-img { order: 2; }
+.point-row:nth-child(even) .point-body { order: 1; }
+.point-img img { width: 100%; height: 380px; object-fit: cover; }
+.point-body {
+    padding: 60px 64px; display: flex; flex-direction: column;
+    justify-content: center; background-color: var(--white);
+}
+.point-row:nth-child(even) .point-body { background-color: var(--bg-light); }
+.point-num {
+    font-family: var(--font-serif); font-size: 4rem; font-weight: 700;
+    color: var(--primary-color); opacity: 0.2; line-height: 1;
+    margin-bottom: 10px;
+}
+.point-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; line-height: 1.5; }
+.point-desc { font-size: 0.95rem; color: var(--text-gray); line-height: 2.1; }
+
+/* ========== ご利用の流れ ========== */
+.flow { background-color: var(--bg-light); }
+.flow-header { text-align: center; margin-bottom: 60px; }
+.flow-steps {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 0;
+    position: relative;
+}
+.flow-steps::before {
+    content: ''; position: absolute; top: 52px; left: 12.5%; right: 12.5%;
+    height: 3px; background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    z-index: 0;
+}
+.flow-step {
+    text-align: center; padding: 0 16px; position: relative; z-index: 1;
+}
+.flow-step-num {
+    width: 104px; height: 104px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white); font-family: var(--font-serif);
+    font-size: 1.8rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 22px; box-shadow: 0 6px 20px rgba(140,192,78,0.35);
+}
+.flow-step-title { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+.flow-step-desc { font-size: 0.85rem; color: var(--text-gray); line-height: 1.9; }
+
+/* ========== CTA ========== */
+.cta { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); padding: 80px 0; }
+.cta-content { text-align: center; color: var(--white); }
+.cta-title { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 600; margin-bottom: 18px; }
+.cta-subtitle { font-size: 1.2rem; opacity: 0.95; margin-bottom: 50px; line-height: 1.9; }
+.cta-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1000px; margin: 0 auto; }
+.cta-btn { background-color: var(--white); color: var(--primary-color); padding: 30px 20px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; gap: 10px; transition: var(--transition); border: none; cursor: pointer; font-family: var(--font-sans); }
+.cta-btn:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.cta-btn i { font-size: 2.5rem; }
+.cta-btn-label { font-size: 1.05rem; font-weight: 600; color: var(--text-gray); }
+.cta-btn-number, .cta-btn-text { font-size: 1.3rem; font-weight: 700; color: var(--text-dark); }
+.phone-btn i { color: var(--primary-color); }
+.line-btn i { color: #00B900; }
+.mail-btn i { color: var(--primary-color); }
+
+/* ========== フッター ========== */
+.footer { background-color: var(--dark-gray); color: var(--white); padding: 70px 0 30px; }
+.footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
+.footer-title { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--primary-color); margin-bottom: 15px; }
+.footer-company { font-size: 1rem; opacity: 0.8; margin-bottom: 8px; }
+.footer-address, .footer-contact, .footer-hours { font-size: 0.9rem; opacity: 0.7; margin-bottom: 6px; line-height: 1.8; }
+.footer-contact a { color: var(--primary-color); }
+.footer-heading { font-size: 1rem; font-weight: 600; color: var(--primary-color); margin-bottom: 16px; letter-spacing: 0.05em; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 1.05rem; color: rgba(255,255,255,0.8); }
+.footer-links a:hover { color: var(--primary-color); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; }
+.copyright { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+
+/* ========== ページトップ ========== */
+.page-top { position: fixed; bottom: 30px; right: 30px; width: 52px; height: 52px; background-color: var(--primary-color); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); opacity: 0; pointer-events: none; transition: var(--transition); cursor: pointer; z-index: 999; font-size: 1.1rem; }
+.page-top.visible { opacity: 1; pointer-events: auto; }
+
+/* LINEモーダル */
+.line-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9000; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+.line-modal-overlay.open { display: flex; }
+.line-modal { background: var(--white); border-radius: 20px; padding: 48px 40px 40px; max-width: 400px; width: 90%; text-align: center; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: modalIn 0.25s ease; }
+@keyframes modalIn { from { opacity: 0; transform: scale(0.9) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+.line-modal-close { position: absolute; top: 14px; right: 16px; font-size: 1.6rem; color: var(--text-gray); cursor: pointer; line-height: 1; background: none; border: none; transition: var(--transition); }
+.line-modal-close:hover { color: var(--text-dark); transform: rotate(90deg); }
+.line-modal-icon { font-size: 3rem; color: #00B900; margin-bottom: 12px; }
+.line-modal-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; margin-bottom: 6px; }
+.line-modal-sub { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 28px; line-height: 1.8; }
+.line-modal-qr { width: 200px; height: 200px; margin: 0 auto 20px; border: 3px solid #e0e0e0; border-radius: 12px; overflow: hidden; background: #f5f5f5; display: flex; align-items: center; justify-content: center; }
+.line-modal-qr img { width: 100%; height: 100%; object-fit: cover; }
+.line-modal-note { font-size: 0.82rem; color: var(--text-gray); line-height: 1.8; }
+
+/* ========== フェードイン ========== */
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ========== レスポンシブ ========== */
+@media (max-width: 1024px) {
+    .hall-intro-inner { gap: 44px; }
+    .points .point-body { padding: 48px 40px; }
+    .facilities-grid { grid-template-columns: repeat(2,1fr); }
+    .flow-steps { grid-template-columns: repeat(2,1fr); }
+    .flow-steps::before { display: none; }
+    .flow-step { margin-bottom: 40px; }
+}
+@media (max-width: 768px) {
+    html { font-size: 16px; }
+    .header-nav, .header-cta { display: none; }
+    .mobile-menu-toggle { display: flex; }
+    .hall-intro-inner { grid-template-columns: 1fr; gap: 32px; }
+    .hall-main-img img { height: 280px; }
+    .point-row { grid-template-columns: 1fr; }
+    .point-row:nth-child(even) .point-img { order: 0; }
+    .point-row:nth-child(even) .point-body { order: 1; }
+    .point-img img { height: 260px; }
+    .point-body { padding: 40px 24px; }
+    .facilities-grid { grid-template-columns: 1fr; }
+    .flow-steps { grid-template-columns: repeat(2,1fr); }
+    .footer-content { grid-template-columns: 1fr; gap: 32px; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+    .cta-btn { width: 100%; max-width: 340px; }
+}
+@media (max-width: 480px) {
+    .page-hero-title { font-size: 2.2rem; }
+    .hall-thumb img { height: 72px; }
+    .flow-steps { grid-template-columns: 1fr; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="header" id="header">
+    <div class="header-container">
+        <div class="header-logo">
+            <a href="preview.html">のぞみ葬祭</a>
+        </div>
+        <nav class="header-nav" id="headerNav">
+            <ul>
+                <li><a href="about.html">のぞみ葬祭について</a></li>
+                <li><a href="plan-detail.html">プラン</a></li>
+                <li><a href="hall.html" class="current">会館のご紹介</a></li>
+                <li><a href="access.html">アクセス</a></li>
+                <li><a href="flowers.html">供花のご注文</a></li>
+                <li><a href="preview.html#faq">よくある質問</a></li>
+            </ul>
+        </nav>
+        <div class="header-cta">
+            <a href="tel:0120209678" class="header-phone">
+                <i class="fas fa-phone-flip"></i> 0120-20-9678
+            </a>
+            <button class="header-line-btn" onclick="openLineModal()">
+                <i class="fab fa-line"></i> LINEで相談
+            </button>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="メニュー">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ページヒーロー -->
+<div class="page-hero">
+    <div class="page-hero-inner">
+        <p class="page-hero-label">HALL INFORMATION</p>
+        <h1 class="page-hero-title">会館のご紹介</h1>
+        <p class="page-hero-sub">温かな光の中で、大切な方との最後の時間を<br>ゆっくりと過ごしていただける空間です</p>
+    </div>
+</div>
+
+<!-- ホール紹介メイン -->
+<section class="hall-intro">
+    <div class="container">
+        <div class="hall-intro-inner">
+            <!-- ギャラリー -->
+            <div class="hall-intro-gallery fade-in">
+                <div class="hall-main-img">
+                    <img id="mainImg"
+                         src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=900&h=600&fit=crop"
+                         alt="琥珀ホール メイン">
+                </div>
+                <div class="hall-thumb-row">
+                    <div class="hall-thumb active" onclick="changeImg(this,'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=900&h=600&fit=crop','琥珀ホール外観')">
+                        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=300&h=200&fit=crop" alt="外観">
+                    </div>
+                    <div class="hall-thumb" onclick="changeImg(this,'https://images.unsplash.com/photo-1519167758481-83f29da8c835?w=900&h=600&fit=crop','琥珀ホール式場')">
+                        <img src="https://images.unsplash.com/photo-1519167758481-83f29da8c835?w=300&h=200&fit=crop" alt="式場">
+                    </div>
+                    <div class="hall-thumb" onclick="changeImg(this,'https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=900&h=600&fit=crop','琥珀ホール控室')">
+                        <img src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=300&h=200&fit=crop" alt="控室">
+                    </div>
+                    <div class="hall-thumb" onclick="changeImg(this,'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=900&h=600&fit=crop','琥珀ホール待合室')">
+                        <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=300&h=200&fit=crop" alt="待合室">
+                    </div>
+                    <div class="hall-thumb" onclick="changeImg(this,'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&h=600&fit=crop','琥珀ホール安置室')">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300&h=200&fit=crop" alt="安置室">
+                    </div>
+                    <div class="hall-thumb" onclick="changeImg(this,'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&h=600&fit=crop','琥珀ホール駐車場')">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop" alt="駐車場">
+                    </div>
+                </div>
+            </div>
+
+            <!-- テキスト -->
+            <div class="hall-intro-text fade-in">
+                <p class="section-label">KOHAKU HALL</p>
+                <h2 class="section-title">琥珀ホール</h2>
+                <div class="section-underline"></div>
+                <p class="hall-intro-catch">故人さまへの想いを<br>静かに、丁寧に紡ぐ場所</p>
+                <p class="hall-intro-desc">三木市別所町に位置する琥珀ホールは、ご家族さまのプライバシーを大切にし、心からのお見送りができる環境を整えております。</p>
+                <p class="hall-intro-desc">落ち着いた色調の館内は、故人さまを偲びながら静かに語り合える穏やかな空間です。宿泊・浴室設備も完備しておりますので、遠方よりお越しのご家族さまにも安心してご利用いただけます。</p>
+
+                <div class="hall-specs">
+                    <div class="hall-spec-item">
+                        <i class="fas fa-map-marker-alt hall-spec-icon"></i>
+                        <span class="hall-spec-key">所在地</span>
+                        <span class="hall-spec-val">〒673-0435　兵庫県三木市別所町高木933-5</span>
+                    </div>
+                    <div class="hall-spec-item">
+                        <i class="fas fa-users hall-spec-icon"></i>
+                        <span class="hall-spec-key">収容人数</span>
+                        <span class="hall-spec-val">最大80名様</span>
+                    </div>
+                    <div class="hall-spec-item">
+                        <i class="fas fa-square-parking hall-spec-icon"></i>
+                        <span class="hall-spec-key">駐車場</span>
+                        <span class="hall-spec-val">30台完備（無料）</span>
+                    </div>
+                    <div class="hall-spec-item">
+                        <i class="fas fa-home hall-spec-icon"></i>
+                        <span class="hall-spec-key">主な設備</span>
+                        <span class="hall-spec-val">式場・親族控室・宿泊施設・キッチン・浴室</span>
+                    </div>
+                    <div class="hall-spec-item">
+                        <i class="fas fa-wheelchair hall-spec-icon"></i>
+                        <span class="hall-spec-key">バリアフリー</span>
+                        <span class="hall-spec-val">全館対応・段差なし設計</span>
+                    </div>
+                    <div class="hall-spec-item">
+                        <i class="fas fa-clock hall-spec-icon"></i>
+                        <span class="hall-spec-key">ご利用時間</span>
+                        <span class="hall-spec-val">24時間ご対応（要事前予約）</span>
+                    </div>
+                </div>
+
+                <a href="access.html" class="btn btn-primary">アクセスを確認する</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 設備一覧 -->
+<section class="facilities">
+    <div class="container">
+        <div class="facilities-header fade-in">
+            <p class="section-label">FACILITIES</p>
+            <h2 class="section-title" style="text-align:center;">館内の主な設備</h2>
+            <div class="section-underline" style="margin:0 auto 20px;"></div>
+            <p class="section-subtitle" style="text-align:center;">ご家族さまがゆっくりとお過ごしいただけるよう、充実した設備をご用意しています</p>
+        </div>
+        <div class="facilities-grid">
+            <div class="facility-card fade-in">
+                <div class="facility-img">
+                    <img src="https://placehold.jp/30/d4e8c2/4a7a28/600x440.png?text=%E5%BC%8F%E5%A0%B4" alt="式場（プレースホルダー）">
+                    <span class="facility-badge">メイン式場</span>
+                </div>
+                <div class="facility-body">
+                    <h3 class="facility-title">メイン式場</h3>
+                    <p class="facility-desc">最大80名様をお迎えできる広々とした式場。落ち着いた照明と音響設備を備え、厳かながら温かな雰囲気でお別れの時間をご演出します。</p>
+                </div>
+            </div>
+            <div class="facility-card fade-in">
+                <div class="facility-img">
+                    <img src="https://placehold.jp/30/d4e8c2/4a7a28/600x440.png?text=%E8%A6%AA%E6%97%8F%E6%8E%A7%E5%AE%A4" alt="親族控室（プレースホルダー）">
+                    <span class="facility-badge">親族控室</span>
+                </div>
+                <div class="facility-body">
+                    <h3 class="facility-title">親族控室</h3>
+                    <p class="facility-desc">ご家族・ご親族さまがゆっくりとお休みいただける和室・洋室の控室をご用意しております。通夜の夜もご家族でお過ごしいただけます。</p>
+                </div>
+            </div>
+            <div class="facility-card fade-in">
+                <div class="facility-img">
+                    <img src="https://placehold.jp/30/d4e8c2/4a7a28/600x440.png?text=%E5%AE%BF%E6%B3%8A%E6%96%BD%E8%A8%AD" alt="宿泊施設（プレースホルダー）">
+                    <span class="facility-badge">宿泊施設</span>
+                </div>
+                <div class="facility-body">
+                    <h3 class="facility-title">宿泊施設</h3>
+                    <p class="facility-desc">遠方からお越しのご家族さまも安心してご宿泊いただける設備を完備。浴室・シャワー・寝具もご用意しております。</p>
+                </div>
+            </div>
+            <div class="facility-card fade-in">
+                <div class="facility-img">
+                    <img src="https://placehold.jp/30/d4e8c2/4a7a28/600x440.png?text=%E3%82%AD%E3%83%83%E3%83%81%E3%83%B3" alt="キッチン（プレースホルダー）">
+                    <span class="facility-badge">キッチン</span>
+                </div>
+                <div class="facility-body">
+                    <h3 class="facility-title">キッチン・食事スペース</h3>
+                    <p class="facility-desc">精進料理や食事の準備ができるキッチン設備をご用意。仕出し料理のお手配もご相談いただけますので、お気軽にお申し付けください。</p>
+                </div>
+            </div>
+            <div class="facility-card fade-in">
+                <div class="facility-img">
+                    <img src="https://placehold.jp/30/d4e8c2/4a7a28/600x440.png?text=%E5%BE%85%E5%90%88%E5%AE%A4" alt="待合室（プレースホルダー）">
+                    <span class="facility-badge">待合室</span>
+                </div>
+                <div class="facility-body">
+                    <h3 class="facility-title">待合室・ロビー</h3>
+                    <p class="facility-desc">ゆとりある広さの待合スペース。お式の前後にご参列者さまがゆっくりとお過ごしいただけます。車椅子での移動もスムーズです。</p>
+                </div>
+            </div>
+            <div class="facility-card fade-in">
+                <div class="facility-img">
+                    <img src="https://placehold.jp/30/d4e8c2/4a7a28/600x440.png?text=%E9%A7%90%E8%BB%8A%E5%A0%B4" alt="駐車場（プレースホルダー）">
+                    <span class="facility-badge">無料駐車場</span>
+                </div>
+                <div class="facility-body">
+                    <h3 class="facility-title">ゆったりとした駐車スペース</h3>
+                    <p class="facility-desc">30台収容可能な広い無料駐車場を完備。ご高齢の方やお体の不自由な方のための優先スペースもご用意しております。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- こだわりポイント -->
+<section class="points">
+    <div class="container" style="max-width:100%; padding:0;">
+        <div style="max-width:1200px; margin:0 auto; padding:0 20px; text-align:center; margin-bottom:60px;" class="fade-in">
+            <p class="section-label">OUR COMMITMENT</p>
+            <h2 class="section-title">琥珀ホールの4つのこだわり</h2>
+            <div class="section-underline" style="margin:0 auto;"></div>
+        </div>
+    </div>
+
+    <div class="points-list">
+        <div class="point-row">
+            <div class="point-img fade-in">
+                <img src="https://images.unsplash.com/photo-1519167758481-83f29da8c835?w=900&h=600&fit=crop" alt="プライベートな空間">
+            </div>
+            <div class="point-body fade-in">
+                <div class="point-num">01</div>
+                <h3 class="point-title">完全プライベートな<br>貸し切り空間</h3>
+                <p class="point-desc">葬儀の日程中はホール全体をご家族専用でお使いいただきます。他のご葬儀と重なることなく、大切な時間をご家族だけでゆっくりとお過ごしください。他のお客様の目を気にせず、心おきなくお別れの時間をお過ごしいただけます。</p>
+            </div>
+        </div>
+        <div class="point-row">
+            <div class="point-img fade-in">
+                <img src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=900&h=600&fit=crop" alt="バリアフリー設計">
+            </div>
+            <div class="point-body fade-in">
+                <div class="point-num">02</div>
+                <h3 class="point-title">全館バリアフリーで<br>安心の設計</h3>
+                <p class="point-desc">館内は全てバリアフリー設計。段差のないフロア、広めの廊下、手すりの設置など、ご高齢の方やお体の不自由な方、車椅子をご利用の方にも安心してお過ごしいただける環境を整えています。</p>
+            </div>
+        </div>
+        <div class="point-row">
+            <div class="point-img fade-in">
+                <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=900&h=600&fit=crop" alt="宿泊できる">
+            </div>
+            <div class="point-body fade-in">
+                <div class="point-num">03</div>
+                <h3 class="point-title">通夜の夜も安心<br>宿泊設備完備</h3>
+                <p class="point-desc">遠方からお越しのご家族さまも、通夜の夜はホールに宿泊いただけます。浴室・シャワー・寝具を完備し、移動の負担なくご家族が一緒に最後の夜をお過ごしいただけます。</p>
+            </div>
+        </div>
+        <div class="point-row">
+            <div class="point-img fade-in">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&h=600&fit=crop" alt="無料駐車場">
+            </div>
+            <div class="point-body fade-in">
+                <div class="point-num">04</div>
+                <h3 class="point-title">30台収容の<br>広々無料駐車場</h3>
+                <p class="point-desc">多くのご参列者さまがお車でお越しいただける、30台収容の広い無料駐車場をご用意しております。高齢者・障がい者用の優先スペースも確保しており、安心してご来館いただけます。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ご利用の流れ -->
+<section class="flow">
+    <div class="container">
+        <div class="flow-header fade-in">
+            <p class="section-label">HOW TO USE</p>
+            <h2 class="section-title" style="text-align:center;">会館ご利用の流れ</h2>
+            <div class="section-underline" style="margin:0 auto 20px;"></div>
+            <p class="section-subtitle" style="text-align:center;">ご逝去からお式まで、担当スタッフが丁寧にサポートいたします</p>
+        </div>
+        <div class="flow-steps">
+            <div class="flow-step fade-in">
+                <div class="flow-step-num">01</div>
+                <h3 class="flow-step-title">ご連絡・ご相談</h3>
+                <p class="flow-step-desc">24時間365日、電話・LINEでご連絡ください。担当者がすぐに対応いたします。</p>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-step-num">02</div>
+                <h3 class="flow-step-title">故人様のお迎え</h3>
+                <p class="flow-step-desc">ご逝去後、ご遺体を安置室にお迎えし、ご家族との最後の時間を作ります。</p>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-step-num">03</div>
+                <h3 class="flow-step-title">式場のご準備</h3>
+                <p class="flow-step-desc">お打ち合わせの内容に沿って、式場の設営・装飾を丁寧に行います。</p>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-step-num">04</div>
+                <h3 class="flow-step-title">通夜・葬儀</h3>
+                <p class="flow-step-desc">担当スタッフが式の進行を全てサポート。心のこもったお見送りをお手伝いします。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="consultation">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">あなたの"のぞみ"を聞かせてください</h2>
+            <p class="cta-subtitle">事前相談・お問い合わせは24時間365日承っております<br>どんな小さなことでも、お気軽にご相談ください</p>
+            <div class="cta-buttons">
+                <a href="tel:0120209678" class="cta-btn phone-btn">
+                    <i class="fas fa-phone-flip"></i>
+                    <span class="cta-btn-label">お電話で相談</span>
+                    <span class="cta-btn-number">0120-20-9678</span>
+                </a>
+                <button class="cta-btn line-btn" onclick="openLineModal()">
+                    <i class="fab fa-line"></i>
+                    <span class="cta-btn-label">LINEで相談</span>
+                    <span class="cta-btn-text">友だち追加はこちら</span>
+                </button>
+                <a href="#" class="cta-btn mail-btn">
+                    <i class="fas fa-envelope"></i>
+                    <span class="cta-btn-label">メールで相談</span>
+                    <span class="cta-btn-text">お問い合わせフォーム</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- フッター -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 class="footer-title"><a href="preview.html" style="color:inherit;text-decoration:none;">のぞみ葬祭</a></h3>
+                <p class="footer-company">株式会社VERDE</p>
+                <p class="footer-address">〒673-0435<br>兵庫県三木市別所町高木933-5</p>
+                <p class="footer-contact">TEL: <a href="tel:0120209678">0120-20-9678</a>（24時間365日）</p>
+                <p class="footer-hours">営業時間: 24時間営業<br>定休日: 年中無休</p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">サイトマップ</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">のぞみ葬祭について</a></li>
+                    <li><a href="plan-detail.html">プラン</a></li>
+                    <li><a href="hall.html">会館のご紹介</a></li>
+                    <li><a href="access.html">アクセス</a></li>
+                    <li><a href="preview.html#faq">よくある質問</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">プラン一覧</h4>
+                <ul class="footer-links">
+                    <li><a href="plan-detail.html#ceremony">ダイヤモンドプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">プラチナプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">ゴールドプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">シルバープラン</a></li>
+                    <li><a href="plan-detail.html#family">ホワイトプラン</a></li>
+                    <li><a href="plan-detail.html#direct">シンプルプラン</a></li>
+                    <li><a href="plan-detail.html#direct">プチプラン</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">© 2024 のぞみ葬祭（株式会社VERDE） All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ページトップ -->
+<button class="page-top" id="pageTop" aria-label="ページトップへ戻る">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- LINEモーダル -->
+<div class="line-modal-overlay" id="lineModal" onclick="if(event.target===this)closeLineModal()">
+    <div class="line-modal">
+        <button class="line-modal-close" onclick="closeLineModal()" aria-label="閉じる">&times;</button>
+        <div class="line-modal-icon"><i class="fab fa-line"></i></div>
+        <h2 class="line-modal-title">LINEで相談する</h2>
+        <p class="line-modal-sub">QRコードを読み取って<br>友だち追加してください</p>
+        <div class="line-modal-qr">
+            <img src="https://placehold.jp/30/00B900/ffffff/200x200.png?text=QR+Code" alt="LINE QRコード（ダミー）">
+        </div>
+        <p class="line-modal-note">24時間いつでもメッセージをお送りいただけます。<br>お気軽にご相談ください。</p>
+    </div>
+</div>
+
+<script>
+// ページトップ
+const pageTop = document.getElementById('pageTop');
+window.addEventListener('scroll', () => {
+    pageTop.classList.toggle('visible', window.scrollY > 400);
+});
+pageTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// モバイルメニュー
+document.getElementById('mobileMenuToggle').addEventListener('click', () => {
+    document.getElementById('headerNav').style.display =
+        document.getElementById('headerNav').style.display === 'flex' ? 'none' : 'flex';
+});
+
+// サムネイル切り替え
+function changeImg(el, src, alt) {
+    document.getElementById('mainImg').src = src;
+    document.getElementById('mainImg').alt = alt;
+    document.querySelectorAll('.hall-thumb').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+}
+
+// フェードイン
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// LINEモーダル
+function openLineModal(){ document.getElementById('lineModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLineModal(){ document.getElementById('lineModal').classList.remove('open'); document.body.style.overflow=''; }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLineModal(); });
+</script>
+</body>
+</html>

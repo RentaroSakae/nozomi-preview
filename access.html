@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アクセス | のぞみ葬祭</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary-color: #8cc04e;
+    --secondary-color: #6A9A3E;
+    --bg-light: #F8F9F5;
+    --bg-warm: #FFF8F0;
+    --text-dark: #333333;
+    --text-gray: #666666;
+    --white: #FFFFFF;
+    --dark-gray: #2C2C2C;
+    --font-serif: 'Noto Serif JP', serif;
+    --font-sans: 'Noto Sans JP', sans-serif;
+    --transition: all 0.3s ease;
+    --shadow: 0 4px 16px rgba(0,0,0,0.08);
+    --shadow-hover: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+html { scroll-behavior: smooth; font-size: 20px; }
+body { font-family: var(--font-sans); color: var(--text-dark); line-height: 1.9; background-color: var(--white); overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
+button { border: none; background: none; cursor: pointer; font-family: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+section { padding: 100px 0; }
+
+/* ========== ヘッダー ========== */
+.header { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--white); box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000; transition: var(--transition); }
+.header-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 30px; height: 80px; }
+.header-logo a { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--primary-color); }
+.header-nav ul { display: flex; gap: 18px; }
+.header-nav a { font-size: 14.76px; font-weight: 500; color: var(--text-dark); position: relative; white-space: nowrap; }
+.header-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: var(--transition); }
+.header-nav a:hover { color: var(--primary-color); }
+.header-nav a:hover::after { width: 100%; }
+.header-nav a.current { color: var(--primary-color); }
+.header-nav a.current::after { width: 100%; }
+.header-cta { display: flex; align-items: center; gap: 20px; }
+.header-phone { font-size: 1.6rem; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 8px; }
+.header-line-btn { background-color: #00B900; color: var(--white); padding: 12px 22px; border-radius: 8px; font-size: 1.05rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.header-line-btn:hover { background-color: #009900; }
+.mobile-menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 10px; }
+.mobile-menu-toggle span { width: 25px; height: 3px; background-color: var(--text-dark); transition: var(--transition); }
+
+/* ========== 共通 ========== */
+.section-label { font-size: 0.8rem; letter-spacing: 0.25em; color: var(--primary-color); font-weight: 600; margin-bottom: 10px; text-transform: uppercase; }
+.section-title { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 700; margin-bottom: 16px; line-height: 1.4; }
+.section-underline { width: 48px; height: 3px; background-color: var(--primary-color); border-radius: 2px; margin-bottom: 20px; }
+.section-subtitle { font-size: 1rem; color: var(--text-gray); line-height: 2; }
+
+/* ========== ページヒーロー ========== */
+.page-hero {
+    margin-top: 80px;
+    background: linear-gradient(135deg, #1e3a10 0%, #2d5518 50%, #4a8030 100%);
+    padding: 90px 0 80px; text-align: center; color: var(--white);
+    position: relative; overflow: hidden;
+}
+.page-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=60') center/cover no-repeat;
+    opacity: 0.12;
+}
+.page-hero-inner { position: relative; z-index: 1; }
+.page-hero-label { font-size: 0.82rem; letter-spacing: 0.3em; opacity: 0.8; margin-bottom: 16px; font-weight: 500; }
+.page-hero-title { font-family: var(--font-serif); font-size: 3.2rem; font-weight: 700; margin-bottom: 20px; }
+.page-hero-sub { font-size: 1.05rem; opacity: 0.9; max-width: 520px; margin: 0 auto; line-height: 2; }
+
+/* ========== 基本情報カード ========== */
+.basic-info { background-color: var(--bg-light); }
+.basic-info-header { text-align: center; margin-bottom: 60px; }
+.info-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 0; }
+.info-card {
+    background-color: var(--white); border-radius: 16px; padding: 36px 28px;
+    box-shadow: var(--shadow); text-align: center; transition: var(--transition);
+    border-top: 4px solid var(--primary-color);
+}
+.info-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+.info-card-icon { font-size: 2.2rem; color: var(--primary-color); margin-bottom: 16px; }
+.info-card-label { font-size: 1rem; font-weight: 700; color: var(--text-gray); letter-spacing: 0.1em; margin-bottom: 10px; }
+.info-card-value { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; color: var(--text-dark); line-height: 1.8; }
+.info-card-value a { color: var(--primary-color); }
+.info-card-value a:hover { text-decoration: underline; }
+.info-card-note { font-size: 0.95rem; color: var(--text-gray); margin-top: 8px; }
+
+/* ========== 大地図セクション ========== */
+.map-section { background-color: var(--white); padding: 0; }
+.map-wrap {
+    width: 100%; height: 520px;
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.08);
+}
+.map-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+/* ========== 経路案内 ========== */
+.directions { background-color: var(--bg-light); }
+.directions-header { text-align: center; margin-bottom: 60px; }
+.directions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+.direction-card {
+    background-color: var(--white); border-radius: 16px; padding: 36px 32px;
+    box-shadow: var(--shadow); display: flex; gap: 24px; align-items: flex-start;
+    transition: var(--transition);
+}
+.direction-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+.direction-icon-wrap {
+    width: 60px; height: 60px; border-radius: 50%; flex-shrink: 0;
+    background-color: var(--primary-color);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; color: var(--white);
+    box-shadow: 0 4px 12px rgba(140,192,78,0.3);
+}
+.direction-body {}
+.direction-title { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; margin-bottom: 14px; }
+.direction-steps { list-style: none; }
+.direction-steps li {
+    font-size: 1.1rem; color: var(--text-gray); padding: 12px 0;
+    border-bottom: 1px dashed #e8e8e8; display: flex; align-items: flex-start; gap: 12px; line-height: 1.8;
+}
+.direction-steps li:last-child { border-bottom: none; padding-bottom: 0; }
+.step-num {
+    min-width: 28px; height: 28px; border-radius: 50%;
+    background-color: var(--primary-color); color: var(--white);
+    font-size: 0.82rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 3px;
+}
+.direction-note { margin-top: 14px; font-size: 1rem; color: var(--text-gray); background-color: var(--bg-light); padding: 12px 16px; border-radius: 8px; line-height: 1.8; }
+
+/* ========== 駐車場 ========== */
+.parking { background-color: var(--white); }
+.parking-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.parking-img { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.parking-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.parking-body {}
+.parking-badge { display: inline-block; background-color: #e8f4d8; color: var(--secondary-color); padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; border: 1px solid rgba(140,192,78,0.35); }
+.parking-title { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; margin-bottom: 16px; }
+.parking-desc { font-size: 1.1rem; color: var(--text-gray); line-height: 2.2; margin-bottom: 28px; }
+.parking-specs { display: flex; flex-direction: column; gap: 14px; }
+.parking-spec { display: flex; align-items: center; gap: 14px; padding: 18px 22px; background-color: var(--bg-light); border-radius: 10px; }
+.parking-spec i { font-size: 1.3rem; color: var(--primary-color); width: 26px; text-align: center; }
+.parking-spec-text { font-size: 1.1rem; font-weight: 500; }
+.parking-spec-text span { font-size: 0.95rem; color: var(--text-gray); font-weight: 400; margin-left: 8px; }
+
+
+/* ========== CTA（共通） ========== */
+.cta { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); padding: 80px 0; }
+.cta-content { text-align: center; color: var(--white); }
+.cta-title { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 600; margin-bottom: 18px; }
+.cta-subtitle { font-size: 1.2rem; opacity: 0.95; margin-bottom: 50px; line-height: 1.9; }
+.cta-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1000px; margin: 0 auto; }
+.cta-btn { background-color: var(--white); color: var(--primary-color); padding: 30px 20px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; gap: 10px; transition: var(--transition); }
+.cta-btn:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.cta-btn i { font-size: 2.5rem; }
+.cta-btn-label { font-size: 1.05rem; font-weight: 600; color: var(--text-gray); }
+.cta-btn-number, .cta-btn-text { font-size: 1.3rem; font-weight: 700; color: var(--text-dark); }
+
+/* ========== フッター（共通） ========== */
+.footer { background-color: var(--dark-gray); color: var(--white); padding: 60px 0 30px; }
+.footer-content { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-title { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--primary-color); margin-bottom: 15px; }
+.footer-company, .footer-address, .footer-contact, .footer-hours { font-size: 1.05rem; line-height: 1.9; margin-bottom: 10px; }
+.footer-contact a { color: var(--primary-color); font-weight: 600; }
+.footer-heading { font-size: 1.2rem; font-weight: 600; margin-bottom: 20px; }
+.footer-links li { margin-bottom: 14px; }
+.footer-links a { font-size: 1.05rem; color: rgba(255,255,255,0.8); }
+.footer-links a:hover { color: var(--primary-color); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; }
+
+/* ========== ページトップ ========== */
+.page-top { position: fixed; bottom: 30px; right: 30px; width: 52px; height: 52px; background-color: var(--primary-color); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); opacity: 0; pointer-events: none; transition: var(--transition); cursor: pointer; z-index: 999; font-size: 1.1rem; }
+.page-top.visible { opacity: 1; pointer-events: auto; }
+
+/* LINEモーダル */
+.line-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9000; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+.line-modal-overlay.open { display: flex; }
+.line-modal { background: var(--white); border-radius: 20px; padding: 48px 40px 40px; max-width: 400px; width: 90%; text-align: center; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: modalIn 0.25s ease; }
+@keyframes modalIn { from { opacity: 0; transform: scale(0.9) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+.line-modal-close { position: absolute; top: 14px; right: 16px; font-size: 1.6rem; color: var(--text-gray); cursor: pointer; line-height: 1; background: none; border: none; transition: var(--transition); }
+.line-modal-close:hover { color: var(--text-dark); transform: rotate(90deg); }
+.line-modal-icon { font-size: 3rem; color: #00B900; margin-bottom: 12px; }
+.line-modal-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; margin-bottom: 6px; }
+.line-modal-sub { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 28px; line-height: 1.8; }
+.line-modal-qr { width: 200px; height: 200px; margin: 0 auto 20px; border: 3px solid #e0e0e0; border-radius: 12px; overflow: hidden; background: #f5f5f5; display: flex; align-items: center; justify-content: center; }
+.line-modal-qr img { width: 100%; height: 100%; object-fit: cover; }
+.line-modal-note { font-size: 0.82rem; color: var(--text-gray); line-height: 1.8; }
+
+/* ========== フェードイン ========== */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ========== レスポンシブ ========== */
+@media (max-width: 1024px) {
+    .info-cards { grid-template-columns: repeat(2, 1fr); }
+    .directions-grid { grid-template-columns: 1fr; }
+    .parking-inner { grid-template-columns: 1fr; gap: 40px; }
+    .footer-content { grid-template-columns: 1fr 1fr; }
+    .footer-column:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 768px) {
+    html { font-size: 16px; }
+    section { padding: 70px 0; }
+    .page-hero-title { font-size: 2.2rem; }
+    .section-title { font-size: 1.8rem; }
+    .info-cards { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    .map-wrap { height: 360px; }
+    .cta-buttons { grid-template-columns: 1fr; max-width: 400px; }
+    .footer-content { grid-template-columns: 1fr; }
+    .header-nav { display: none; }
+    .mobile-menu-toggle { display: flex; }
+    .header-container { height: 64px; padding: 0 15px; }
+    .header-cta { display: none; }
+}
+@media (max-width: 480px) {
+.direction-card { flex-direction: column; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="header" id="header">
+    <div class="header-container">
+        <div class="header-logo">
+            <a href="preview.html">のぞみ葬祭</a>
+        </div>
+        <nav class="header-nav" id="headerNav">
+            <ul>
+                <li><a href="about.html">のぞみ葬祭について</a></li>
+                <li><a href="plan-detail.html">プラン</a></li>
+                <li><a href="hall.html">会館のご紹介</a></li>
+                <li><a href="access.html" class="current">アクセス</a></li>
+                <li><a href="flowers.html">供花のご注文</a></li>
+                <li><a href="preview.html#faq">よくある質問</a></li>
+            </ul>
+        </nav>
+        <div class="header-cta">
+            <a href="tel:0120209678" class="header-phone">
+                <i class="fas fa-phone-flip"></i> 0120-20-9678
+            </a>
+            <button class="header-line-btn" onclick="openLineModal()">
+                <i class="fab fa-line"></i> LINEで相談
+            </button>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="メニュー">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ページヒーロー -->
+<section class="page-hero">
+    <div class="container">
+        <div class="page-hero-inner">
+            <p class="page-hero-label">ACCESS</p>
+            <h1 class="page-hero-title">アクセス</h1>
+            <p class="page-hero-sub">
+                兵庫県三木市別所町高木933-5<br>
+                24時間365日、いつでもお越しください
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- 基本情報カード -->
+<section class="basic-info">
+    <div class="container">
+        <div class="basic-info-header fade-in">
+            <p class="section-label">INFORMATION</p>
+            <h2 class="section-title">基本情報</h2>
+            <div class="section-underline" style="margin: 0 auto;"></div>
+        </div>
+        <div class="info-cards">
+            <div class="info-card fade-in">
+                <div class="info-card-icon"><i class="fas fa-map-pin"></i></div>
+                <p class="info-card-label">住所</p>
+                <p class="info-card-value">〒673-0435<br>兵庫県三木市<br>別所町高木933-5</p>
+            </div>
+            <div class="info-card fade-in">
+                <div class="info-card-icon"><i class="fas fa-phone-flip"></i></div>
+                <p class="info-card-label">お電話</p>
+                <p class="info-card-value"><a href="tel:0120209678">0120-20-9678</a></p>
+                <p class="info-card-note">通話無料・24時間365日対応</p>
+            </div>
+            <div class="info-card fade-in">
+                <div class="info-card-icon"><i class="fas fa-clock"></i></div>
+                <p class="info-card-label">営業時間</p>
+                <p class="info-card-value">24時間営業<br>年中無休</p>
+                <p class="info-card-note">深夜・早朝もお気軽にご連絡ください</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 大地図 -->
+<div class="map-section">
+    <div class="map-wrap">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.156!2d134.9793!3d34.7968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3554e4b9b8bfffff%3A0x7c0f012be8a17b1f!2z5YWt5p2-5biC5Yy65YiG5omA55S677yZ77ym77yT77yV!5e0!3m2!1sja!2sjp!4v1700000000000"
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="のぞみ葬祭 アクセスマップ">
+        </iframe>
+    </div>
+</div>
+
+<!-- 経路案内 -->
+<section class="directions">
+    <div class="container">
+        <div class="directions-header fade-in">
+            <p class="section-label">HOW TO GET THERE</p>
+            <h2 class="section-title">経路案内</h2>
+            <div class="section-underline" style="margin: 0 auto 16px;"></div>
+            <p class="section-subtitle">お車・電車・バスでのアクセス方法をご案内します</p>
+        </div>
+        <div class="directions-grid">
+
+            <!-- お車 -->
+            <div class="direction-card fade-in">
+                <div class="direction-icon-wrap"><i class="fas fa-car"></i></div>
+                <div class="direction-body">
+                    <h3 class="direction-title">お車でお越しの方</h3>
+                    <ul class="direction-steps">
+                        <li>
+                            <span class="step-num">1</span>
+                            山陽自動車道「三木小野インターチェンジ」で降ります
+                        </li>
+                        <li>
+                            <span class="step-num">2</span>
+                            国道175号線を明石方面（南）へ進みます
+                        </li>
+                        <li>
+                            <span class="step-num">3</span>
+                            約4分・約2.5kmで到着です
+                        </li>
+                    </ul>
+                    <p class="direction-note">🅿 駐車場30台完備・無料・大型車も駐車可</p>
+                </div>
+            </div>
+
+            <!-- 電車＋バス -->
+            <div class="direction-card fade-in">
+                <div class="direction-icon-wrap"><i class="fas fa-train-subway"></i></div>
+                <div class="direction-body">
+                    <h3 class="direction-title">電車・バスでお越しの方</h3>
+                    <ul class="direction-steps">
+                        <li>
+                            <span class="step-num">1</span>
+                            神戸電鉄 粟生線「三木駅」に到着
+                        </li>
+                        <li>
+                            <span class="step-num">2</span>
+                            駅前バス停より厄神駅行きバスに乗車
+                        </li>
+                        <li>
+                            <span class="step-num">3</span>
+                            4駅目「高木バス停」で下車（約7分）
+                        </li>
+                        <li>
+                            <span class="step-num">4</span>
+                            バス停より徒歩約1分で到着です
+                        </li>
+                    </ul>
+                    <p class="direction-note">🚌 バスの時刻は神姫バスのウェブサイトでご確認ください</p>
+                </div>
+            </div>
+
+            <!-- 神戸方面から -->
+            <div class="direction-card fade-in">
+                <div class="direction-icon-wrap" style="background-color:#4a7abf;"><i class="fas fa-route"></i></div>
+                <div class="direction-body">
+                    <h3 class="direction-title">神戸・明石方面からお越しの方</h3>
+                    <ul class="direction-steps">
+                        <li>
+                            <span class="step-num">1</span>
+                            第二神明道路「明石西インターチェンジ」を利用
+                        </li>
+                        <li>
+                            <span class="step-num">2</span>
+                            国道175号線を三木方面（北）へ進みます
+                        </li>
+                        <li>
+                            <span class="step-num">3</span>
+                            「高木」交差点付近が目安です
+                        </li>
+                    </ul>
+                    <p class="direction-note">🚗 所要時間の目安：神戸市中心部から約40分</p>
+                </div>
+            </div>
+
+            <!-- 姫路・加古川方面から -->
+            <div class="direction-card fade-in">
+                <div class="direction-icon-wrap" style="background-color:#b07040;"><i class="fas fa-road"></i></div>
+                <div class="direction-body">
+                    <h3 class="direction-title">姫路・加古川方面からお越しの方</h3>
+                    <ul class="direction-steps">
+                        <li>
+                            <span class="step-num">1</span>
+                            山陽自動車道「三木東インターチェンジ」または「三木小野インターチェンジ」を利用
+                        </li>
+                        <li>
+                            <span class="step-num">2</span>
+                            国道175号線を北上・または県道を経由してお越しください
+                        </li>
+                        <li>
+                            <span class="step-num">3</span>
+                            カーナビに「三木市別所町高木933-5」と入力すると便利です
+                        </li>
+                    </ul>
+                    <p class="direction-note">🚗 所要時間の目安：姫路市から約50分</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- 駐車場 -->
+<section class="parking">
+    <div class="container">
+        <div class="parking-inner">
+            <div class="fade-in">
+                <div class="parking-img">
+                    <img src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=800&h=600&fit=crop&q=80" alt="駐車場（仮）">
+                </div>
+            </div>
+            <div class="parking-body fade-in">
+                <h2 class="parking-title">ゆったりとした駐車スペース</h2>
+                <p class="parking-desc">
+                    広々とした無料駐車場を完備しております。<br>
+                    ご葬儀の際も参列者様のお車を安心してお停めいただけます。
+                    大型車・バスの駐車も可能ですので、遠方よりお越しの際もご安心ください。
+                </p>
+                <div class="parking-specs">
+                    <div class="parking-spec">
+                        <i class="fas fa-car"></i>
+                        <p class="parking-spec-text">普通車 30台<span>無料・バリアフリー対応</span></p>
+                    </div>
+                    <div class="parking-spec">
+                        <i class="fas fa-bus"></i>
+                        <p class="parking-spec-text">大型車・マイクロバス<span>駐車可能</span></p>
+                    </div>
+                    <div class="parking-spec">
+                        <i class="fas fa-clock"></i>
+                        <p class="parking-spec-text">24時間利用可能<span>施設ご利用の方に限ります</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA（共通） -->
+<section class="cta" id="consultation">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">あなたの"のぞみ"を聞かせてください</h2>
+            <p class="cta-subtitle">事前相談・お問い合わせは24時間365日承っております<br>どんな小さなことでも、お気軽にご相談ください</p>
+            <div class="cta-buttons">
+                <a href="tel:0120209678" class="cta-btn phone-btn">
+                    <i class="fas fa-phone-flip"></i>
+                    <span class="cta-btn-label">お電話で相談</span>
+                    <span class="cta-btn-number">0120-20-9678</span>
+                </a>
+                <button class="cta-btn line-btn" onclick="openLineModal()">
+                    <i class="fab fa-line"></i>
+                    <span class="cta-btn-label">LINEで相談</span>
+                    <span class="cta-btn-text">友だち追加はこちら</span>
+                </button>
+                <a href="#" class="cta-btn mail-btn">
+                    <i class="fas fa-envelope"></i>
+                    <span class="cta-btn-label">メールで相談</span>
+                    <span class="cta-btn-text">お問い合わせフォーム</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- フッター（共通） -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 class="footer-title"><a href="preview.html" style="color:inherit;text-decoration:none;">のぞみ葬祭</a></h3>
+                <p class="footer-company">株式会社VERDE</p>
+                <p class="footer-address">〒673-0435<br>兵庫県三木市別所町高木933-5</p>
+                <p class="footer-contact">TEL: <a href="tel:0120209678">0120-20-9678</a>（24時間365日）</p>
+                <p class="footer-hours">営業時間: 24時間営業<br>定休日: 年中無休</p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">サイトマップ</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">のぞみ葬祭について</a></li>
+                    <li><a href="plan-detail.html">プラン</a></li>
+                    <li><a href="hall.html">会館のご紹介</a></li>
+                    <li><a href="access.html">アクセス</a></li>
+                    <li><a href="preview.html#faq">よくある質問</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">プラン一覧</h4>
+                <ul class="footer-links">
+                    <li><a href="plan-detail.html#ceremony">ダイヤモンドプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">プラチナプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">ゴールドプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">シルバープラン</a></li>
+                    <li><a href="plan-detail.html#family">ホワイトプラン</a></li>
+                    <li><a href="plan-detail.html#direct">シンプルプラン</a></li>
+                    <li><a href="plan-detail.html#direct">プチプラン</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">その他</h4>
+                <ul class="footer-links">
+                    <li><a href="preview.html#flowers">人形供養</a></li>
+                    <li><a href="preview.html#flowers">写真供養</a></li>
+                    <li><a href="#">プライバシーポリシー</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2025 株式会社VERDE All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ページトップ -->
+<button class="page-top" id="pageTop" aria-label="ページトップへ戻る">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    // ページトップ
+    const pageTop = document.getElementById('pageTop');
+    window.addEventListener('scroll', function () {
+        if (pageTop) pageTop.classList.toggle('visible', window.scrollY > 300);
+    });
+    if (pageTop) pageTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // モバイルメニュー
+    const mobileToggle = document.getElementById('mobileMenuToggle');
+    const headerNav    = document.getElementById('headerNav');
+    if (mobileToggle && headerNav) {
+        mobileToggle.addEventListener('click', function () {
+            this.classList.toggle('active');
+            headerNav.classList.toggle('active');
+        });
+    }
+    const mobileStyle = document.createElement('style');
+    mobileStyle.textContent = `.header-nav.active{display:block!important;position:fixed;top:64px;left:0;width:100%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:999}.header-nav.active ul{flex-direction:column;padding:20px;gap:0}.header-nav.active li{border-bottom:1px solid #f0f0f0}.header-nav.active a{display:block;padding:15px 10px}.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.mobile-menu-toggle.active span:nth-child(2){opacity:0}.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}`;
+    document.head.appendChild(mobileStyle);
+
+    // フェードイン
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+});
+</script>
+
+<!-- LINEモーダル -->
+<div class="line-modal-overlay" id="lineModal" onclick="if(event.target===this)closeLineModal()">
+    <div class="line-modal">
+        <button class="line-modal-close" onclick="closeLineModal()" aria-label="閉じる">&times;</button>
+        <div class="line-modal-icon"><i class="fab fa-line"></i></div>
+        <h2 class="line-modal-title">LINEで相談する</h2>
+        <p class="line-modal-sub">QRコードを読み取って<br>友だち追加してください</p>
+        <div class="line-modal-qr">
+            <img src="https://placehold.jp/30/00B900/ffffff/200x200.png?text=QR+Code" alt="LINE QRコード（ダミー）">
+        </div>
+        <p class="line-modal-note">24時間いつでもメッセージをお送りいただけます。<br>お気軽にご相談ください。</p>
+    </div>
+</div>
+<script>
+function openLineModal(){ document.getElementById('lineModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLineModal(){ document.getElementById('lineModal').classList.remove('open'); document.body.style.overflow=''; }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLineModal(); });
+</script>
+</body>
+</html>

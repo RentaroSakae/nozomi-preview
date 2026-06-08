@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>供花・盛籠のご注文 | のぞみ葬祭</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary-color: #8cc04e;
+    --secondary-color: #6A9A3E;
+    --bg-light: #F8F9F5;
+    --bg-warm: #FFF8F0;
+    --text-dark: #333333;
+    --text-gray: #666666;
+    --white: #FFFFFF;
+    --dark-gray: #2C2C2C;
+    --font-serif: 'Noto Serif JP', serif;
+    --font-sans: 'Noto Sans JP', sans-serif;
+    --transition: all 0.3s ease;
+    --shadow: 0 4px 16px rgba(0,0,0,0.08);
+    --shadow-hover: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+html { scroll-behavior: smooth; font-size: 18px; }
+body { font-family: var(--font-sans); color: var(--text-dark); line-height: 1.9; background-color: var(--white); overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
+button { border: none; background: none; cursor: pointer; font-family: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+section { padding: 100px 0; }
+
+/* ========== ヘッダー ========== */
+.header { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--white); box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000; transition: var(--transition); }
+.header-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 30px; height: 80px; }
+.header-logo a { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--primary-color); }
+.header-nav ul { display: flex; gap: 18px; }
+.header-nav a { font-size: 14.76px; font-weight: 500; color: var(--text-dark); position: relative; white-space: nowrap; }
+.header-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: var(--transition); }
+.header-nav a:hover { color: var(--primary-color); }
+.header-nav a:hover::after { width: 100%; }
+.header-nav a.current { color: var(--primary-color); }
+.header-nav a.current::after { width: 100%; }
+.header-cta { display: flex; align-items: center; gap: 20px; }
+.header-phone { font-size: 1.6rem; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 8px; }
+.header-line-btn { background-color: #00B900; color: var(--white); padding: 12px 22px; border-radius: 8px; font-size: 1.05rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.header-line-btn:hover { background-color: #009900; }
+.mobile-menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 10px; }
+.mobile-menu-toggle span { width: 25px; height: 3px; background-color: var(--text-dark); transition: var(--transition); }
+
+/* ========== 共通 ========== */
+.section-label { font-size: 0.8rem; letter-spacing: 0.25em; color: var(--primary-color); font-weight: 600; margin-bottom: 10px; text-transform: uppercase; }
+.section-title { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 700; margin-bottom: 16px; line-height: 1.4; }
+.section-underline { width: 48px; height: 3px; background-color: var(--primary-color); border-radius: 2px; margin-bottom: 20px; }
+.section-subtitle { font-size: 1rem; color: var(--text-gray); line-height: 2; }
+
+/* ========== ページヒーロー ========== */
+.page-hero {
+    margin-top: 80px;
+    background: linear-gradient(135deg, #1e3a10 0%, #2d5518 50%, #4a8030 100%);
+    padding: 90px 0 80px; text-align: center; color: var(--white);
+    position: relative; overflow: hidden;
+}
+.page-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1665686306574-1ace09918530?w=1920&q=60') center/cover no-repeat;
+    opacity: 0.18;
+}
+.page-hero-inner { position: relative; z-index: 1; }
+.page-hero-label { font-size: 0.82rem; letter-spacing: 0.3em; opacity: 0.8; margin-bottom: 16px; font-weight: 500; }
+.page-hero-title { font-family: var(--font-serif); font-size: 3.2rem; font-weight: 700; margin-bottom: 20px; }
+.page-hero-sub { font-size: 1.05rem; opacity: 0.9; max-width: 560px; margin: 0 auto; line-height: 2; }
+
+/* ========== リード文 ========== */
+.page-lead { background-color: var(--bg-light); padding: 60px 0; }
+.page-lead-inner { text-align: center; }
+.page-lead-text { font-size: 1.1rem; color: var(--text-gray); line-height: 2.1; max-width: 700px; margin: 0 auto; }
+
+/* ========== メニューセクション ========== */
+.menu-section { background-color: var(--white); padding: 80px 0; }
+.menu-section:nth-child(even) { background-color: var(--bg-light); }
+
+.menu-section-header { margin-bottom: 48px; display: flex; align-items: center; gap: 20px; }
+.menu-section-icon {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; color: var(--white); flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(140,192,78,0.3);
+}
+.menu-section-title { font-family: var(--font-serif); font-size: 2rem; font-weight: 700; }
+
+.menu-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+.menu-card {
+    background-color: var(--white); border-radius: 16px; overflow: hidden;
+    box-shadow: var(--shadow); transition: var(--transition);
+    border: 2px solid transparent;
+}
+.menu-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: var(--primary-color); }
+
+.menu-card-img { position: relative; }
+.menu-card-img img { width: 100%; height: 200px; object-fit: cover; }
+.menu-card-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white); font-family: var(--font-serif);
+    font-size: 1rem; font-weight: 700;
+    padding: 6px 16px; border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.menu-card-body { padding: 20px 22px 24px; }
+.menu-card-name { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; color: var(--text-dark); }
+.menu-card-desc { font-size: 0.88rem; color: var(--text-gray); line-height: 1.9; margin-bottom: 16px; min-height: 52px; }
+.menu-card-price { background-color: var(--bg-light); border-radius: 10px; padding: 12px 16px; }
+.menu-price-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; }
+.menu-price-row + .menu-price-row { margin-top: 6px; border-top: 1px dashed #ddd; padding-top: 6px; }
+.menu-price-unit { color: var(--text-gray); font-weight: 600; }
+.menu-price-val { font-family: var(--font-serif); font-weight: 700; color: var(--secondary-color); font-size: 1.05rem; }
+.menu-price-tax { font-size: 0.8rem; color: var(--text-gray); }
+
+/* ========== ご注文方法 ========== */
+.order-method { background-color: var(--bg-warm); }
+.order-method-header { text-align: center; margin-bottom: 50px; }
+.method-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.method-card {
+    background-color: var(--white); border-radius: 16px; padding: 36px 28px;
+    text-align: center; box-shadow: var(--shadow); transition: var(--transition);
+    border-top: 4px solid var(--primary-color);
+}
+.method-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.method-icon { font-size: 2.4rem; color: var(--primary-color); margin-bottom: 16px; }
+.method-title { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+.method-desc { font-size: 0.9rem; color: var(--text-gray); line-height: 1.9; }
+.method-note { font-size: 0.82rem; color: var(--primary-color); margin-top: 10px; font-weight: 600; }
+
+/* ========== 発注フォーム ========== */
+.order-form-section { background-color: var(--white); }
+.order-form-header { text-align: center; margin-bottom: 56px; }
+.order-form-wrap {
+    max-width: 760px; margin: 0 auto;
+    background-color: var(--bg-light); border-radius: 20px;
+    padding: 56px 60px; box-shadow: var(--shadow);
+}
+.form-group { margin-bottom: 28px; }
+.form-label {
+    display: block; font-size: 1rem; font-weight: 700;
+    color: var(--text-dark); margin-bottom: 8px;
+}
+.form-required {
+    display: inline-block; background-color: var(--primary-color);
+    color: var(--white); font-size: 0.72rem; font-weight: 700;
+    padding: 2px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle;
+}
+.form-input, .form-select, .form-textarea {
+    width: 100%; padding: 14px 18px;
+    border: 2px solid #e0e0e0; border-radius: 10px;
+    font-family: var(--font-sans); font-size: 1rem;
+    color: var(--text-dark); background-color: var(--white);
+    transition: var(--transition); outline: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(140,192,78,0.15);
+}
+.form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236A9A3E' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+.form-textarea { resize: vertical; min-height: 100px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.form-divider {
+    border: none; border-top: 2px dashed #d4e8c2;
+    margin: 36px 0;
+}
+.form-section-title {
+    font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;
+    color: var(--secondary-color); margin-bottom: 20px;
+    padding-left: 12px; border-left: 4px solid var(--primary-color);
+}
+
+/* 支払い方法ラジオ */
+.radio-group { display: flex; flex-direction: column; gap: 12px; }
+.radio-label { display: flex; align-items: center; gap: 12px; cursor: pointer; font-size: 1rem; color: var(--text-dark); }
+.radio-label input[type="radio"] { width: 20px; height: 20px; accent-color: var(--primary-color); flex-shrink: 0; }
+
+/* 銀行振込追加フィールド */
+.bank-fields { display: none; margin-top: 20px; background-color: #f0f8e8; border-radius: 12px; padding: 24px; border: 2px solid #d4e8c2; }
+.bank-fields.show { display: block; }
+.bank-fields .form-group:last-child { margin-bottom: 0; }
+
+/* プライバシーポリシー */
+.privacy-wrap { background-color: var(--white); border: 2px solid #e0e0e0; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; }
+.privacy-toggle { font-size: 0.95rem; color: var(--primary-color); cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.privacy-toggle i { transition: var(--transition); }
+.privacy-toggle.open i { transform: rotate(180deg); }
+.privacy-body { display: none; margin-top: 14px; font-size: 0.85rem; color: var(--text-gray); line-height: 1.9; max-height: 160px; overflow-y: auto; }
+.privacy-body.open { display: block; }
+.privacy-check { display: flex; align-items: center; gap: 12px; cursor: pointer; font-size: 1rem; font-weight: 600; color: var(--text-dark); }
+.privacy-check input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--primary-color); flex-shrink: 0; }
+
+.btn-submit {
+    width: 100%; padding: 20px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white); font-family: var(--font-serif);
+    font-size: 1.2rem; font-weight: 700; letter-spacing: 0.05em;
+    cursor: pointer; border: none; transition: var(--transition);
+    box-shadow: 0 4px 16px rgba(140,192,78,0.4);
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(140,192,78,0.5); }
+.btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* 送信成功メッセージ */
+.form-success {
+    display: none; text-align: center; padding: 48px 32px;
+    background: linear-gradient(135deg, #f0f8e8, #e8f5d4);
+    border-radius: 16px; border: 2px solid var(--primary-color);
+}
+.form-success.show { display: block; }
+.form-success-icon { font-size: 4rem; color: var(--primary-color); margin-bottom: 16px; }
+.form-success-title { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; margin-bottom: 12px; }
+.form-success-text { font-size: 1rem; color: var(--text-gray); line-height: 2; }
+
+/* ========== CTA ========== */
+.cta { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); padding: 80px 0; }
+.cta-content { text-align: center; color: var(--white); }
+.cta-title { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 600; margin-bottom: 18px; }
+.cta-subtitle { font-size: 1.2rem; opacity: 0.95; margin-bottom: 50px; line-height: 1.9; }
+.cta-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1000px; margin: 0 auto; }
+.cta-btn { background-color: var(--white); color: var(--primary-color); padding: 30px 20px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; gap: 10px; transition: var(--transition); border: none; cursor: pointer; font-family: var(--font-sans); }
+.cta-btn:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.cta-btn i { font-size: 2.5rem; }
+.cta-btn-label { font-size: 1.05rem; font-weight: 600; color: var(--text-gray); }
+.cta-btn-number, .cta-btn-text { font-size: 1.3rem; font-weight: 700; color: var(--text-dark); }
+.phone-btn i { color: var(--primary-color); }
+.line-btn i { color: #00B900; }
+.mail-btn i { color: var(--primary-color); }
+
+/* ========== フッター ========== */
+.footer { background-color: var(--dark-gray); color: var(--white); padding: 60px 0 30px; }
+.footer-content { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-title { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--primary-color); margin-bottom: 15px; }
+.footer-company, .footer-address, .footer-contact, .footer-hours { font-size: 1.05rem; line-height: 1.9; margin-bottom: 10px; }
+.footer-contact a { color: var(--primary-color); font-weight: 600; }
+.footer-heading { font-size: 1.2rem; font-weight: 600; margin-bottom: 20px; }
+.footer-links li { margin-bottom: 14px; }
+.footer-links a { font-size: 1.05rem; color: rgba(255,255,255,0.8); }
+.footer-links a:hover { color: var(--primary-color); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; }
+.copyright { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+
+/* ========== ページトップ ========== */
+.page-top { position: fixed; bottom: 30px; right: 30px; width: 52px; height: 52px; background-color: var(--primary-color); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); opacity: 0; pointer-events: none; transition: var(--transition); cursor: pointer; z-index: 999; font-size: 1.1rem; }
+.page-top.visible { opacity: 1; pointer-events: auto; }
+
+/* LINEモーダル */
+.line-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9000; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+.line-modal-overlay.open { display: flex; }
+.line-modal { background: var(--white); border-radius: 20px; padding: 48px 40px 40px; max-width: 400px; width: 90%; text-align: center; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: modalIn 0.25s ease; }
+@keyframes modalIn { from { opacity: 0; transform: scale(0.9) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+.line-modal-close { position: absolute; top: 14px; right: 16px; font-size: 1.6rem; color: var(--text-gray); cursor: pointer; line-height: 1; background: none; border: none; transition: var(--transition); }
+.line-modal-close:hover { color: var(--text-dark); transform: rotate(90deg); }
+.line-modal-icon { font-size: 3rem; color: #00B900; margin-bottom: 12px; }
+.line-modal-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; margin-bottom: 6px; }
+.line-modal-sub { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 28px; line-height: 1.8; }
+.line-modal-qr { width: 200px; height: 200px; margin: 0 auto 20px; border: 3px solid #e0e0e0; border-radius: 12px; overflow: hidden; background: #f5f5f5; display: flex; align-items: center; justify-content: center; }
+.line-modal-qr img { width: 100%; height: 100%; object-fit: cover; }
+.line-modal-note { font-size: 0.82rem; color: var(--text-gray); line-height: 1.8; }
+
+/* ========== フェードイン ========== */
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ========== レスポンシブ ========== */
+@media (max-width: 1024px) {
+    .menu-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-content { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+    html { font-size: 16px; }
+    .header-nav, .header-cta { display: none; }
+    .mobile-menu-toggle { display: flex; }
+    .menu-grid { grid-template-columns: 1fr 1fr; }
+    .method-cards { grid-template-columns: 1fr; }
+    .order-form-wrap { padding: 36px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+    .cta-buttons { grid-template-columns: 1fr; }
+    .footer-content { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 480px) {
+    .menu-grid { grid-template-columns: 1fr; }
+    .page-hero-title { font-size: 2.2rem; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="header" id="header">
+    <div class="header-container">
+        <div class="header-logo">
+            <a href="preview.html">のぞみ葬祭</a>
+        </div>
+        <nav class="header-nav" id="headerNav">
+            <ul>
+                <li><a href="about.html">のぞみ葬祭について</a></li>
+                <li><a href="plan-detail.html">プラン</a></li>
+                <li><a href="hall.html">会館のご紹介</a></li>
+                <li><a href="access.html">アクセス</a></li>
+                <li><a href="flowers.html" class="current">供花のご注文</a></li>
+                <li><a href="preview.html#faq">よくある質問</a></li>
+            </ul>
+        </nav>
+        <div class="header-cta">
+            <a href="tel:0120209678" class="header-phone">
+                <i class="fas fa-phone-flip"></i> 0120-20-9678
+            </a>
+            <button class="header-line-btn" onclick="openLineModal()">
+                <i class="fab fa-line"></i> LINEで相談
+            </button>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="メニュー">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ページヒーロー -->
+<div class="page-hero">
+    <div class="page-hero-inner">
+        <p class="page-hero-label">FLOWERS & OFFERINGS</p>
+        <h1 class="page-hero-title">供花・盛籠のご注文</h1>
+        <p class="page-hero-sub">ご家族さま、故人さまへの想いを<br>美しい花や籠に込めてお届けします</p>
+    </div>
+</div>
+
+<!-- リード文 -->
+<div class="page-lead">
+    <div class="container">
+        <div class="page-lead-inner">
+            <p class="page-lead-text">下記に掲載されている商品をご覧いただき、ページ下部のフォーム・LINE・FAXのいずれかよりご注文ください。<br>ご不明な点はお電話（0120-20-9678）にてお気軽にお問い合わせください。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 供花メニュー（JS自動生成） -->
+<section class="menu-section" id="flower-menu">
+    <div class="container">
+        <div class="menu-section-header fade-in">
+            <div class="menu-section-icon"><i class="fas fa-spa"></i></div>
+            <h2 class="menu-section-title">供花</h2>
+        </div>
+        <div class="menu-grid" id="flowerGrid"></div>
+    </div>
+</section>
+
+<!-- 盛籠メニュー（JS自動生成） -->
+<section class="menu-section" style="background-color:var(--bg-light);" id="basket-menu">
+    <div class="container">
+        <div class="menu-section-header fade-in">
+            <div class="menu-section-icon"><i class="fas fa-gift"></i></div>
+            <h2 class="menu-section-title">盛籠</h2>
+        </div>
+        <div class="menu-grid" id="basketGrid"></div>
+    </div>
+</section>
+
+<!-- ご注文方法 -->
+<section class="order-method">
+    <div class="container">
+        <div class="order-method-header fade-in">
+            <p class="section-label">HOW TO ORDER</p>
+            <h2 class="section-title" style="text-align:center;">ご注文方法</h2>
+            <div class="section-underline" style="margin:0 auto 20px;"></div>
+            <p class="section-subtitle" style="text-align:center;">以下の3つの方法からご注文いただけます</p>
+        </div>
+        <div class="method-cards">
+            <div class="method-card fade-in">
+                <div class="method-icon"><i class="fas fa-file-alt"></i></div>
+                <h3 class="method-title">フォームから注文</h3>
+                <p class="method-desc">このページ下部の発注フォームにご記入の上、送信してください。</p>
+                <p class="method-note">※内容確認後、必ずお電話いたします</p>
+            </div>
+            <div class="method-card fade-in">
+                <div class="method-icon"><i class="fab fa-line"></i></div>
+                <h3 class="method-title">LINEから注文</h3>
+                <p class="method-desc">公式LINEアカウントにメッセージをお送りください。QRコードはヘッダーの「LINEで相談」よりご確認いただけます。</p>
+            </div>
+            <div class="method-card fade-in">
+                <div class="method-icon"><i class="fas fa-fax"></i></div>
+                <h3 class="method-title">FAXから注文</h3>
+                <p class="method-desc">FAX注文用紙をダウンロードの上、下記番号へ送信してください。</p>
+                <p class="method-note">FAX：0794-XX-XXXX</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 発注フォーム -->
+<section class="order-form-section" id="order-form">
+    <div class="container">
+        <div class="order-form-header fade-in">
+            <p class="section-label">ORDER FORM</p>
+            <h2 class="section-title" style="text-align:center;">供花・盛籠の発注フォーム</h2>
+            <div class="section-underline" style="margin:0 auto 20px;"></div>
+            <p class="section-subtitle" style="text-align:center;">下記のフォームにご発注内容を記載の上、送信してください</p>
+        </div>
+
+        <div class="order-form-wrap fade-in">
+            <!-- 送信成功メッセージ -->
+            <div class="form-success" id="formSuccess">
+                <div class="form-success-icon"><i class="fas fa-check-circle"></i></div>
+                <h3 class="form-success-title">送信が完了しました</h3>
+                <p class="form-success-text">ご注文ありがとうございます。<br>内容確認後、担当者よりお電話またはメールにてご連絡いたします。<br>しばらくお待ちください。</p>
+            </div>
+
+            <form id="orderForm" novalidate>
+                <!-- 喪家名 -->
+                <div class="form-group">
+                    <label class="form-label" for="moseke">喪家名<span class="form-required">必須</span></label>
+                    <input class="form-input" type="text" id="moseke" name="moseke" placeholder="例：山田家" required>
+                </div>
+
+                <hr class="form-divider">
+                <p class="form-section-title"><i class="fas fa-shopping-cart" style="margin-right:8px;"></i>ご注文内容</p>
+
+                <!-- 注文1〜3（JS自動生成） -->
+                <div id="orderSelectsWrap"></div>
+
+                <hr class="form-divider">
+                <p class="form-section-title"><i class="fas fa-user" style="margin-right:8px;"></i>ご注文者情報</p>
+
+                <!-- ご注文者名 -->
+                <div class="form-group">
+                    <label class="form-label" for="name">ご注文者お名前（部署・御担当）<span class="form-required">必須</span></label>
+                    <input class="form-input" type="text" id="name" name="name" placeholder="例：鈴木 一郎" required>
+                </div>
+                <!-- ふりがな -->
+                <div class="form-group">
+                    <label class="form-label" for="furigana">ふりがな<span class="form-required">必須</span></label>
+                    <input class="form-input" type="text" id="furigana" name="furigana" placeholder="例：すずき いちろう" required>
+                </div>
+                <!-- 会社・団体名 -->
+                <div class="form-group">
+                    <label class="form-label" for="company">会社・団体名</label>
+                    <input class="form-input" type="text" id="company" name="company" placeholder="例：株式会社〇〇（任意）">
+                </div>
+                <!-- 電話・メール -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="tel">電話番号<span class="form-required">必須</span></label>
+                        <input class="form-input" type="tel" id="tel" name="tel" placeholder="例：090-0000-0000" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">メールアドレス</label>
+                        <input class="form-input" type="email" id="email" name="email" placeholder="例：info@example.com">
+                    </div>
+                </div>
+
+                <hr class="form-divider">
+                <p class="form-section-title"><i class="fas fa-credit-card" style="margin-right:8px;"></i>お支払い方法</p>
+
+                <!-- お支払い方法 -->
+                <div class="form-group">
+                    <label class="form-label">お支払い方法<span class="form-required">必須</span></label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="payment" value="現地支払い（式場にて御精算）" onchange="toggleBankFields(this)" required>
+                            現地支払い（式場にて御精算）
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="payment" value="銀行振込" onchange="toggleBankFields(this)">
+                            銀行振込
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 銀行振込の場合 -->
+                <div class="bank-fields" id="bankFields">
+                    <p class="form-section-title" style="margin-bottom:20px;"><i class="fas fa-university" style="margin-right:8px;"></i>銀行振込の場合</p>
+                    <div class="form-group">
+                        <label class="form-label" for="billName">御請求名</label>
+                        <input class="form-input" type="text" id="billName" name="billName" placeholder="例：株式会社〇〇　鈴木一郎">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="billZip">ご請求先：郵便番号</label>
+                            <input class="form-input" type="text" id="billZip" name="billZip" placeholder="例：673-0435">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="billPref">御請求先：都道府県</label>
+                            <input class="form-input" type="text" id="billPref" name="billPref" placeholder="例：兵庫県">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="billAddr">御請求先：市区町村以降の住所</label>
+                        <input class="form-input" type="text" id="billAddr" name="billAddr" placeholder="例：三木市別所町高木933-5">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="billContact">御連絡先</label>
+                            <input class="form-input" type="text" id="billContact" name="billContact" placeholder="電話番号">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="billDept">部署・御担当</label>
+                            <input class="form-input" type="text" id="billDept" name="billDept" placeholder="例：経理部">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="form-divider">
+
+                <!-- プライバシーポリシー -->
+                <div class="form-group">
+                    <div class="privacy-wrap">
+                        <div class="privacy-toggle" id="privacyToggle" onclick="togglePrivacy()">
+                            <i class="fas fa-chevron-down"></i>
+                            プライバシーポリシーを確認する
+                        </div>
+                        <div class="privacy-body" id="privacyBody">
+                            <p>のぞみ葬祭（株式会社VERDE）は、お客様の個人情報を適切に管理し、以下の目的にのみ使用いたします。</p>
+                            <p style="margin-top:8px;">【利用目的】ご注文内容の確認・ご連絡、サービスのご提供、請求書の発行。</p>
+                            <p style="margin-top:8px;">【第三者提供】法令に基づく場合を除き、お客様の同意なく第三者へ提供することはありません。</p>
+                            <p style="margin-top:8px;">【お問い合わせ】個人情報に関するお問い合わせは TEL：0120-20-9678 までご連絡ください。</p>
+                        </div>
+                    </div>
+                    <label class="privacy-check">
+                        <input type="checkbox" id="privacyCheck" required>
+                        プライバシーポリシーに同意する
+                    </label>
+                </div>
+
+                <!-- 送信ボタン -->
+                <button type="submit" class="btn-submit" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> 送信する
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="consultation">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">あなたの"のぞみ"を聞かせてください</h2>
+            <p class="cta-subtitle">事前相談・お問い合わせは24時間365日承っております<br>どんな小さなことでも、お気軽にご相談ください</p>
+            <div class="cta-buttons">
+                <a href="tel:0120209678" class="cta-btn phone-btn">
+                    <i class="fas fa-phone-flip"></i>
+                    <span class="cta-btn-label">お電話で相談</span>
+                    <span class="cta-btn-number">0120-20-9678</span>
+                </a>
+                <button class="cta-btn line-btn" onclick="openLineModal()">
+                    <i class="fab fa-line"></i>
+                    <span class="cta-btn-label">LINEで相談</span>
+                    <span class="cta-btn-text">友だち追加はこちら</span>
+                </button>
+                <a href="#" class="cta-btn mail-btn">
+                    <i class="fas fa-envelope"></i>
+                    <span class="cta-btn-label">メールで相談</span>
+                    <span class="cta-btn-text">お問い合わせフォーム</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- フッター -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 class="footer-title"><a href="preview.html" style="color:inherit;text-decoration:none;">のぞみ葬祭</a></h3>
+                <p class="footer-company">株式会社VERDE</p>
+                <p class="footer-address">〒673-0435<br>兵庫県三木市別所町高木933-5</p>
+                <p class="footer-contact">TEL: <a href="tel:0120209678">0120-20-9678</a>（24時間365日）</p>
+                <p class="footer-hours">営業時間: 24時間営業<br>定休日: 年中無休</p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">サイトマップ</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">のぞみ葬祭について</a></li>
+                    <li><a href="plan-detail.html">プラン</a></li>
+                    <li><a href="hall.html">会館のご紹介</a></li>
+                    <li><a href="access.html">アクセス</a></li>
+                    <li><a href="flowers.html">供花のご注文</a></li>
+                    <li><a href="preview.html#faq">よくある質問</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">プラン一覧</h4>
+                <ul class="footer-links">
+                    <li><a href="plan-detail.html#ceremony">ダイヤモンドプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">プラチナプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">ゴールドプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">シルバープラン</a></li>
+                    <li><a href="plan-detail.html#family">ホワイトプラン</a></li>
+                    <li><a href="plan-detail.html#direct">シンプルプラン</a></li>
+                    <li><a href="plan-detail.html#direct">プチプラン</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">© 2024 のぞみ葬祭（株式会社VERDE） All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ページトップ -->
+<button class="page-top" id="pageTop" aria-label="ページトップへ戻る">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- LINEモーダル -->
+<div class="line-modal-overlay" id="lineModal" onclick="if(event.target===this)closeLineModal()">
+    <div class="line-modal">
+        <button class="line-modal-close" onclick="closeLineModal()" aria-label="閉じる">&times;</button>
+        <div class="line-modal-icon"><i class="fab fa-line"></i></div>
+        <h2 class="line-modal-title">LINEで相談する</h2>
+        <p class="line-modal-sub">QRコードを読み取って<br>友だち追加してください</p>
+        <div class="line-modal-qr">
+            <img src="https://placehold.jp/30/00B900/ffffff/200x200.png?text=QR+Code" alt="LINE QRコード（ダミー）">
+        </div>
+        <p class="line-modal-note">24時間いつでもメッセージをお送りいただけます。<br>お気軽にご相談ください。</p>
+    </div>
+</div>
+
+<script>
+/* ============================================================
+   ★★★ オーナー編集エリア ★★★
+   メニューの追加・削除はここだけ編集してください。
+   ・label   : フォームの選択肢に表示される名前（必須）
+   ・name    : カードに表示される商品名（必須）
+   ・desc    : 商品説明文
+   ・img     : 画像URL（実際の写真に差し替えてください）
+   ・price1  : 1基の税込価格表示
+   ・price2  : 1対の税込価格表示
+   ============================================================ */
+const MENU_ITEMS = {
+    flowers: [
+        {
+            label: '供花A',
+            name: '【A】花の名前',
+            desc: '花の説明。季節の花を使用した、華やかで上品なアレンジです。',
+            img: 'https://placehold.jp/30/f0e8d4/8a6830/600x400.png?text=%E4%BE%9B%E8%8A%B1A',
+            price1: '10,000円（税込11,000円）',
+            price2: '20,000円（税込22,000円）'
+        },
+        {
+            label: '供花B',
+            name: '【B】花の名前',
+            desc: '花の説明。白を基調とした、清楚で落ち着いた雰囲気のアレンジです。',
+            img: 'https://placehold.jp/30/f0e8d4/8a6830/600x400.png?text=%E4%BE%9B%E8%8A%B1B',
+            price1: '10,000円（税込11,000円）',
+            price2: '20,000円（税込22,000円）'
+        },
+        {
+            label: '供花C',
+            name: '【C】花の名前',
+            desc: '花の説明。ピンクと白の優しいトーンで、温かみのある印象を与えます。',
+            img: 'https://placehold.jp/30/f0e8d4/8a6830/600x400.png?text=%E4%BE%9B%E8%8A%B1C',
+            price1: '10,000円（税込11,000円）',
+            price2: '20,000円（税込22,000円）'
+        },
+        {
+            label: '供花D',
+            name: '【D】花の名前',
+            desc: '花の説明。胡蝶蘭を中心とした格調あるアレンジです。',
+            img: 'https://placehold.jp/30/f0e8d4/8a6830/600x400.png?text=%E4%BE%9B%E8%8A%B1D',
+            price1: '10,000円（税込11,000円）',
+            price2: '20,000円（税込22,000円）'
+        }
+    ],
+    baskets: [
+        {
+            label: '盛籠A',
+            name: '【A】盛籠の名称',
+            desc: '盛籠の説明。果物や菓子を中心に、丁寧に盛り付けた定番の盛籠です。',
+            img: 'https://placehold.jp/30/d4e8e4/306860/600x400.png?text=%E7%9B%9B%E7%B1%ADA',
+            price1: '10,000円（税込11,000円）',
+            price2: '20,000円（税込22,000円）'
+        },
+        {
+            label: '盛籠B',
+            name: '【B】盛籠の名称',
+            desc: '盛籠の説明。缶詰や乾物など日持ちのする品を厳選した実用的な盛籠です。',
+            img: 'https://placehold.jp/30/d4e8e4/306860/600x400.png?text=%E7%9B%9B%E7%B1%ADB',
+            price1: '10,000円（税込11,000円）',
+            price2: '20,000円（税込22,000円）'
+        },
+        {
+            label: '盛籠C',
+            name: '【C】盛籠の名称',
+            desc: '盛籠の説明。お菓子を中心にご遺族の方へも喜ばれる品を揃えた盛籠です。',
+            img: 'https://placehold.jp/30/d4e8e4/306860/600x400.png?text=%E7%9B%9B%E7%B1%ADC',
+            price1: '10,000円（税込11,000円）',
+            price2: '20,000円（税込22,000円）'
+        },
+        {
+            label: '盛籠D',
+            name: '【D】盛籠の名称',
+            desc: '盛籠の説明。高級食材を中心に、特別感のある豪華な盛籠です。',
+            img: 'https://placehold.jp/30/d4e8e4/306860/600x400.png?text=%E7%9B%9B%E7%B1%ADD',
+            price1: '10,000円（税込11,000円）',
+            price2: '20,000円（税込22,000円）'
+        }
+    ]
+};
+/* ============================================================
+   ★★★ 編集エリアここまで ★★★
+   ============================================================ */
+
+
+// メニューカード生成
+function buildMenuCard(item) {
+    return `
+    <div class="menu-card fade-in">
+        <div class="menu-card-img">
+            <img src="${item.img}" alt="${item.name}（プレースホルダー）" loading="lazy">
+            <span class="menu-card-badge">${item.label}</span>
+        </div>
+        <div class="menu-card-body">
+            <h3 class="menu-card-name">${item.name}</h3>
+            <p class="menu-card-desc">${item.desc}</p>
+            <div class="menu-card-price">
+                <div class="menu-price-row">
+                    <span class="menu-price-unit">1基</span>
+                    <span class="menu-price-val">${item.price1} <span class="menu-price-tax"></span></span>
+                </div>
+                <div class="menu-price-row">
+                    <span class="menu-price-unit">1対</span>
+                    <span class="menu-price-val">${item.price2} <span class="menu-price-tax"></span></span>
+                </div>
+            </div>
+        </div>
+    </div>`;
+}
+
+// フォームのselect生成（メニューから自動）
+function buildOrderSelects() {
+    const allItems = [
+        ...MENU_ITEMS.flowers.map(i => i.label),
+        ...MENU_ITEMS.baskets.map(i => i.label)
+    ];
+    const optionsHtml = allItems.map(label =>
+        `<option value="${label}">${label}</option>`
+    ).join('');
+
+    const wrap = document.getElementById('orderSelectsWrap');
+    let html = '';
+    for (let i = 1; i <= 3; i++) {
+        const req = i === 1 ? '<span class="form-required">必須</span>' : '';
+        const required = i === 1 ? 'required' : '';
+        html += `
+        <div class="form-group">
+            <label class="form-label" for="order${i}">注文${i}${req}</label>
+            <select class="form-select" id="order${i}" name="order${i}" ${required}>
+                <option value="">内容を選択ください</option>
+                ${optionsHtml}
+            </select>
+        </div>`;
+    }
+    wrap.innerHTML = html;
+}
+
+// 初期化
+document.addEventListener('DOMContentLoaded', () => {
+    // メニューカード描画
+    document.getElementById('flowerGrid').innerHTML =
+        MENU_ITEMS.flowers.map(buildMenuCard).join('');
+    document.getElementById('basketGrid').innerHTML =
+        MENU_ITEMS.baskets.map(buildMenuCard).join('');
+
+    // フォームselect描画
+    buildOrderSelects();
+
+    // フェードイン
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ページトップ
+    const pageTop = document.getElementById('pageTop');
+    window.addEventListener('scroll', () => {
+        pageTop.classList.toggle('visible', window.scrollY > 400);
+    });
+    pageTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // モバイルメニュー
+    document.getElementById('mobileMenuToggle').addEventListener('click', () => {
+        const nav = document.getElementById('headerNav');
+        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // フォーム送信
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (!document.getElementById('privacyCheck').checked) {
+            alert('プライバシーポリシーへの同意が必要です。');
+            return;
+        }
+        // ここに実際の送信処理（fetch/formspree等）を追加してください
+        document.getElementById('orderForm').style.display = 'none';
+        document.getElementById('formSuccess').classList.add('show');
+        window.scrollTo({ top: document.getElementById('order-form').offsetTop - 100, behavior: 'smooth' });
+    });
+});
+
+// 銀行振込フィールド表示切り替え
+function toggleBankFields(radio) {
+    const fields = document.getElementById('bankFields');
+    fields.classList.toggle('show', radio.value === '銀行振込');
+}
+
+// プライバシーポリシー開閉
+function togglePrivacy() {
+    const toggle = document.getElementById('privacyToggle');
+    const body = document.getElementById('privacyBody');
+    toggle.classList.toggle('open');
+    body.classList.toggle('open');
+}
+
+// LINEモーダル
+function openLineModal() { document.getElementById('lineModal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeLineModal() { document.getElementById('lineModal').classList.remove('open'); document.body.style.overflow = ''; }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLineModal(); });
+</script>
+</body>
+</html>
