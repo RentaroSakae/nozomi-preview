@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>よくある質問（FAQ）| のぞみ葬祭</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary-color: #8cc04e;
+    --secondary-color: #6A9A3E;
+    --bg-light: #F8F9F5;
+    --bg-warm: #FFF8F0;
+    --text-dark: #333333;
+    --text-gray: #666666;
+    --white: #FFFFFF;
+    --dark-gray: #2C2C2C;
+    --font-serif: 'Noto Serif JP', serif;
+    --font-sans: 'Noto Sans JP', sans-serif;
+    --transition: all 0.3s ease;
+    --shadow: 0 4px 16px rgba(0,0,0,0.08);
+    --shadow-hover: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+html { scroll-behavior: smooth; font-size: 20px; }
+body { font-family: var(--font-sans); color: var(--text-dark); line-height: 1.9; background-color: var(--white); overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
+button { border: none; background: none; cursor: pointer; font-family: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+section { padding: 100px 0; }
+
+/* ========== ヘッダー ========== */
+.header { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--white); box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000; transition: var(--transition); }
+.header-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 30px; height: 80px; }
+.header-logo a { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--primary-color); }
+.header-nav ul { display: flex; gap: 18px; }
+.header-nav a { font-size: 14.76px; font-weight: 500; color: var(--text-dark); position: relative; white-space: nowrap; }
+.header-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: var(--transition); }
+.header-nav a:hover { color: var(--primary-color); }
+.header-nav a:hover::after { width: 100%; }
+.header-nav a.current { color: var(--primary-color); }
+.header-nav a.current::after { width: 100%; }
+.header-cta { display: flex; align-items: center; gap: 20px; }
+.header-phone { font-size: 1.6rem; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 8px; }
+.header-line-btn { background-color: #00B900; color: var(--white); padding: 12px 22px; border-radius: 8px; font-size: 1.05rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.header-line-btn:hover { background-color: #009900; }
+.mobile-menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+.mobile-menu-toggle span { display: block; width: 26px; height: 2px; background: var(--text-dark); border-radius: 2px; transition: var(--transition); }
+@media (max-width: 1100px) { .header-phone { font-size: 1.3rem; } }
+@media (max-width: 900px) {
+    .header-nav { display: none; }
+    .mobile-menu-toggle { display: flex; }
+    .header-phone { font-size: 1.1rem; }
+    .header-line-btn { padding: 10px 14px; font-size: 0.9rem; }
+}
+@media (max-width: 480px) { .header-phone { display: none; } }
+
+/* ========== フェードイン ========== */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ========== セクション共通 ========== */
+.section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; color: var(--primary-color); text-transform: uppercase; margin-bottom: 12px; }
+.section-title { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600; color: var(--text-dark); margin-bottom: 16px; line-height: 1.4; }
+.section-subtitle { font-size: 1rem; color: var(--text-gray); line-height: 1.9; }
+.section-underline { width: 60px; height: 3px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 2px; margin-bottom: 16px; }
+
+/* ========== ページヒーロー ========== */
+.page-hero {
+    background: linear-gradient(135deg, #2d4a1e 0%, #3d6428 50%, #4e7a32 100%);
+    padding: 160px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&h=600&fit=crop&q=60') center/cover no-repeat;
+    opacity: 0.12;
+}
+.page-hero-inner { position: relative; z-index: 1; }
+.page-hero-label { font-size: 0.75rem; letter-spacing: 0.25em; color: rgba(255,255,255,0.75); text-transform: uppercase; margin-bottom: 16px; font-weight: 600; }
+.page-hero-title { font-family: var(--font-serif); font-size: 2.6rem; font-weight: 600; color: var(--white); margin-bottom: 20px; }
+.page-hero-sub { font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 2; }
+
+/* ========== カテゴリナビ ========== */
+.faq-nav {
+    background: var(--white);
+    border-bottom: 1px solid #e8e8e8;
+    position: sticky;
+    top: 80px;
+    z-index: 900;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.faq-nav-inner {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.faq-nav-inner::-webkit-scrollbar { display: none; }
+.faq-nav-btn {
+    flex-shrink: 0;
+    padding: 18px 22px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-gray);
+    border-bottom: 3px solid transparent;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.faq-nav-btn:hover { color: var(--primary-color); }
+.faq-nav-btn.active { color: var(--primary-color); border-bottom-color: var(--primary-color); }
+.faq-nav-btn i { font-size: 0.9rem; }
+
+/* ========== FAQ 本体 ========== */
+.faq-main { background: var(--bg-light); }
+
+.faq-category { margin-bottom: 70px; }
+.faq-category:last-child { margin-bottom: 0; }
+
+.faq-cat-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 30px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid var(--primary-color);
+}
+.faq-cat-icon {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+.faq-cat-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+.faq-cat-count {
+    font-size: 0.75rem;
+    color: var(--primary-color);
+    background: rgba(140,192,78,0.12);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.faq-list { max-width: 100%; }
+
+.faq-item { margin-bottom: 12px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+
+.faq-question {
+    width: 100%;
+    background-color: var(--white);
+    padding: 22px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.faq-question:hover { background-color: rgba(140,192,78,0.05); }
+.faq-item.active .faq-question { background-color: rgba(140,192,78,0.1); }
+
+.faq-q {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+    font-family: var(--font-serif);
+}
+.faq-question-text {
+    flex: 1;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+.faq-question i.toggle-icon { color: var(--primary-color); transition: var(--transition); font-size: 0.9rem; flex-shrink: 0; }
+.faq-item.active .faq-question i.toggle-icon { transform: rotate(180deg); }
+
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.45s ease; }
+.faq-item.active .faq-answer { max-height: 600px; }
+
+.faq-answer-content {
+    padding: 22px 28px 24px 86px;
+    background-color: #f7f7f5;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+.faq-a {
+    width: 42px;
+    height: 42px;
+    background: var(--secondary-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+    font-family: var(--font-serif);
+}
+.faq-answer-content p {
+    flex: 1;
+    font-size: 1rem;
+    color: var(--text-gray);
+    line-height: 2;
+}
+.faq-answer-content p strong { color: var(--text-dark); }
+.faq-answer-content p a { color: var(--primary-color); text-decoration: underline; }
+
+/* ========== CTA ========== */
+.cta { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); padding: 80px 0; }
+.cta-content { text-align: center; color: var(--white); }
+.cta-title { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 600; margin-bottom: 18px; }
+.cta-subtitle { font-size: 1.2rem; opacity: 0.95; margin-bottom: 50px; line-height: 1.9; }
+.cta-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1000px; margin: 0 auto; }
+.cta-btn {
+    background-color: var(--white);
+    color: var(--primary-color);
+    padding: 30px 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+.cta-btn:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.18); }
+.cta-btn i { font-size: 2rem; margin-bottom: 4px; }
+.cta-btn-label { font-size: 1rem; font-weight: 700; color: var(--text-dark); }
+.cta-btn-number { font-size: 1.3rem; font-weight: 700; color: var(--primary-color); }
+.cta-btn-text { font-size: 0.9rem; color: var(--text-gray); }
+.phone-btn i { color: var(--primary-color); }
+.line-btn i { color: #00B900; }
+.mail-btn i { color: var(--primary-color); }
+
+/* ========== フッター ========== */
+.footer { background-color: var(--dark-gray); color: var(--white); padding: 60px 0 30px; }
+.footer-content { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-title { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 600; margin-bottom: 12px; }
+.footer-company { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 12px; }
+.footer-address, .footer-contact, .footer-hours { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 8px; }
+.footer-contact a { color: rgba(255,255,255,0.9); }
+.footer-heading { font-size: 0.95rem; font-weight: 600; margin-bottom: 16px; color: rgba(255,255,255,0.9); padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.footer-links li { margin-bottom: 8px; }
+.footer-links a { font-size: 0.85rem; color: rgba(255,255,255,0.65); transition: var(--transition); }
+.footer-links a:hover { color: var(--primary-color); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; }
+.copyright { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+/* ========== ページトップボタン ========== */
+.page-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: var(--primary-color); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); opacity: 0; pointer-events: none; transition: var(--transition); z-index: 500; font-size: 1rem; }
+.page-top.visible { opacity: 1; pointer-events: auto; }
+.page-top:hover { background: var(--secondary-color); transform: translateY(-3px); }
+
+/* ========== LINEモーダル ========== */
+.line-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+.line-modal-overlay.open { opacity: 1; pointer-events: auto; }
+.line-modal { background: var(--white); border-radius: 16px; padding: 40px 36px; text-align: center; max-width: 400px; width: 90%; position: relative; transform: translateY(20px); transition: transform 0.3s ease; }
+.line-modal-overlay.open .line-modal { transform: translateY(0); }
+.line-modal-close { position: absolute; top: 14px; right: 18px; font-size: 1.6rem; color: var(--text-gray); line-height: 1; }
+.line-modal-close:hover { color: var(--text-dark); }
+.line-modal-icon { font-size: 3rem; color: #00B900; margin-bottom: 12px; }
+.line-modal-title { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600; margin-bottom: 10px; }
+.line-modal-sub { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 20px; line-height: 1.8; }
+.line-modal-qr { margin: 0 auto 16px; width: 160px; height: 160px; border: 2px solid #e8e8e8; border-radius: 10px; overflow: hidden; }
+.line-modal-qr img { width: 100%; height: 100%; object-fit: cover; }
+.line-modal-note { font-size: 0.82rem; color: var(--text-gray); line-height: 1.8; }
+
+/* ========== レスポンシブ ========== */
+@media (max-width: 1024px) {
+    .footer-content { grid-template-columns: 1fr 1fr; }
+    .cta-buttons { gap: 20px; }
+}
+@media (max-width: 768px) {
+    html { font-size: 18px; }
+    .page-hero-title { font-size: 2rem; }
+    .faq-answer-content { padding: 20px; flex-direction: column; }
+    .faq-question { padding: 18px 20px; }
+    .faq-cat-title { font-size: 1.25rem; }
+    .cta-title { font-size: 1.8rem; }
+    .cta-buttons { grid-template-columns: 1fr; gap: 16px; max-width: 400px; }
+    .footer-content { grid-template-columns: 1fr 1fr; gap: 30px; }
+    .faq-nav-btn { padding: 14px 16px; font-size: 0.8rem; }
+}
+@media (max-width: 480px) {
+    html { font-size: 16px; }
+    .page-hero-title { font-size: 1.7rem; }
+    .footer-content { grid-template-columns: 1fr; }
+    .faq-question-text { font-size: 1rem; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="header" id="header">
+    <div class="header-container">
+        <div class="header-logo">
+            <a href="preview.html">のぞみ葬祭</a>
+        </div>
+        <nav class="header-nav" id="headerNav">
+            <ul>
+                <li><a href="about.html">のぞみ葬祭について</a></li>
+                <li><a href="plan-detail.html">プラン</a></li>
+                <li><a href="hall.html">会館のご紹介</a></li>
+                <li><a href="access.html">アクセス</a></li>
+                <li><a href="flowers.html">供花のご注文</a></li>
+                <li><a href="faq.html" class="current">よくある質問</a></li>
+            </ul>
+        </nav>
+        <div class="header-cta">
+            <a href="tel:0120209678" class="header-phone">
+                <i class="fas fa-phone-flip"></i> 0120-20-9678
+            </a>
+            <button class="header-line-btn" onclick="openLineModal()">
+                <i class="fab fa-line"></i> LINEで相談
+            </button>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="メニュー">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ページヒーロー -->
+<section class="page-hero">
+    <div class="container">
+        <div class="page-hero-inner">
+            <p class="page-hero-label">FAQ</p>
+            <h1 class="page-hero-title">よくある質問</h1>
+            <p class="page-hero-sub">
+                葬儀に関するご不安やご疑問にお答えします。<br>
+                ここに掲載のない内容は、お気軽にお問い合わせください。
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- カテゴリナビ -->
+<nav class="faq-nav" id="faqNav">
+    <div class="faq-nav-inner">
+        <button class="faq-nav-btn active" onclick="scrollToSection('cost')">
+            <i class="fas fa-yen-sign"></i> 費用・お支払い
+        </button>
+        <button class="faq-nav-btn" onclick="scrollToSection('consult')">
+            <i class="fas fa-comments"></i> 事前相談・準備
+        </button>
+        <button class="faq-nav-btn" onclick="scrollToSection('plan')">
+            <i class="fas fa-list-check"></i> プラン・葬儀内容
+        </button>
+        <button class="faq-nav-btn" onclick="scrollToSection('hall')">
+            <i class="fas fa-building"></i> 斎場・会館
+        </button>
+        <button class="faq-nav-btn" onclick="scrollToSection('procedure')">
+            <i class="fas fa-file-alt"></i> 手続き・アフターサポート
+        </button>
+        <button class="faq-nav-btn" onclick="scrollToSection('religion')">
+            <i class="fas fa-hands-praying"></i> 宗教・その他
+        </button>
+    </div>
+</nav>
+
+<!-- FAQ本体 -->
+<section class="faq-main">
+    <div class="container">
+
+        <!-- ① 費用・お支払い -->
+        <div class="faq-category fade-in" id="cost">
+            <div class="faq-cat-header">
+                <div class="faq-cat-icon"><i class="fas fa-yen-sign"></i></div>
+                <h2 class="faq-cat-title">費用・お支払いについて</h2>
+                <span class="faq-cat-count">8問</span>
+            </div>
+            <div class="faq-list">
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">葬儀費用の目安を教えてください。</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>のぞみ葬祭では、最小限のご葬儀から大規模な一般葬まで幅広いプランをご用意しています。直葬・火葬のみのプランは<strong>数十万円台</strong>から、家族葬プランは<strong>80万円〜150万円台</strong>、一般葬（セレモニープラン）は<strong>150万円〜300万円台</strong>を目安とお考えください。費用はご参列人数・オプション内容によって変わります。まずはお気軽に無料お見積もりをご依頼ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">見積もりは無料ですか？後から追加費用が発生することはありますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>お見積もりは<strong>完全無料</strong>です。また、のぞみ葬祭では明朗会計を徹底しており、ご契約前にすべての費用を明細書でご説明いたします。ご遺族様の同意なく費用が膨らむことはございません。ただし、ご参列人数の増加や追加オプションをご希望の場合は、その都度ご確認のうえ対応いたします。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">支払いのタイミングはいつですか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>葬儀終了後、通常<strong>1週間以内</strong>にお支払いいただいております。ご遺族様の状況に合わせて、お支払い期日のご相談も承っております。まずはお気軽にご相談ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">支払い方法は何が使えますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p><strong>現金・銀行振込・クレジットカード</strong>に対応しております。クレジットカードは主要なブランドをお取り扱いしております。分割払いについても対応可能な場合がございますので、ご希望の方はスタッフまでご相談ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">香典はどのくらい集まりますか？費用の参考にしたいのですが。</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>香典の金額はご参列者の人数やご関係によって大きく異なります。一般的に、一般参列者からは<strong>5,000円〜10,000円</strong>、友人・知人は<strong>10,000円前後</strong>、親族は<strong>10,000円〜30,000円以上</strong>が目安です。ただし地域の慣習や状況によっても異なるため、あくまでも参考値としてご認識ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">葬儀費用に使える補助金や給付金はありますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>健康保険・国民健康保険に加入していた場合、<strong>埋葬料（埋葬費）または葬祭費</strong>として給付金が支給される場合があります（金額は保険の種類や自治体によって異なります）。また、国民年金・厚生年金の「死亡一時金」や「遺族年金」が受け取れる場合もあります。手続きについてはスタッフがご案内いたしますので、お気軽にご相談ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">生命保険は葬儀費用に充てられますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>生命保険の保険金は<strong>請求から支払いまでに通常1〜2週間</strong>かかるため、葬儀費用の即時充当が難しい場合があります。多くの方は、いったんご自身の預貯金でお支払いいただき、保険金受取後に精算される形をとっています。保険会社によっては仮払い制度もありますので、ご加入の保険会社にご確認ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">お布施はいくら用意すればよいですか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>お布施の金額は宗派・地域・ご寺院との関係によって大きく異なります。一般的な目安として、通夜・葬儀・初七日込みで<strong>20万円〜50万円前後</strong>が多いとされています。ご寺院への確認が最善ですが、ご不安な方はスタッフにお声がけください。ご菩提寺がない場合のご紹介も承っております。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ② 事前相談・準備 -->
+        <div class="faq-category fade-in" id="consult">
+            <div class="faq-cat-header">
+                <div class="faq-cat-icon"><i class="fas fa-comments"></i></div>
+                <h2 class="faq-cat-title">事前相談・準備について</h2>
+                <span class="faq-cat-count">8問</span>
+            </div>
+            <div class="faq-list">
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">事前相談は無料ですか？予約は必要ですか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>事前相談は<strong>完全無料</strong>です。お電話・LINE・ご来館でのご相談いずれも承っております。ご来館の場合は事前にお電話いただけるとスムーズにご案内できますが、予約なしでもお立ち寄りいただけます。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">元気なうちに相談するのは早すぎますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>いいえ、むしろ<strong>元気なうちにご相談いただくことをおすすめしています</strong>。事前に内容を決めておくことで、いざという時のご家族の負担が大きく軽減されます。費用の準備も計画的に行えるため、安心です。当社では生前相談・生前予約のお客様を多くサポートしております。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">家族が危篤状態です。今すぐ相談できますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>はい、<strong>24時間365日いつでもお電話ください</strong>（0120-20-9678）。危篤の状態からでもご相談いただけます。搬送のご準備やご葬儀の流れについて、丁寧にご説明いたします。焦らず、まずはお電話一本、スタッフにお任せください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">亡くなった直後、最初に何をすればよいですか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>まず落ち着いて、<strong>のぞみ葬祭（0120-20-9678）にお電話ください</strong>。病院でお亡くなりになった場合は、担当医師に死亡診断書を発行していただき、その後当社がご遺体の搬送を行います。ご自宅でお亡くなりになった場合はかかりつけ医か救急・警察へのご連絡が先になる場合があります。いずれもスタッフが順を追ってご案内しますので、まずはお電話ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">葬儀の打ち合わせにはどのくらい時間がかかりますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>初回の打ち合わせは通常<strong>1〜2時間程度</strong>です。プランの選定・日程・参列者数・宗教・お料理・返礼品など、幅広い内容を確認させていただきます。ご遺族の体調に合わせて進めますので、遠慮なくお申し出ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">遠方に住んでいても対応できますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>はい、対応しております。お電話・LINEでの打ち合わせも可能ですので、遠方にお住まいのご家族でもスムーズに手続きいただけます。搬送についても、<strong>兵庫県内外からの搬送実績</strong>がございますので、まずはご相談ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">葬儀社を変更することはできますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>はい、他社との契約前であれば問題なく変更いただけます。また、病院が提携している葬儀社を案内された場合でも、<strong>必ずしもその葬儀社を選ぶ必要はありません</strong>。ご自身でお選びいただくことができます。のぞみ葬祭へのご相談はいつでも歓迎しております。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">生前予約（事前契約）のメリットは何ですか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>主なメリットは以下の3点です。①<strong>ご自身の希望通りの葬儀が実現できる</strong>（音楽・花・形式など）、②<strong>ご家族の精神的・経済的負担が大幅に軽減される</strong>、③<strong>費用の事前把握で急な出費への備えができる</strong>。生前予約は何も縁起が悪いものではなく、大切な家族への最大の配慮です。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ③ プラン・葬儀内容 -->
+        <div class="faq-category fade-in" id="plan">
+            <div class="faq-cat-header">
+                <div class="faq-cat-icon"><i class="fas fa-list-check"></i></div>
+                <h2 class="faq-cat-title">プラン・葬儀内容について</h2>
+                <span class="faq-cat-count">8問</span>
+            </div>
+            <div class="faq-list">
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">家族葬と一般葬の違いは何ですか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p><strong>家族葬</strong>は、ご家族や親しい方々だけで執り行う小規模な葬儀です（目安：10〜30名程度）。費用が比較的抑えられ、ゆっくりとお別れできる点が特長です。<strong>一般葬</strong>は、ご親族のほか、ご友人・会社関係の方など広くご参列いただく形式です（30名〜）。どちらもご予算・ご事情に合わせてアレンジできます。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">直葬（火葬のみ）とはどのような葬儀ですか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>直葬とは、通夜・葬儀式を行わず、<strong>安置→火葬</strong>のみで行うシンプルな形式です。費用を最小限に抑えたい方や、故人の意思でシンプルを希望される場合に選ばれます。当社では「シンプルプラン」「プチプラン」としてご用意しており、シンプルであっても心を込めてお見送りいたします。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">通夜なしで葬儀だけにすることはできますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>はい、<strong>一日葬</strong>と呼ばれる形式で対応可能です。通夜を省いて告別式・火葬のみを1日で行います。ご参列者の負担を減らしたい場合や、遠方から集まるご家族に向いています。詳しくはプランのご相談時にお申し出ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">葬儀のプランを途中で変更することはできますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>葬儀当日前であれば、<strong>プランの変更・オプションの追加・削除</strong>に対応しております。急な参列者増加や、祭壇の変更なども柔軟に対応しますので、気になる点はスタッフにご相談ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">故人が好きだった音楽や映像を葬儀で使うことはできますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>はい、可能です。式場では<strong>BGMの持ち込み・音楽再生・思い出の映像上映</strong>にも対応しております（著作権に配慮が必要な場合があります）。故人らしい、オリジナルの葬儀を実現するためにご相談ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">お料理や返礼品はプランに含まれますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>プランによって異なります。上位プランにはお料理・返礼品が含まれるものもありますが、基本的には<strong>オプションとしてご選択いただく</strong>形をとっています。お料理は通夜振る舞い・精進落とし向けのものをご用意しており、参列者人数に合わせてご手配いたします。詳しくはお見積もり時にご確認ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">葬儀の日程はどのように決まりますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>ご逝去から通夜まで<strong>1〜2日以内</strong>が一般的です。火葬場の空き状況・ご親族の都合・友引を避けるかどうかなどを考慮して決定します。当社が火葬場の空き確認を行い、ご提案いたします。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">ペットの葬儀も対応していますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>現在、のぞみ葬祭では<strong>人の葬儀を専門</strong>としており、ペット葬儀は対応しておりません。ペット葬については専門業者をご案内できる場合がありますので、お気軽にお問い合わせください。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ④ 斎場・会館 -->
+        <div class="faq-category fade-in" id="hall">
+            <div class="faq-cat-header">
+                <div class="faq-cat-icon"><i class="fas fa-building"></i></div>
+                <h2 class="faq-cat-title">斎場・会館について</h2>
+                <span class="faq-cat-count">7問</span>
+            </div>
+            <div class="faq-list">
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">自社斎場（琥珀ホール）でしか葬儀はできませんか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>いいえ、ご自宅での葬儀や、他の公営・民営斎場でのご葬儀にも対応しております。ただし、のぞみ葬祭が運営する<strong>琥珀ホール</strong>は自社施設のため、費用や設備の面で最もスムーズにご利用いただけます。詳しくはご相談ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">琥珀ホールは何名まで対応できますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>琥珀ホールは<strong>最大80名様</strong>まで対応可能です。家族葬から大規模な一般葬まで、フレキシブルにレイアウトを調整いたします。参列者が多い場合はご相談ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">駐車場はありますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>琥珀ホールには<strong>30台分の無料駐車場</strong>を完備しております。大型車でもご利用いただけます。参列者が多く駐車場に限りがある場合はスタッフにご相談ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">式場に宿泊（お付き添い）できますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>はい、琥珀ホールでは<strong>ご家族によるお付き添い（仮眠）</strong>が可能です。故人のそばでご一緒に最後の夜を過ごしていただけるよう、必要な設備をご用意しております。ご希望の方は打ち合わせ時にお申し出ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">バリアフリー設備はありますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>はい、琥珀ホールは<strong>車椅子でのご来場・ご参列</strong>が可能な設備を整えております。スロープ・多目的トイレなどを完備しており、ご高齢の方や体の不自由な方も安心してご利用いただけます。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">葬儀場の見学はできますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>はい、<strong>見学は無料・予約不要</strong>でご来館いただけます。事前にお電話いただけると、よりゆっくりご案内できます。実際の会場の広さや設備を確認してから安心して決めていただきたいと考えております。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">自宅での葬儀（自宅葬）は対応していますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>はい、<strong>ご自宅でのお葬式</strong>にも対応しております。故人が慣れ親しんだ自宅でお見送りしたいというご希望にお応えします。ご自宅の間取りや状況によって最適なスタイルをご提案いたしますので、お気軽にご相談ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ⑤ 手続き・アフターサポート -->
+        <div class="faq-category fade-in" id="procedure">
+            <div class="faq-cat-header">
+                <div class="faq-cat-icon"><i class="fas fa-file-alt"></i></div>
+                <h2 class="faq-cat-title">手続き・アフターサポートについて</h2>
+                <span class="faq-cat-count">7問</span>
+            </div>
+            <div class="faq-list">
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">死亡届はどこに提出すればよいですか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>死亡届は、死亡地・故人の本籍地・届出人の住所地のいずれかの<strong>市区町村役場</strong>に、死亡後<strong>7日以内</strong>に提出する必要があります。当社スタッフが書類の書き方や提出方法をご案内します。ご希望の方には手続きの代行も承っております。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">葬儀後に必要な手続きを教えてください。</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>主な手続きとして、①<strong>年金受給停止</strong>（14日以内）、②<strong>健康保険資格喪失届</strong>、③<strong>相続関連手続き</strong>（相続放棄は3カ月以内）、④<strong>銀行口座・不動産の名義変更</strong>、⑤<strong>準確定申告</strong>（4カ月以内）などがあります。スタッフが必要な手続きの一覧をお渡しし、必要に応じて専門家（司法書士・税理士）のご紹介も行います。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">四十九日や法要のサポートもしていただけますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>はい、<strong>四十九日・一周忌・三回忌</strong>などの法要についてもサポートいたします。会場の手配・お料理・返礼品・僧侶のご紹介まで、ワンストップでお任せください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">お墓やご供養についての相談も可能ですか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>はい、<strong>お墓の選び方・永代供養・散骨</strong>など、葬儀後の供養に関するご相談も承っております。提携先のご紹介や情報提供も行っておりますので、お気軽にお問い合わせください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">遺品整理の相談もできますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>当社では遺品整理の専門業者と連携しており、<strong>信頼できる業者のご紹介</strong>を行っております。遺品整理・不用品処分・実家の片付けなど、葬儀後のさまざまなお困りごとについてもご相談いただけます。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">グリーフケア（悲嘆のサポート）はありますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>はい、のぞみ葬祭では葬儀後のご遺族の心のサポートも大切にしています。お気持ちが辛い時や、誰かに話を聞いてほしい時は、いつでもスタッフにご連絡ください。必要に応じて専門家へのご案内も行っております。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">人形・写真などの供養はお願いできますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>はい、のぞみ葬祭では<strong>人形供養・写真供養</strong>のご依頼を承っております。長年大切にしてきたお人形や思い出の写真を、心を込めてお焚き上げいたします。詳しくはお問い合わせください。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ⑥ 宗教・その他 -->
+        <div class="faq-category fade-in" id="religion">
+            <div class="faq-cat-header">
+                <div class="faq-cat-icon"><i class="fas fa-hands-praying"></i></div>
+                <h2 class="faq-cat-title">宗教・その他について</h2>
+                <span class="faq-cat-count">7問</span>
+            </div>
+            <div class="faq-list">
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">宗教・宗派を問わず対応していただけますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>はい、<strong>仏式・神式・キリスト教式・無宗教</strong>など、あらゆる宗教・宗派に対応しております。僧侶・神父・牧師のご紹介も承っております。宗旨・宗派が不明な場合もお気軽にご相談ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">無宗教の葬儀（自由葬）は可能ですか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>はい、対応しております。読経・焼香などの宗教的儀式を行わず、<strong>音楽・映像・献花</strong>などで故人を偲ぶ自由葬（音楽葬・お別れ会など）をご提案できます。故人の個性を活かしたオリジナルの葬儀を一緒に考えさせてください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">菩提寺があります。お寺に連絡するタイミングは？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>ご逝去後、<strong>できるだけ早く（当日中）</strong>ご連絡いただくことをおすすめします。葬儀の日程はお寺のご都合と火葬場の空きを合わせて決定するため、早期連絡が重要です。どのお寺に連絡すべきかわからない場合はスタッフにご相談ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">友引の日に葬儀を行っても問題ありませんか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>一般的に友引の日の火葬を避ける慣習がある地域もありますが、<strong>法律上・宗教上の問題はありません</strong>。ただし、火葬場が休業している場合もあるため、日程を決める際にはご確認が必要です。スタッフが火葬場の状況をご確認しながらご提案いたします。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">深夜や早朝に亡くなった場合でも対応できますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>はい、<strong>24時間365日、いつでも対応しております</strong>。深夜・早朝・年末年始・お盆期間中も変わらず対応します。まずはお電話（0120-20-9678）ください。経験豊富なスタッフがすぐに駆けつけます。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">葬儀に参列する際の服装を教えてください。</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>一般的な葬儀では<strong>黒を基調とした喪服</strong>が基本です。男性は黒のスーツ・白ワイシャツ・黒ネクタイ、女性は黒のワンピースやスーツが一般的です。家族のみで行う家族葬の場合、ご遺族が「平服で」と案内する場合もあります。ご不安な場合はスタッフにご確認ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">急いでいないのですが、ゆっくり相談できますか？</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <span class="faq-a">A</span>
+                            <p>もちろんです。のぞみ葬祭では、<strong>焦らず、じっくりご相談いただくこと</strong>を大切にしています。「まだ先のこと」という段階でも大歓迎です。何度でもご相談いただき、納得のゆくかたちでお見送りを準備しましょう。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA（トップページと同一） -->
+<section class="cta" id="consultation">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">あなたの"のぞみ"を聞かせてください</h2>
+            <p class="cta-subtitle">事前相談・お問い合わせは24時間365日承っております<br>どんな小さなことでも、お気軽にご相談ください</p>
+            <div class="cta-buttons">
+                <a href="tel:0120209678" class="cta-btn phone-btn">
+                    <i class="fas fa-phone-flip"></i>
+                    <span class="cta-btn-label">お電話で相談</span>
+                    <span class="cta-btn-number">0120-20-9678</span>
+                </a>
+                <button class="cta-btn line-btn" onclick="openLineModal()">
+                    <i class="fab fa-line"></i>
+                    <span class="cta-btn-label">LINEで相談</span>
+                    <span class="cta-btn-text">友だち追加はこちら</span>
+                </button>
+                <a href="#" class="cta-btn mail-btn">
+                    <i class="fas fa-envelope"></i>
+                    <span class="cta-btn-label">メールで相談</span>
+                    <span class="cta-btn-text">お問い合わせフォーム</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- フッター（トップページと同一） -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 class="footer-title"><a href="preview.html" style="color:inherit;text-decoration:none;">のぞみ葬祭</a></h3>
+                <p class="footer-company">株式会社VERDE</p>
+                <p class="footer-address">〒673-0435<br>兵庫県三木市別所町高木933-5</p>
+                <p class="footer-contact">TEL: <a href="tel:0120209678">0120-20-9678</a>（24時間365日）</p>
+                <p class="footer-hours">営業時間: 24時間営業<br>定休日: 年中無休</p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">サイトマップ</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">のぞみ葬祭について</a></li>
+                    <li><a href="plan-detail.html">プラン</a></li>
+                    <li><a href="hall.html">会館のご紹介</a></li>
+                    <li><a href="access.html">アクセス</a></li>
+                    <li><a href="faq.html">よくある質問</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">プラン一覧</h4>
+                <ul class="footer-links">
+                    <li><a href="plan-detail.html#ceremony">ダイヤモンドプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">プラチナプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">ゴールドプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">シルバープラン</a></li>
+                    <li><a href="plan-detail.html#family">ホワイトプラン</a></li>
+                    <li><a href="plan-detail.html#direct">シンプルプラン</a></li>
+                    <li><a href="plan-detail.html#direct">プチプラン</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">その他</h4>
+                <ul class="footer-links">
+                    <li><a href="flowers.html">供花のご注文</a></li>
+                    <li><a href="preview.html#flowers">人形供養</a></li>
+                    <li><a href="preview.html#flowers">写真供養</a></li>
+                    <li><a href="#">プライバシーポリシー</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2025 株式会社VERDE All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ページトップボタン -->
+<button class="page-top" id="pageTop" aria-label="ページトップへ戻る">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    // ページトップ
+    const pageTop = document.getElementById('pageTop');
+    window.addEventListener('scroll', function () {
+        if (pageTop) pageTop.classList.toggle('visible', window.scrollY > 300);
+    });
+    if (pageTop) pageTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // モバイルメニュー
+    const mobileToggle = document.getElementById('mobileMenuToggle');
+    const headerNav    = document.getElementById('headerNav');
+    if (mobileToggle && headerNav) {
+        mobileToggle.addEventListener('click', function () {
+            this.classList.toggle('active');
+            headerNav.classList.toggle('active');
+        });
+    }
+    const mobileStyle = document.createElement('style');
+    mobileStyle.textContent = `.header-nav.active{display:block!important;position:fixed;top:80px;left:0;width:100%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:999}.header-nav.active ul{flex-direction:column;padding:20px;gap:0}.header-nav.active li{border-bottom:1px solid #f0f0f0}.header-nav.active a{display:block;padding:15px 10px}.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.mobile-menu-toggle.active span:nth-child(2){opacity:0}.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}`;
+    document.head.appendChild(mobileStyle);
+
+    // フェードイン
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // FAQアコーディオン
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const item = this.closest('.faq-item');
+            const isActive = item.classList.contains('active');
+            // 同カテゴリ内は複数開けるようにする（全部閉じずに個別トグル）
+            item.classList.toggle('active', !isActive);
+        });
+    });
+
+    // カテゴリナビのスクロール連動ハイライト
+    const sections = ['cost','consult','plan','hall','procedure','religion'];
+    const navBtns = document.querySelectorAll('.faq-nav-btn');
+    const headerH = 80 + 55; // ヘッダー + カテゴリナビの高さ
+
+    window.addEventListener('scroll', function () {
+        let current = sections[0];
+        sections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el && el.getBoundingClientRect().top <= headerH + 40) {
+                current = id;
+            }
+        });
+        navBtns.forEach((btn, i) => {
+            btn.classList.toggle('active', sections[i] === current);
+        });
+    });
+});
+
+// カテゴリスクロール
+function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const offset = 80 + 55 + 20; // ヘッダー + カテゴリナビ + 余白
+    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+}
+</script>
+
+<!-- LINEモーダル -->
+<div class="line-modal-overlay" id="lineModal" onclick="if(event.target===this)closeLineModal()">
+    <div class="line-modal">
+        <button class="line-modal-close" onclick="closeLineModal()" aria-label="閉じる">&times;</button>
+        <div class="line-modal-icon"><i class="fab fa-line"></i></div>
+        <h2 class="line-modal-title">LINEで相談する</h2>
+        <p class="line-modal-sub">QRコードを読み取って<br>友だち追加してください</p>
+        <div class="line-modal-qr">
+            <img src="https://placehold.jp/30/00B900/ffffff/200x200.png?text=QR+Code" alt="LINE QRコード（ダミー）">
+        </div>
+        <p class="line-modal-note">24時間いつでもメッセージをお送りいただけます。<br>お気軽にご相談ください。</p>
+    </div>
+</div>
+<script>
+function openLineModal(){ document.getElementById('lineModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLineModal(){ document.getElementById('lineModal').classList.remove('open'); document.body.style.overflow=''; }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLineModal(); });
+</script>
+</body>
+</html>
