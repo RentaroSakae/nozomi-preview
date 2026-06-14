@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>葬儀の流れ | のぞみ葬祭</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary-color: #8cc04e;
+    --secondary-color: #6A9A3E;
+    --bg-light: #F8F9F5;
+    --bg-warm: #FFF8F0;
+    --text-dark: #333333;
+    --text-gray: #666666;
+    --white: #FFFFFF;
+    --dark-gray: #2C2C2C;
+    --font-serif: 'Noto Serif JP', serif;
+    --font-sans: 'Noto Sans JP', sans-serif;
+    --transition: all 0.3s ease;
+    --shadow: 0 4px 16px rgba(0,0,0,0.08);
+    --shadow-hover: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+html { scroll-behavior: smooth; font-size: 20px; }
+body { font-family: var(--font-sans); color: var(--text-dark); line-height: 1.9; background-color: var(--white); overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
+button { border: none; background: none; cursor: pointer; font-family: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+section { padding: 100px 0; }
+
+/* ========== ヘッダー ========== */
+.header { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--white); box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000; transition: var(--transition); }
+.header-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 30px; height: 80px; }
+.header-logo a { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: var(--primary-color); }
+.header-nav ul { display: flex; gap: 18px; }
+.header-nav a { font-size: 14.76px; font-weight: 500; color: var(--text-dark); position: relative; white-space: nowrap; }
+.header-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: var(--transition); }
+.header-nav a:hover { color: var(--primary-color); }
+.header-nav a:hover::after { width: 100%; }
+.header-nav a.current { color: var(--primary-color); }
+.header-nav a.current::after { width: 100%; }
+.header-cta { display: flex; align-items: center; gap: 14px; }
+.header-phone { font-size: 20px; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 6px; }
+.header-line-btn { background-color: #00B900; color: var(--white); padding: 10px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.header-line-btn:hover { background-color: #009900; }
+.mobile-menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+.mobile-menu-toggle span { display: block; width: 26px; height: 2px; background: var(--text-dark); border-radius: 2px; transition: var(--transition); }
+
+@media (max-width: 900px) {
+    .header-phone { font-size: 1.1rem; }
+    .header-line-btn { padding: 10px 14px; font-size: 0.9rem; }
+}
+@media (max-width: 480px) { .header-phone { display: none; } }
+
+/* ========== フェードイン ========== */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ========== セクション共通 ========== */
+.section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; color: var(--primary-color); text-transform: uppercase; margin-bottom: 12px; }
+.section-title { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600; color: var(--text-dark); margin-bottom: 16px; line-height: 1.4; }
+.section-subtitle { font-size: 1rem; color: var(--text-gray); line-height: 1.9; }
+.section-underline { width: 60px; height: 3px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 2px; margin-bottom: 16px; }
+
+/* ========== ページヒーロー ========== */
+.page-hero {
+    background: linear-gradient(135deg, #1e3a12 0%, #2d5219 50%, #3d6a22 100%);
+    padding: 160px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&h=600&fit=crop&q=60') center/cover no-repeat;
+    opacity: 0.1;
+}
+.page-hero-inner { position: relative; z-index: 1; }
+.page-hero-label { font-size: 0.75rem; letter-spacing: 0.25em; color: rgba(255,255,255,0.75); text-transform: uppercase; margin-bottom: 16px; font-weight: 600; }
+.page-hero-title { font-family: var(--font-serif); font-size: 2.6rem; font-weight: 600; color: var(--white); margin-bottom: 20px; }
+.page-hero-sub { font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 2; }
+
+/* ========== イントロ ========== */
+.intro { background: var(--bg-warm); }
+.intro-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+.intro-icon { font-size: 3rem; color: var(--primary-color); margin-bottom: 24px; }
+.intro-catch { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; color: var(--text-dark); margin-bottom: 24px; line-height: 1.7; }
+.intro-body { font-size: 1rem; color: var(--text-gray); line-height: 2.2; }
+.intro-body + .intro-body { margin-top: 16px; }
+.intro-reassure {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(140,192,78,0.12);
+    border: 1.5px solid rgba(140,192,78,0.4);
+    border-radius: 12px;
+    padding: 18px 30px;
+    margin-top: 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+.intro-reassure i { font-size: 1.2rem; }
+
+/* ========== 概要5ステップ ========== */
+.flow-overview-section { background: var(--bg-light); }
+.flow-overview-section .section-header { text-align: center; margin-bottom: 50px; }
+.flow-overview {
+    display: flex;
+    gap: 0;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.overview-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px 20px;
+    text-align: center;
+    flex: 1;
+    min-width: 140px;
+    max-width: 200px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    transition: var(--transition);
+}
+.overview-card:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+.overview-card-num {
+    font-family: var(--font-serif);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+}
+.overview-card-icon { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 10px; }
+.overview-card-title { font-family: var(--font-serif); font-size: 0.85rem; font-weight: 600; color: var(--text-dark); line-height: 1.5; }
+.overview-arrow {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    padding: 0 8px;
+    flex-shrink: 0;
+}
+
+/* ========== ステップ詳細 ========== */
+.flow-detail { background: var(--white); }
+.flow-detail .section-header { text-align: center; margin-bottom: 70px; }
+.steps-list { max-width: 900px; margin: 0 auto; }
+
+.step-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 40px;
+    padding-bottom: 60px;
+    position: relative;
+}
+.step-item::before {
+    content: '';
+    position: absolute;
+    left: 49px;
+    top: 100px;
+    width: 2px;
+    height: calc(100% - 100px);
+    background: linear-gradient(180deg, #8cc04e 0%, rgba(140,192,78,0.1) 100%);
+}
+.step-item:last-child::before { display: none; }
+
+.step-num-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.step-circle {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #8cc04e, #6A9A3E);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+}
+.step-icon { font-size: 1.5rem; margin-bottom: 2px; }
+.step-num-label { font-size: 0.7rem; letter-spacing: 0.05em; font-weight: 600; }
+
+.step-body { padding-top: 16px; }
+.step-title { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600; color: var(--text-dark); margin-bottom: 12px; }
+.step-desc { font-size: 0.95rem; color: #666; line-height: 2; margin-bottom: 16px; }
+
+.step-point {
+    background: rgba(140,192,78,0.1);
+    border-left: 3px solid #8cc04e;
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.8;
+}
+.step-point strong { color: #4a7a22; }
+
+/* ========== FAQ ========== */
+.faq-section { background: var(--bg-light); }
+.faq-section .section-header { text-align: center; margin-bottom: 50px; }
+.faq-list { max-width: 860px; margin: 0 auto; }
+.faq-item { margin-bottom: 12px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.faq-question {
+    width: 100%;
+    background-color: var(--white);
+    padding: 22px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.faq-question:hover { background-color: rgba(140,192,78,0.05); }
+.faq-item.active .faq-question { background-color: rgba(140,192,78,0.1); }
+.faq-q {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+    font-family: var(--font-serif);
+}
+.faq-question-text {
+    flex: 1;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+.faq-question i.toggle-icon { color: var(--primary-color); transition: var(--transition); font-size: 0.9rem; flex-shrink: 0; }
+.faq-item.active .faq-question i.toggle-icon { transform: rotate(180deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.45s ease; }
+.faq-item.active .faq-answer { max-height: 600px; }
+.faq-answer-content {
+    padding: 22px 28px 24px 86px;
+    background-color: #f7f7f5;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+.faq-a {
+    width: 42px;
+    height: 42px;
+    background: var(--secondary-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+    font-family: var(--font-serif);
+}
+.faq-answer-content p {
+    flex: 1;
+    font-size: 1rem;
+    color: var(--text-gray);
+    line-height: 2;
+}
+.faq-answer-content p strong { color: var(--text-dark); }
+.faq-answer-content p a { color: var(--primary-color); text-decoration: underline; }
+
+/* ========== CTA ========== */
+.cta { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); padding: 80px 0; }
+.cta-content { text-align: center; color: var(--white); }
+.cta-title { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 600; margin-bottom: 18px; }
+.cta-subtitle { font-size: 1.2rem; opacity: 0.95; margin-bottom: 50px; line-height: 1.9; }
+.cta-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1000px; margin: 0 auto; }
+.cta-btn {
+    background-color: var(--white);
+    color: var(--primary-color);
+    padding: 30px 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+.cta-btn:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.18); }
+.cta-btn i { font-size: 2rem; margin-bottom: 4px; }
+.cta-btn-label { font-size: 1rem; font-weight: 700; color: var(--text-dark); }
+.cta-btn-number { font-size: 1.3rem; font-weight: 700; color: var(--primary-color); }
+.cta-btn-text { font-size: 0.9rem; color: var(--text-gray); }
+.phone-btn i { color: var(--primary-color); }
+.line-btn i { color: #00B900; }
+.mail-btn i { color: var(--primary-color); }
+
+/* ========== フッター ========== */
+.footer { background-color: var(--dark-gray); color: var(--white); padding: 60px 0 30px; }
+.footer-content { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-title { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--primary-color); margin-bottom: 15px; }
+.footer-company, .footer-address, .footer-contact, .footer-hours { font-size: 1.05rem; line-height: 1.9; margin-bottom: 10px; }
+.footer-contact a { color: var(--primary-color); font-weight: 600; }
+.footer-heading { font-size: 1.2rem; font-weight: 600; margin-bottom: 20px; }
+.footer-links li { margin-bottom: 14px; }
+.footer-links a { font-size: 1.05rem; color: rgba(255,255,255,0.8); }
+.footer-links a:hover { color: var(--primary-color); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; }
+
+/* ========== ページトップボタン ========== */
+.page-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: var(--primary-color); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); opacity: 0; pointer-events: none; transition: var(--transition); z-index: 500; font-size: 1rem; }
+.page-top.visible { opacity: 1; pointer-events: auto; }
+.page-top:hover { background: var(--secondary-color); transform: translateY(-3px); }
+
+/* ========== LINEモーダル ========== */
+.line-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+.line-modal-overlay.open { opacity: 1; pointer-events: auto; }
+.line-modal { background: var(--white); border-radius: 16px; padding: 40px 36px; text-align: center; max-width: 400px; width: 90%; position: relative; transform: translateY(20px); transition: transform 0.3s ease; }
+.line-modal-overlay.open .line-modal { transform: translateY(0); }
+.line-modal-close { position: absolute; top: 14px; right: 18px; font-size: 1.6rem; color: var(--text-gray); line-height: 1; }
+.line-modal-close:hover { color: var(--text-dark); }
+.line-modal-icon { font-size: 3rem; color: #00B900; margin-bottom: 12px; }
+.line-modal-title { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600; margin-bottom: 10px; }
+.line-modal-sub { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 20px; line-height: 1.8; }
+.line-modal-qr { margin: 0 auto 16px; width: 160px; height: 160px; border: 2px solid #e8e8e8; border-radius: 10px; overflow: hidden; }
+.line-modal-qr img { width: 100%; height: 100%; object-fit: cover; }
+.line-modal-note { font-size: 0.82rem; color: var(--text-gray); line-height: 1.8; }
+
+/* ========== レスポンシブ ========== */
+@media (max-width: 1024px) {
+    .header-nav { display: none; }
+    .header-cta { display: none; }
+    .mobile-menu-toggle { display: flex; }
+    .footer-content { grid-template-columns: repeat(2,1fr); }
+    .cta-buttons { gap: 20px; }
+}
+@media (max-width: 768px) {
+    html { font-size: 18px; }
+    .page-hero-title { font-size: 2rem; }
+    .step-item {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .step-item::before {
+        display: none;
+    }
+    .step-num-wrap {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    .step-circle {
+        width: 80px;
+        height: 80px;
+    }
+    .step-icon { font-size: 1.2rem; }
+    .step-body { padding-top: 0; }
+    .flow-overview {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    .overview-arrow { display: none; }
+    .overview-card { max-width: 100%; }
+    .cta-title { font-size: 1.8rem; }
+    .cta-buttons { grid-template-columns: 1fr; gap: 16px; max-width: 400px; }
+    .footer-content { grid-template-columns: repeat(2,1fr); }
+    .faq-answer-content { padding: 20px; flex-direction: column; }
+    .faq-question { padding: 18px 20px; }
+}
+@media (max-width: 480px) {
+    html { font-size: 16px; }
+    .page-hero-title { font-size: 1.7rem; }
+    .flow-overview {
+        grid-template-columns: 1fr;
+    }
+    .footer-content { grid-template-columns: 1fr; }
+    .faq-question-text { font-size: 1rem; }
+}
+    /* ========== モバイルメニュードロワー ========== */
+.header-nav.open {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    z-index: 999;
+    padding: 20px 30px 30px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+.header-nav.open ul {
+    flex-direction: column;
+    gap: 0;
+}
+.header-nav.open ul li {
+    border-bottom: 1px solid #f0f0f0;
+}
+.header-nav.open ul li a {
+    display: block;
+    padding: 14px 0;
+    font-size: 16px;
+}
+.nav-mobile-cta {
+    display: none;
+}
+.header-nav.open .nav-mobile-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+.nav-mobile-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.nav-mobile-line {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #00B900;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.mobile-menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.mobile-menu-toggle.open span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="header" id="header">
+    <div class="header-container">
+        <div class="header-logo"><a href="preview.html">のぞみ葬祭</a></div>
+        <nav class="header-nav" id="headerNav">
+            <ul>
+                <li><a href="about.html">のぞみ葬祭について</a></li>
+                <li><a href="plan-detail.html">プラン</a></li>
+                <li><a href="hall.html">会館のご紹介</a></li>
+                <li><a href="access.html">アクセス</a></li>
+                <li><a href="flowers.html">供花のご注文</a></li>
+                <li><a href="faq.html">よくある質問</a></li>
+                    <li><a href="flow.html">葬儀の流れ</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+            </ul>
+            <!-- モバイル用連絡先 -->
+            <div class="nav-mobile-cta">
+                <a href="tel:0120209678" class="nav-mobile-phone"><i class="fas fa-phone-flip"></i> 0120-209-678</a>
+                <button class="nav-mobile-line" onclick="openLineModal()"><i class="fab fa-line"></i> LINEで相談する</button>
+            </div>
+        </nav>
+        <div class="header-cta">
+            <a href="tel:0120209678" class="header-phone"><i class="fas fa-phone-flip"></i> 0120-209-678</a>
+            <button class="header-line-btn" onclick="openLineModal()"><i class="fab fa-line"></i> LINEで相談</button>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<!-- ページヒーロー -->
+<section class="page-hero">
+    <div class="container">
+        <div class="page-hero-inner fade-in">
+            <p class="page-hero-label">FLOW</p>
+            <h1 class="page-hero-title">葬儀の流れ</h1>
+            <p class="page-hero-sub">ご逝去からお見送りまで、のぞみ葬祭がしっかりとサポートいたします。</p>
+        </div>
+    </div>
+</section>
+
+<!-- イントロ -->
+<section class="intro">
+    <div class="container">
+        <div class="intro-inner fade-in">
+            <div class="intro-icon"><i class="fas fa-hands-holding-heart"></i></div>
+            <p class="intro-catch">「はじめての葬儀で、何をすればいいかわからない」<br>そんな方も、どうかご安心ください。</p>
+            <p class="intro-body">突然のご逝去に、多くの方が戸惑いや不安を感じるのは当然のことです。何をいつまでに決めればよいのか、誰に連絡すればよいのか、費用はどのくらいかかるのか――初めて経験する方にとって、葬儀の流れはわかりにくいものです。</p>
+            <p class="intro-body">のぞみ葬祭では、<strong>ご逝去直後から四十九日法要まで</strong>、経験豊富なスタッフが一貫してお客様に寄り添います。どんな小さなことでも遠慮なくご相談いただけるよう、24時間365日体制で対応しております。</p>
+            <span class="intro-reassure"><i class="fas fa-shield-heart"></i>ご逝去から四十九日まで、すべてを一貫サポート</span>
+        </div>
+    </div>
+</section>
+
+<!-- 概要5ステップ -->
+<section class="flow-overview-section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <p class="section-label">OVERVIEW</p>
+            <h2 class="section-title">葬儀の大きな流れ</h2>
+            <div class="section-underline"></div>
+            <p class="section-subtitle">ご逝去からアフターサポートまで、5つのステージでご案内します。</p>
+        </div>
+        <div class="flow-overview fade-in">
+            <div class="overview-card">
+                <p class="overview-card-num">STEP 1</p>
+                <div class="overview-card-icon"><i class="fas fa-hospital"></i></div>
+                <p class="overview-card-title">ご逝去・<br>ご搬送</p>
+            </div>
+            <div class="overview-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="overview-card">
+                <p class="overview-card-num">STEP 2</p>
+                <div class="overview-card-icon"><i class="fas fa-clipboard-list"></i></div>
+                <p class="overview-card-title">打ち合わせ・<br>準備</p>
+            </div>
+            <div class="overview-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="overview-card">
+                <p class="overview-card-num">STEP 3</p>
+                <div class="overview-card-icon"><i class="fas fa-moon"></i></div>
+                <p class="overview-card-title">通夜</p>
+            </div>
+            <div class="overview-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="overview-card">
+                <p class="overview-card-num">STEP 4</p>
+                <div class="overview-card-icon"><i class="fas fa-hands-praying"></i></div>
+                <p class="overview-card-title">葬儀・告別式・<br>火葬</p>
+            </div>
+            <div class="overview-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="overview-card">
+                <p class="overview-card-num">STEP 5</p>
+                <div class="overview-card-icon"><i class="fas fa-heart"></i></div>
+                <p class="overview-card-title">アフター<br>サポート</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ステップ詳細 -->
+<section class="flow-detail">
+    <div class="container">
+        <div class="section-header fade-in">
+            <p class="section-label">DETAIL</p>
+            <h2 class="section-title">各ステップの詳細</h2>
+            <div class="section-underline"></div>
+            <p class="section-subtitle">8つのステップごとに、流れとポイントをわかりやすくご説明します。</p>
+        </div>
+
+        <div class="steps-list">
+
+            <!-- STEP 1 -->
+            <div class="step-item fade-in">
+                <div class="step-num-wrap">
+                    <div class="step-circle">
+                        <i class="fas fa-hospital-user step-icon"></i>
+                        <span class="step-num-label">STEP 1</span>
+                    </div>
+                </div>
+                <div class="step-body">
+                    <h3 class="step-title">ご臨終・ご逝去</h3>
+                    <p class="step-desc">
+                        病院や自宅で医師が死亡を確認し、死亡診断書を発行します。この診断書は各種手続きに不可欠な重要書類ですので、大切に保管してください。<br>
+                        ご逝去が確認されましたら、まず<strong>のぞみ葬祭（0120-209-678）</strong>へお電話ください。24時間365日、専門のスタッフが速やかに対応いたします。深夜・早朝でも遠慮なくご連絡ください。
+                    </p>
+                    <div class="step-point">
+                        <strong>ポイント：</strong>ご逝去直後はご遺族様も動揺されていることと思います。まずは深呼吸して、のぞみ葬祭にお電話いただければ、その後の手順はすべてスタッフがご案内します。一人で抱え込まないでください。
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="step-item fade-in">
+                <div class="step-num-wrap">
+                    <div class="step-circle">
+                        <i class="fas fa-van-shuttle step-icon"></i>
+                        <span class="step-num-label">STEP 2</span>
+                    </div>
+                </div>
+                <div class="step-body">
+                    <h3 class="step-title">ご搬送・ご安置</h3>
+                    <p class="step-desc">
+                        病院や介護施設など、ご逝去された場所からのお迎えに伺います。のぞみ葬祭の専用車にてご遺体を、当社の斎場「琥珀ホール」またはご自宅へ安全・丁寧にお送りいたします。<br>
+                        ご安置後は、枕飾りの準備やお線香の焚き方など、ご遺族様が行うことについてもわかりやすくご説明します。
+                    </p>
+                    <div class="step-point">
+                        <strong>ポイント：</strong>ご安置場所はご自宅と斎場のどちらでも対応可能です。ご自宅での安置を希望される場合は事前にご相談ください。スタッフが状況に合わせた最適な方法をご提案します。
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="step-item fade-in">
+                <div class="step-num-wrap">
+                    <div class="step-circle">
+                        <i class="fas fa-clipboard-list step-icon"></i>
+                        <span class="step-num-label">STEP 3</span>
+                    </div>
+                </div>
+                <div class="step-body">
+                    <h3 class="step-title">打ち合わせ・お見積もり</h3>
+                    <p class="step-desc">
+                        担当スタッフとご一緒に、葬儀の内容を決めていきます。プランの選択、日程の調整、宗旨・宗派の確認、ご参列予定人数の把握、返礼品や精進料理のご手配など、必要な事項を丁寧に確認していきます。<br>
+                        費用の明細もこの段階でご説明し、ご承諾いただいたうえで進めますので、あとから予算が大幅に変わる心配はございません。
+                    </p>
+                    <div class="step-point">
+                        <strong>ポイント：</strong>宗旨・宗派がわからない場合や、菩提寺がない場合もご相談ください。無宗教葬・音楽葬など、故人様のご希望に沿ったかたちをご提案いたします。
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="step-item fade-in">
+                <div class="step-num-wrap">
+                    <div class="step-circle">
+                        <i class="fas fa-box-open step-icon"></i>
+                        <span class="step-num-label">STEP 4</span>
+                    </div>
+                </div>
+                <div class="step-body">
+                    <h3 class="step-title">ご納棺</h3>
+                    <p class="step-desc">
+                        故人さまをお棺にお納めします。ご家族がお手伝いいただくことも可能で、故人さまと最後の時間をゆっくりお過ごしいただけます。ご遺体のお化粧（エンゼルケア）も含め、故人さまが穏やかなお姿でいられるよう丁寧に対応いたします。<br>
+                        ご希望があれば、湯灌（ゆかん）やエンバーミング（遺体保存処置）などのオプションもご相談ください。
+                    </p>
+                    <div class="step-point">
+                        <strong>ポイント：</strong>お棺にはお花や故人様の思い出の品を入れることができます（燃えないものは不可）。「この服を着せてあげたい」「好きなものを一緒に」などのご要望もお気軽にお伝えください。
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 5 -->
+            <div class="step-item fade-in">
+                <div class="step-num-wrap">
+                    <div class="step-circle">
+                        <i class="fas fa-moon step-icon"></i>
+                        <span class="step-num-label">STEP 5</span>
+                    </div>
+                </div>
+                <div class="step-body">
+                    <h3 class="step-title">通夜</h3>
+                    <p class="step-desc">
+                        家族・親族が故人さまのそばに集まり、最後の夜をともに過ごします。一般的には葬儀前日の夜に行われ、宗教者（僧侶など）による読経・焼香が執り行われます。<br>
+                        なお、一日葬（通夜を省略するプラン）をご選択の場合は、このステップをおまかせください。ご家族の体力・事情に合わせた形式をご提案します。
+                    </p>
+                    <div class="step-point">
+                        <strong>ポイント：</strong>通夜は家族のみの「家族通夜」として行うことも、一般会葬者にも開放することも可能です。人数や参列の範囲については打ち合わせ時にご相談ください。
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 6 -->
+            <div class="step-item fade-in">
+                <div class="step-num-wrap">
+                    <div class="step-circle">
+                        <i class="fas fa-hands-praying step-icon"></i>
+                        <span class="step-num-label">STEP 6</span>
+                    </div>
+                </div>
+                <div class="step-body">
+                    <h3 class="step-title">葬儀・告別式</h3>
+                    <p class="step-desc">
+                        故人さまを正式にお見送りする宗教的儀式（葬儀）と、参列者が最後のお別れをする告別式を執り行います。読経・焼香・献花などを通じて、故人さまへの感謝と別れを表します。<br>
+                        ご遺族様は喪主としての進行をサポートしますので、初めての方でも安心してお任せください。式の進行はすべてスタッフがナビゲートします。
+                    </p>
+                    <div class="step-point">
+                        <strong>ポイント：</strong>故人様のお気に入りの音楽を流す「音楽葬」や、思い出の写真をスライドショーで上映するなど、オリジナルの演出も承ります。ご要望はお気軽にご相談ください。
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 7 -->
+            <div class="step-item fade-in">
+                <div class="step-num-wrap">
+                    <div class="step-circle">
+                        <i class="fas fa-fire step-icon"></i>
+                        <span class="step-num-label">STEP 7</span>
+                    </div>
+                </div>
+                <div class="step-body">
+                    <h3 class="step-title">火葬・骨上げ</h3>
+                    <p class="step-desc">
+                        葬儀・告別式の後、火葬場へ移動して火葬を行います。火葬には1〜2時間程度かかります。火葬後は「骨上げ（収骨）」として、ご家族がお骨を骨壺に収めます。<br>
+                        初七日法要を葬儀当日に繰り上げて行う「繰り上げ初七日」も対応しています。ご親族が集まっているこの機会にまとめて行う方も増えています。
+                    </p>
+                    <div class="step-point">
+                        <strong>ポイント：</strong>火葬場への移動はのぞみ葬祭のマイクロバスでお送りすることも可能です（オプション）。ご高齢の方や移動手段が不安な方はご相談ください。
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 8 -->
+            <div class="step-item fade-in">
+                <div class="step-num-wrap">
+                    <div class="step-circle">
+                        <i class="fas fa-heart step-icon"></i>
+                        <span class="step-num-label">STEP 8</span>
+                    </div>
+                </div>
+                <div class="step-body">
+                    <h3 class="step-title">アフターサポート</h3>
+                    <p class="step-desc">
+                        葬儀が終わった後も、のぞみ葬祭のサポートは続きます。四十九日法要・一周忌などの法要に関するご案内、各種行政手続き（死亡届・年金・保険など）に関する情報提供を行います。<br>
+                        また、大切な方を亡くされたご遺族様の心のケア（グリーフケア）についても、スタッフが丁寧にお話を伺います。何かお困りのことがあれば、葬儀後もいつでもご連絡ください。
+                    </p>
+                    <div class="step-point">
+                        <strong>ポイント：</strong>四十九日の法要や納骨のご相談も承っております。「どこに相談していいかわからない」という方も、のぞみ葬祭にお声がけいただければ必要な情報をご提供します。
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <p class="section-label">FAQ</p>
+            <h2 class="section-title">よくあるご質問</h2>
+            <div class="section-underline"></div>
+            <p class="section-subtitle">葬儀の流れに関して、よくいただくご質問にお答えします。</p>
+        </div>
+
+        <div class="faq-list">
+
+            <div class="faq-item fade-in">
+                <button class="faq-question">
+                    <span class="faq-q">Q</span>
+                    <span class="faq-question-text">亡くなってからどのくらいで葬儀を行いますか？</span>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <span class="faq-a">A</span>
+                        <p>一般的には、ご逝去の翌日に通夜、その翌日に葬儀・告別式を行います。ただし、火葬場の空き状況や宗教上の理由、ご親族の都合などにより、<strong>2〜3日以上後</strong>になる場合もあります。のぞみ葬祭では日程調整もお手伝いしますので、ご事情をお聞かせください。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <button class="faq-question">
+                    <span class="faq-q">Q</span>
+                    <span class="faq-question-text">深夜に亡くなった場合も対応してもらえますか？</span>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <span class="faq-a">A</span>
+                        <p>はい、<strong>24時間365日対応</strong>しております。深夜・早朝・年末年始を問わず、スタッフが速やかにご対応いたします。ご逝去が確認されましたら、まずは<a href="tel:0120209678">0120-209-678</a>までお電話ください。お迎え搬送も含めて、すぐに対応できる体制を整えております。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <button class="faq-question">
+                    <span class="faq-q">Q</span>
+                    <span class="faq-question-text">通夜と葬儀はどちらも必須ですか？</span>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <span class="faq-a">A</span>
+                        <p>必須ではありません。通夜を省略して葬儀・告別式のみを行う「<strong>一日葬</strong>」や、通夜・葬儀をすべて省いて火葬のみを行う「<strong>直葬・火葬式</strong>」のプランもご用意しております。ご家族の体力的な負担や予算、故人様のご意向に合わせてお選びいただけます。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <button class="faq-question">
+                    <span class="faq-q">Q</span>
+                    <span class="faq-question-text">葬儀当日、遺族は何を準備すればよいですか？</span>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <span class="faq-a">A</span>
+                        <p>基本的な準備物としては、<strong>喪服・数珠・ハンカチ・香典の管理用品</strong>などが挙げられます。のぞみ葬祭では打ち合わせの際に持ち物リストをお渡しします。当日の進行はすべてスタッフがナビゲートしますので、初めての方でも安心してお任せください。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <button class="faq-question">
+                    <span class="faq-q">Q</span>
+                    <span class="faq-question-text">葬儀後の手続きはどうすればよいですか？</span>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <span class="faq-a">A</span>
+                        <p>葬儀後には、<strong>死亡届の提出・年金停止・健康保険の手続き・相続関連</strong>など、さまざまな行政手続きが必要になります。のぞみ葬祭では、必要な手続きの一覧や流れについての情報をご提供しています。また、専門家（司法書士・行政書士など）へのご紹介も可能ですので、お気軽にご相談ください。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="consultation">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">あなたの"のぞみ"を聞かせてください</h2>
+            <p class="cta-subtitle">事前相談・お問い合わせは24時間365日承っております<br>どんな小さなことでも、お気軽にご相談ください</p>
+            <div class="cta-buttons">
+                <a href="tel:0120209678" class="cta-btn phone-btn">
+                    <i class="fas fa-phone-flip"></i>
+                    <span class="cta-btn-label">お電話で相談</span>
+                    <span class="cta-btn-number">0120-209-678</span>
+                </a>
+                <button class="cta-btn line-btn" onclick="openLineModal()">
+                    <i class="fab fa-line"></i>
+                    <span class="cta-btn-label">LINEで相談</span>
+                    <span class="cta-btn-text">友だち追加はこちら</span>
+                </button>
+                <a href="contact.html" class="cta-btn mail-btn">
+                    <i class="fas fa-envelope"></i>
+                    <span class="cta-btn-label">メールで相談</span>
+                    <span class="cta-btn-text">お問い合わせフォーム</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- フッター -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 class="footer-title"><a href="preview.html" style="color:inherit;text-decoration:none;">のぞみ葬祭</a></h3>
+                <p class="footer-company">株式会社VERDE</p>
+                <p class="footer-address">〒673-0435<br>兵庫県三木市別所町高木933-5</p>
+                <p class="footer-contact">TEL: <a href="tel:0120209678">0120-209-678</a>（24時間365日）</p>
+                <p class="footer-hours">営業時間: 24時間営業<br>定休日: 年中無休</p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">サイトマップ</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">のぞみ葬祭について</a></li>
+                    <li><a href="plan-detail.html">プラン</a></li>
+                    <li><a href="hall.html">会館のご紹介</a></li>
+                    <li><a href="access.html">アクセス</a></li>
+                    <li><a href="faq.html">よくある質問</a></li>
+                    <li><a href="flow.html">葬儀の流れ</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">プラン一覧</h4>
+                <ul class="footer-links">
+                    <li><a href="plan-detail.html#ceremony">ダイヤモンドプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">プラチナプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">ゴールドプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">シルバープラン</a></li>
+                    <li><a href="plan-detail.html#family">ホワイトプラン</a></li>
+                    <li><a href="plan-detail.html#direct">シンプルプラン</a></li>
+                    <li><a href="plan-detail.html#direct">プチプラン</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">その他</h4>
+                <ul class="footer-links">
+                    <li><a href="doll-memorial.html">人形供養</a></li>
+                    <li><a href="photo-memorial.html">写真供養</a></li>
+                    <li><a href="privacy.html">プライバシーポリシー</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2026 株式会社VERDE All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ページトップボタン -->
+<a href="#" class="page-top" id="pageTop" aria-label="ページトップへ">
+    <i class="fas fa-chevron-up"></i>
+</a>
+
+<!-- LINEモーダル -->
+<div class="line-modal-overlay" id="lineModal" onclick="if(event.target===this)closeLineModal()">
+    <div class="line-modal">
+        <button class="line-modal-close" onclick="closeLineModal()">&times;</button>
+        <div class="line-modal-icon"><i class="fab fa-line"></i></div>
+        <h2 class="line-modal-title">LINEで相談する</h2>
+        <p class="line-modal-sub">QRコードを読み取って<br>友だち追加してください</p>
+        <div class="line-modal-qr"><img src="https://placehold.jp/30/00B900/ffffff/200x200.png?text=QR+Code" alt="LINE QRコード（ダミー）"></div>
+        <p class="line-modal-note">24時間いつでもメッセージをお送りいただけます。</p>
+    </div>
+</div>
+
+<script>
+// LINE モーダル
+function openLineModal(){ document.getElementById('lineModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLineModal(){ document.getElementById('lineModal').classList.remove('open'); document.body.style.overflow=''; }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLineModal(); });
+
+// フェードイン
+const observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(function(el){ observer.observe(el); });
+
+// FAQ アコーディオン
+document.querySelectorAll('.faq-question').forEach(function(btn){
+    btn.addEventListener('click', function(){
+        var item = this.closest('.faq-item');
+        var isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item.active').forEach(function(el){ el.classList.remove('active'); });
+        if(!isActive){ item.classList.add('active'); }
+    });
+});
+
+// ページトップ
+var pageTop = document.getElementById('pageTop');
+window.addEventListener('scroll', function(){
+    if(window.scrollY > 300){ pageTop.classList.add('visible'); }
+    else { pageTop.classList.remove('visible'); }
+});
+pageTop.addEventListener('click', function(e){
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// モバイルメニュー
+document.getElementById('mobileMenuToggle').addEventListener('click', function(){
+    document.getElementById('headerNav').classList.toggle('open');
+    this.classList.toggle('open');
+});
+</script>
+
+</body>
+</html>

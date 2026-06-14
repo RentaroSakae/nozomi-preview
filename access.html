@@ -41,7 +41,7 @@ section { padding: 100px 0; }
 /* ========== ヘッダー ========== */
 .header { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--white); box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000; transition: var(--transition); }
 .header-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 30px; height: 80px; }
-.header-logo a { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--primary-color); }
+.header-logo a { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: var(--primary-color); }
 .header-nav ul { display: flex; gap: 18px; }
 .header-nav a { font-size: 14.76px; font-weight: 500; color: var(--text-dark); position: relative; white-space: nowrap; }
 .header-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: var(--transition); }
@@ -49,9 +49,9 @@ section { padding: 100px 0; }
 .header-nav a:hover::after { width: 100%; }
 .header-nav a.current { color: var(--primary-color); }
 .header-nav a.current::after { width: 100%; }
-.header-cta { display: flex; align-items: center; gap: 20px; }
-.header-phone { font-size: 1.6rem; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 8px; }
-.header-line-btn { background-color: #00B900; color: var(--white); padding: 12px 22px; border-radius: 8px; font-size: 1.05rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.header-cta { display: flex; align-items: center; gap: 14px; }
+.header-phone { font-size: 20px; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 6px; }
+.header-line-btn { background-color: #00B900; color: var(--white); padding: 10px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
 .header-line-btn:hover { background-color: #009900; }
 .mobile-menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 10px; }
 .mobile-menu-toggle span { width: 25px; height: 3px; background-color: var(--text-dark); transition: var(--transition); }
@@ -202,11 +202,13 @@ section { padding: 100px 0; }
 
 /* ========== レスポンシブ ========== */
 @media (max-width: 1024px) {
+    .header-nav { display: none; }
+    .header-cta { display: none; }
+    .mobile-menu-toggle { display: flex; }
     .info-cards { grid-template-columns: repeat(2, 1fr); }
     .directions-grid { grid-template-columns: 1fr; }
     .parking-inner { grid-template-columns: 1fr; gap: 40px; }
-    .footer-content { grid-template-columns: 1fr 1fr; }
-    .footer-column:first-child { grid-column: 1 / -1; }
+    .footer-content { grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width: 768px) {
     html { font-size: 16px; }
@@ -217,15 +219,78 @@ section { padding: 100px 0; }
     .map-wrap { height: 360px; }
     .cta-buttons { grid-template-columns: 1fr; max-width: 400px; }
     .footer-content { grid-template-columns: 1fr; }
-    .header-nav { display: none; }
-    .mobile-menu-toggle { display: flex; }
     .header-container { height: 64px; padding: 0 15px; }
-    .header-cta { display: none; }
 }
 @media (max-width: 480px) {
 .direction-card { flex-direction: column; }
+.footer-content { grid-template-columns: 1fr; }
 }
-    </style>
+    /* ========== モバイルメニュードロワー ========== */
+.header-nav.open {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    z-index: 999;
+    padding: 20px 30px 30px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+.header-nav.open ul {
+    flex-direction: column;
+    gap: 0;
+}
+.header-nav.open ul li {
+    border-bottom: 1px solid #f0f0f0;
+}
+.header-nav.open ul li a {
+    display: block;
+    padding: 14px 0;
+    font-size: 16px;
+}
+.nav-mobile-cta {
+    display: none;
+}
+.header-nav.open .nav-mobile-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+.nav-mobile-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.nav-mobile-line {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #00B900;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.mobile-menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.mobile-menu-toggle.open span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+</style>
 </head>
 <body>
 
@@ -243,11 +308,18 @@ section { padding: 100px 0; }
                 <li><a href="access.html" class="current">アクセス</a></li>
                 <li><a href="flowers.html">供花のご注文</a></li>
                 <li><a href="faq.html">よくある質問</a></li>
+                    <li><a href="flow.html">葬儀の流れ</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
             </ul>
+            <!-- モバイル用連絡先 -->
+            <div class="nav-mobile-cta">
+                <a href="tel:0120209678" class="nav-mobile-phone"><i class="fas fa-phone-flip"></i> 0120-209-678</a>
+                <button class="nav-mobile-line" onclick="openLineModal()"><i class="fab fa-line"></i> LINEで相談する</button>
+            </div>
         </nav>
         <div class="header-cta">
             <a href="tel:0120209678" class="header-phone">
-                <i class="fas fa-phone-flip"></i> 0120-20-9678
+                <i class="fas fa-phone-flip"></i> 0120-209-678
             </a>
             <button class="header-line-btn" onclick="openLineModal()">
                 <i class="fab fa-line"></i> LINEで相談
@@ -290,7 +362,7 @@ section { padding: 100px 0; }
             <div class="info-card fade-in">
                 <div class="info-card-icon"><i class="fas fa-phone-flip"></i></div>
                 <p class="info-card-label">お電話</p>
-                <p class="info-card-value"><a href="tel:0120209678">0120-20-9678</a></p>
+                <p class="info-card-value"><a href="tel:0120209678">0120-209-678</a></p>
                 <p class="info-card-note">通話無料・24時間365日対応</p>
             </div>
             <div class="info-card fade-in">
@@ -344,7 +416,7 @@ section { padding: 100px 0; }
                             約4分・約2.5kmで到着です
                         </li>
                     </ul>
-                    <p class="direction-note">🅿 駐車場30台完備・無料・大型車も駐車可</p>
+                    <p class="direction-note">🅿 駐車場約10台・無料・大型車も駐車可</p>
                 </div>
             </div>
 
@@ -444,7 +516,7 @@ section { padding: 100px 0; }
                 <div class="parking-specs">
                     <div class="parking-spec">
                         <i class="fas fa-car"></i>
-                        <p class="parking-spec-text">普通車 30台<span>無料・バリアフリー対応</span></p>
+                        <p class="parking-spec-text">普通車 約10台<span>無料・バリアフリー対応</span></p>
                     </div>
                     <div class="parking-spec">
                         <i class="fas fa-bus"></i>
@@ -470,14 +542,14 @@ section { padding: 100px 0; }
                 <a href="tel:0120209678" class="cta-btn phone-btn">
                     <i class="fas fa-phone-flip"></i>
                     <span class="cta-btn-label">お電話で相談</span>
-                    <span class="cta-btn-number">0120-20-9678</span>
+                    <span class="cta-btn-number">0120-209-678</span>
                 </a>
                 <button class="cta-btn line-btn" onclick="openLineModal()">
                     <i class="fab fa-line"></i>
                     <span class="cta-btn-label">LINEで相談</span>
                     <span class="cta-btn-text">友だち追加はこちら</span>
                 </button>
-                <a href="#" class="cta-btn mail-btn">
+                <a href="contact.html" class="cta-btn mail-btn">
                     <i class="fas fa-envelope"></i>
                     <span class="cta-btn-label">メールで相談</span>
                     <span class="cta-btn-text">お問い合わせフォーム</span>
@@ -495,7 +567,7 @@ section { padding: 100px 0; }
                 <h3 class="footer-title"><a href="preview.html" style="color:inherit;text-decoration:none;">のぞみ葬祭</a></h3>
                 <p class="footer-company">株式会社VERDE</p>
                 <p class="footer-address">〒673-0435<br>兵庫県三木市別所町高木933-5</p>
-                <p class="footer-contact">TEL: <a href="tel:0120209678">0120-20-9678</a>（24時間365日）</p>
+                <p class="footer-contact">TEL: <a href="tel:0120209678">0120-209-678</a>（24時間365日）</p>
                 <p class="footer-hours">営業時間: 24時間営業<br>定休日: 年中無休</p>
             </div>
             <div class="footer-column">
@@ -506,6 +578,8 @@ section { padding: 100px 0; }
                     <li><a href="hall.html">会館のご紹介</a></li>
                     <li><a href="access.html">アクセス</a></li>
                     <li><a href="faq.html">よくある質問</a></li>
+                    <li><a href="flow.html">葬儀の流れ</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -523,14 +597,14 @@ section { padding: 100px 0; }
             <div class="footer-column">
                 <h4 class="footer-heading">その他</h4>
                 <ul class="footer-links">
-                    <li><a href="preview.html#flowers">人形供養</a></li>
-                    <li><a href="preview.html#flowers">写真供養</a></li>
-                    <li><a href="#">プライバシーポリシー</a></li>
+                    <li><a href="doll-memorial.html">人形供養</a></li>
+                    <li><a href="photo-memorial.html">写真供養</a></li>
+                    <li><a href="privacy.html">プライバシーポリシー</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p class="copyright">&copy; 2025 株式会社VERDE All Rights Reserved.</p>
+            <p class="copyright">&copy; 2026 株式会社VERDE All Rights Reserved.</p>
         </div>
     </div>
 </footer>
@@ -555,13 +629,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const headerNav    = document.getElementById('headerNav');
     if (mobileToggle && headerNav) {
         mobileToggle.addEventListener('click', function () {
-            this.classList.toggle('active');
-            headerNav.classList.toggle('active');
+            this.classList.toggle('open');
+            headerNav.classList.toggle('open');
         });
     }
-    const mobileStyle = document.createElement('style');
-    mobileStyle.textContent = `.header-nav.active{display:block!important;position:fixed;top:64px;left:0;width:100%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:999}.header-nav.active ul{flex-direction:column;padding:20px;gap:0}.header-nav.active li{border-bottom:1px solid #f0f0f0}.header-nav.active a{display:block;padding:15px 10px}.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.mobile-menu-toggle.active span:nth-child(2){opacity:0}.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}`;
-    document.head.appendChild(mobileStyle);
+    
 
     // フェードイン
     const observer = new IntersectionObserver(entries => {

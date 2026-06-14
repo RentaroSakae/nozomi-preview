@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>写真供養 | のぞみ葬祭</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary-color: #8cc04e;
+    --secondary-color: #6A9A3E;
+    --bg-light: #F8F9F5;
+    --bg-warm: #FFF8F0;
+    --text-dark: #333333;
+    --text-gray: #666666;
+    --white: #FFFFFF;
+    --dark-gray: #2C2C2C;
+    --font-serif: 'Noto Serif JP', serif;
+    --font-sans: 'Noto Sans JP', sans-serif;
+    --transition: all 0.3s ease;
+    --shadow: 0 4px 16px rgba(0,0,0,0.08);
+    --shadow-hover: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+html { scroll-behavior: smooth; font-size: 20px; }
+body { font-family: var(--font-sans); color: var(--text-dark); line-height: 1.9; background-color: var(--white); overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
+button { border: none; background: none; cursor: pointer; font-family: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+section { padding: 100px 0; }
+
+/* ヘッダー */
+.header { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--white); box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000; transition: var(--transition); }
+.header-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 30px; height: 80px; }
+.header-logo a { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: var(--primary-color); }
+.header-nav ul { display: flex; gap: 18px; }
+.header-nav a { font-size: 14.76px; font-weight: 500; color: var(--text-dark); position: relative; white-space: nowrap; }
+.header-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: var(--transition); }
+.header-nav a:hover { color: var(--primary-color); }
+.header-nav a:hover::after { width: 100%; }
+.header-nav a.current { color: var(--primary-color); }
+.header-nav a.current::after { width: 100%; }
+.header-cta { display: flex; align-items: center; gap: 14px; }
+.header-phone { font-size: 20px; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 6px; }
+.header-line-btn { background-color: #00B900; color: var(--white); padding: 10px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.header-line-btn:hover { background-color: #009900; }
+.mobile-menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+.mobile-menu-toggle span { display: block; width: 26px; height: 2px; background: var(--text-dark); border-radius: 2px; transition: var(--transition); }
+@media (max-width: 900px) { .header-phone { font-size: 1.1rem; } .header-line-btn { padding: 10px 14px; font-size: 0.9rem; } }
+@media (max-width: 480px) { .header-phone { display: none; } }
+
+/* フェードイン */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* セクション共通 */
+.section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; color: var(--primary-color); text-transform: uppercase; margin-bottom: 12px; }
+.section-title { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600; color: var(--text-dark); margin-bottom: 16px; line-height: 1.4; }
+.section-subtitle { font-size: 1rem; color: var(--text-gray); line-height: 1.9; }
+.section-underline { width: 60px; height: 3px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 2px; margin-bottom: 20px; }
+
+/* ページヒーロー */
+.page-hero {
+    background: linear-gradient(135deg, #1a2a3a 0%, #22394f 50%, #2c4a62 100%);
+    padding: 160px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=1600&h=600&fit=crop&q=60') center/cover no-repeat;
+    opacity: 0.15;
+}
+.page-hero-inner { position: relative; z-index: 1; }
+.page-hero-label { font-size: 0.75rem; letter-spacing: 0.25em; color: rgba(255,255,255,0.75); text-transform: uppercase; margin-bottom: 16px; font-weight: 600; }
+.page-hero-title { font-family: var(--font-serif); font-size: 2.8rem; font-weight: 600; color: var(--white); margin-bottom: 20px; }
+.page-hero-sub { font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 2; }
+
+/* 想いセクション */
+.intro { background: var(--bg-warm); }
+.intro-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+.intro-catch { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 600; color: var(--text-dark); line-height: 1.7; margin-bottom: 28px; }
+.intro-catch span { color: var(--primary-color); }
+.intro-body { font-size: 1rem; color: var(--text-gray); line-height: 2.1; }
+.intro-body p { margin-bottom: 18px; }
+.intro-image { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.intro-image img { width: 100%; height: 420px; object-fit: cover; }
+
+/* 受け付け品目 */
+.items { background: var(--white); }
+.items-header { text-align: center; margin-bottom: 60px; }
+.items-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.item-card {
+    background: var(--bg-light);
+    border-radius: 14px;
+    padding: 36px 28px;
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid #eee;
+}
+.item-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.item-icon {
+    width: 70px; height: 70px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.6rem; color: var(--white);
+}
+.item-name { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 10px; }
+.item-desc { font-size: 0.85rem; color: var(--text-gray); line-height: 1.8; }
+
+/* 注意事項 */
+.notes-box {
+    background: #f0f5ff;
+    border: 1px solid #c5d8f0;
+    border-radius: 12px;
+    padding: 36px 40px;
+    margin-top: 50px;
+}
+.notes-box-title {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2a4a7a;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.notes-box-title i { color: #3a6abf; }
+.notes-list { list-style: none; }
+.notes-list li { font-size: 0.9rem; color: var(--text-gray); padding: 8px 0; border-bottom: 1px solid #c5d8f0; padding-left: 20px; position: relative; line-height: 1.8; }
+.notes-list li:last-child { border-bottom: none; }
+.notes-list li::before { content: '・'; position: absolute; left: 0; color: #3a6abf; }
+
+/* 料金 */
+.pricing { background: var(--bg-light); }
+.pricing-header { text-align: center; margin-bottom: 60px; }
+.pricing-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 960px; margin: 0 auto; }
+.pricing-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 44px 30px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--primary-color);
+    transition: var(--transition);
+}
+.pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.pricing-card-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; color: var(--primary-color); margin-bottom: 10px; }
+.pricing-card-name { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; color: var(--text-dark); margin-bottom: 16px; }
+.pricing-card-price { font-size: 2rem; font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+.pricing-card-price span { font-size: 1rem; color: var(--text-gray); font-weight: 400; }
+.pricing-card-tax { font-size: 0.8rem; color: var(--text-gray); margin-bottom: 20px; }
+.pricing-card-desc { font-size: 0.85rem; color: var(--text-gray); line-height: 1.8; }
+.pricing-note { text-align: center; margin-top: 32px; font-size: 0.85rem; color: var(--text-gray); line-height: 2; }
+
+/* 大切な写真の扱い方・コラム */
+.column { background: var(--white); }
+.column-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+.column-image { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.column-image img { width: 100%; height: 400px; object-fit: cover; }
+.column-body {}
+.column-catch { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600; color: var(--text-dark); line-height: 1.7; margin-bottom: 24px; }
+.column-text { font-size: 0.95rem; color: var(--text-gray); line-height: 2.1; }
+.column-text p { margin-bottom: 16px; }
+
+/* ご利用の流れ */
+.flow { background: var(--bg-light); }
+.flow-header { text-align: center; margin-bottom: 60px; }
+.flow-steps { display: flex; flex-direction: column; gap: 0; max-width: 780px; margin: 0 auto; }
+.flow-step { display: grid; grid-template-columns: 80px 1fr; gap: 28px; align-items: flex-start; position: relative; padding-bottom: 48px; }
+.flow-step:last-child { padding-bottom: 0; }
+.flow-step::after { content: ''; position: absolute; left: 39px; top: 80px; width: 2px; height: calc(100% - 80px); background: linear-gradient(180deg, var(--primary-color), transparent); }
+.flow-step:last-child::after { display: none; }
+.flow-step-num {
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: var(--white); flex-shrink: 0;
+}
+.flow-step-num span:first-child { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.05em; opacity: 0.85; }
+.flow-step-num span:last-child { font-size: 1.6rem; font-weight: 700; line-height: 1; }
+.flow-step-body {}
+.flow-step-title { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; color: var(--text-dark); margin-bottom: 10px; padding-top: 20px; }
+.flow-step-desc { font-size: 0.9rem; color: var(--text-gray); line-height: 1.9; }
+
+/* FAQ */
+.faq-section { background: var(--white); }
+.faq-section-header { text-align: center; margin-bottom: 50px; }
+.faq-list { max-width: 860px; margin: 0 auto; }
+.faq-item { margin-bottom: 12px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.faq-question { width: 100%; background-color: var(--bg-light); padding: 20px 26px; display: flex; align-items: center; gap: 14px; text-align: left; cursor: pointer; transition: var(--transition); }
+.faq-question:hover { background-color: rgba(140,192,78,0.05); }
+.faq-item.active .faq-question { background-color: rgba(140,192,78,0.1); }
+.faq-q { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: var(--font-serif); flex-shrink: 0; }
+.faq-question-text { flex: 1; font-size: 1rem; font-weight: 600; color: var(--text-dark); line-height: 1.6; }
+.faq-question i { color: var(--primary-color); transition: var(--transition); font-size: 0.9rem; flex-shrink: 0; }
+.faq-item.active .faq-question i { transform: rotate(180deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.faq-item.active .faq-answer { max-height: 500px; }
+.faq-answer-content { padding: 20px 26px 22px 80px; background-color: #f7f7f5; display: flex; gap: 14px; }
+.faq-a { width: 40px; height: 40px; background: var(--secondary-color); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: var(--font-serif); flex-shrink: 0; }
+.faq-answer-content p { flex: 1; font-size: 0.9rem; color: var(--text-gray); line-height: 2; }
+
+/* CTA */
+.cta { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); padding: 80px 0; }
+.cta-content { text-align: center; color: var(--white); }
+.cta-title { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 600; margin-bottom: 18px; }
+.cta-subtitle { font-size: 1.2rem; opacity: 0.95; margin-bottom: 50px; line-height: 1.9; }
+.cta-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1000px; margin: 0 auto; }
+.cta-btn { background-color: var(--white); color: var(--primary-color); padding: 30px 20px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; gap: 8px; transition: var(--transition); font-family: inherit; cursor: pointer; border: none; text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+.cta-btn:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.18); }
+.cta-btn i { font-size: 2rem; margin-bottom: 4px; }
+.cta-btn-label { font-size: 1rem; font-weight: 700; color: var(--text-dark); }
+.cta-btn-number { font-size: 1.3rem; font-weight: 700; color: var(--primary-color); }
+.cta-btn-text { font-size: 0.9rem; color: var(--text-gray); }
+.phone-btn i { color: var(--primary-color); }
+.line-btn i { color: #00B900; }
+.mail-btn i { color: var(--primary-color); }
+
+/* ========== フッター ========== */
+.footer { background-color: var(--dark-gray); color: var(--white); padding: 60px 0 30px; }
+.footer-content { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-title { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--primary-color); margin-bottom: 15px; }
+.footer-company, .footer-address, .footer-contact, .footer-hours { font-size: 1.05rem; line-height: 1.9; margin-bottom: 10px; }
+.footer-contact a { color: var(--primary-color); font-weight: 600; }
+.footer-heading { font-size: 1.2rem; font-weight: 600; margin-bottom: 20px; }
+.footer-links li { margin-bottom: 14px; }
+.footer-links a { font-size: 1.05rem; color: rgba(255,255,255,0.8); }
+.footer-links a:hover { color: var(--primary-color); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; }
+
+/* ページトップ */
+.page-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: var(--primary-color); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); opacity: 0; pointer-events: none; transition: var(--transition); z-index: 500; font-size: 1rem; }
+.page-top.visible { opacity: 1; pointer-events: auto; }
+.page-top:hover { background: var(--secondary-color); transform: translateY(-3px); }
+
+/* LINEモーダル */
+.line-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+.line-modal-overlay.open { opacity: 1; pointer-events: auto; }
+.line-modal { background: var(--white); border-radius: 16px; padding: 40px 36px; text-align: center; max-width: 400px; width: 90%; position: relative; transform: translateY(20px); transition: transform 0.3s ease; }
+.line-modal-overlay.open .line-modal { transform: translateY(0); }
+.line-modal-close { position: absolute; top: 14px; right: 18px; font-size: 1.6rem; color: var(--text-gray); line-height: 1; }
+.line-modal-icon { font-size: 3rem; color: #00B900; margin-bottom: 12px; }
+.line-modal-title { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600; margin-bottom: 10px; }
+.line-modal-sub { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 20px; line-height: 1.8; }
+.line-modal-qr { margin: 0 auto 16px; width: 160px; height: 160px; border: 2px solid #e8e8e8; border-radius: 10px; overflow: hidden; }
+.line-modal-qr img { width: 100%; height: 100%; object-fit: cover; }
+.line-modal-note { font-size: 0.82rem; color: var(--text-gray); line-height: 1.8; }
+
+/* レスポンシブ */
+@media (max-width: 1024px) {
+    .header-nav { display: none; }
+    .header-cta { display: none; }
+    .mobile-menu-toggle { display: flex; }
+    .footer-content { grid-template-columns: repeat(2,1fr); }
+    .items-grid { grid-template-columns: repeat(2, 1fr); }
+    .pricing-cards { grid-template-columns: 1fr 1fr; }
+    .column-inner { gap: 40px; }
+}
+@media (max-width: 768px) {
+    html { font-size: 18px; }
+    .page-hero-title { font-size: 2.1rem; }
+    .intro-inner { grid-template-columns: 1fr; gap: 40px; }
+    .intro-image { order: -1; }
+    .intro-image img { height: 280px; }
+    .column-inner { grid-template-columns: 1fr; gap: 40px; }
+    .column-image img { height: 280px; }
+    .items-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .pricing-cards { grid-template-columns: 1fr; max-width: 400px; }
+    .cta-title { font-size: 1.8rem; }
+    .cta-buttons { grid-template-columns: 1fr; gap: 16px; max-width: 400px; }
+    .footer-content { grid-template-columns: repeat(2,1fr); }
+    .notes-box { padding: 28px 24px; }
+    .faq-answer-content { padding: 18px; flex-direction: column; }
+}
+@media (max-width: 480px) {
+    html { font-size: 16px; }
+    .items-grid { grid-template-columns: 1fr; }
+    .footer-content { grid-template-columns: 1fr; }
+    .page-hero-title { font-size: 1.8rem; }
+}
+    /* ========== モバイルメニュードロワー ========== */
+.header-nav.open {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    z-index: 999;
+    padding: 20px 30px 30px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+.header-nav.open ul {
+    flex-direction: column;
+    gap: 0;
+}
+.header-nav.open ul li {
+    border-bottom: 1px solid #f0f0f0;
+}
+.header-nav.open ul li a {
+    display: block;
+    padding: 14px 0;
+    font-size: 16px;
+}
+.nav-mobile-cta {
+    display: none;
+}
+.header-nav.open .nav-mobile-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+.nav-mobile-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.nav-mobile-line {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #00B900;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.mobile-menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.mobile-menu-toggle.open span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="header" id="header">
+    <div class="header-container">
+        <div class="header-logo">
+            <a href="preview.html">のぞみ葬祭</a>
+        </div>
+        <nav class="header-nav" id="headerNav">
+            <ul>
+                <li><a href="about.html">のぞみ葬祭について</a></li>
+                <li><a href="plan-detail.html">プラン</a></li>
+                <li><a href="hall.html">会館のご紹介</a></li>
+                <li><a href="access.html">アクセス</a></li>
+                <li><a href="flowers.html">供花のご注文</a></li>
+                <li><a href="faq.html">よくある質問</a></li>
+                    <li><a href="flow.html">葬儀の流れ</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+            </ul>
+            <!-- モバイル用連絡先 -->
+            <div class="nav-mobile-cta">
+                <a href="tel:0120209678" class="nav-mobile-phone"><i class="fas fa-phone-flip"></i> 0120-209-678</a>
+                <button class="nav-mobile-line" onclick="openLineModal()"><i class="fab fa-line"></i> LINEで相談する</button>
+            </div>
+        </nav>
+        <div class="header-cta">
+            <a href="tel:0120209678" class="header-phone">
+                <i class="fas fa-phone-flip"></i> 0120-209-678
+            </a>
+            <button class="header-line-btn" onclick="openLineModal()">
+                <i class="fab fa-line"></i> LINEで相談
+            </button>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="メニュー">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ページヒーロー -->
+<section class="page-hero">
+    <div class="container">
+        <div class="page-hero-inner">
+            <p class="page-hero-label">PHOTO MEMORIAL</p>
+            <h1 class="page-hero-title">写真供養</h1>
+            <p class="page-hero-sub">
+                故人さまの想い出が宿る大切な写真を、<br>
+                心を込めて丁重にお焚き上げいたします。
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- 想い・ご紹介 -->
+<section class="intro">
+    <div class="container">
+        <div class="intro-inner">
+            <div class="intro-text fade-in">
+                <p class="section-label">OUR THOUGHTS</p>
+                <h2 class="intro-catch">
+                    <span>想い出の一枚</span>に、<br>きちんと感謝を伝える。
+                </h2>
+                <div class="intro-body">
+                    <p>「故人の遺品を整理していたら、大量の写真が出てきた」「古くなったアルバムをどう処分すればよいかわからない」——そのようなお悩みをお持ちの方は少なくありません。</p>
+                    <p>写真には、故人さまや大切な方の面影が宿っています。生前の姿が映ったものをただゴミとして捨てることに抵抗を感じるのは、自然な気持ちです。</p>
+                    <p>のぞみ葬祭では、そのような大切な写真を合同供養のうえ、丁重にお焚き上げいたします。「きちんとお別れをしたい」というお気持ちに、心を込めてお応えします。</p>
+                </div>
+            </div>
+            <div class="intro-image fade-in">
+                <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=700&h=420&fit=crop&q=80" alt="写真供養イメージ（仮）">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 受け付け品目 -->
+<section class="items">
+    <div class="container">
+        <div class="items-header fade-in">
+            <p class="section-label">ITEMS</p>
+            <h2 class="section-title">受け付け品目</h2>
+            <div class="section-underline" style="margin: 0 auto 16px;"></div>
+            <p class="section-subtitle">以下の品物のご供養を承っております</p>
+        </div>
+        <div class="items-grid">
+            <div class="item-card fade-in">
+                <div class="item-icon"><i class="fas fa-image"></i></div>
+                <h3 class="item-name">紙焼き写真・スナップ写真</h3>
+                <p class="item-desc">日常の思い出や旅行の記念写真など、大切にしてきた紙の写真を供養いたします。</p>
+            </div>
+            <div class="item-card fade-in">
+                <div class="item-icon"><i class="fas fa-book-open"></i></div>
+                <h3 class="item-name">アルバム・フォトブック</h3>
+                <p class="item-desc">長年大切にしてきたアルバムやフォトブックをまとめてお預かりします。</p>
+            </div>
+            <div class="item-card fade-in">
+                <div class="item-icon"><i class="fas fa-portrait"></i></div>
+                <h3 class="item-name">遺影・肖像写真</h3>
+                <p class="item-desc">葬儀に使用した遺影や、故人さまの大切な肖像写真を丁重に供養いたします。</p>
+            </div>
+            <div class="item-card fade-in">
+                <div class="item-icon"><i class="fas fa-film"></i></div>
+                <h3 class="item-name">ネガフィルム・スライド</h3>
+                <p class="item-desc">古いネガフィルムやスライドフィルムも適切にお焚き上げいたします。</p>
+            </div>
+            <div class="item-card fade-in">
+                <div class="item-icon"><i class="fas fa-id-card"></i></div>
+                <h3 class="item-name">証明写真・集合写真</h3>
+                <p class="item-desc">卒業写真・証明写真・集合写真など各種写真に対応いたします。</p>
+            </div>
+            <div class="item-card fade-in">
+                <div class="item-icon"><i class="fas fa-question-circle"></i></div>
+                <h3 class="item-name">その他の写真類</h3>
+                <p class="item-desc">上記以外の写真類についても、まずはお気軽にご相談ください。</p>
+            </div>
+        </div>
+
+        <!-- 注意事項 -->
+        <div class="notes-box fade-in">
+            <p class="notes-box-title"><i class="fas fa-info-circle"></i> お受けできないもの・注意事項</p>
+            <ul class="notes-list">
+                <li>デジタルデータ（スマートフォン・SDカード・USBメモリ等）はお受けできません。</li>
+                <li>フレーム・額縁などは素材によって別対応となる場合があります。事前にご相談ください。</li>
+                <li>個人情報が含まれる写真は適切に管理し、第三者の目に触れることなく処理いたします。</li>
+                <li>お持ち込みの場合は事前にお電話またはLINEでご連絡ください。</li>
+                <li>郵送でのお受け付けについてはお問い合わせください。</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 料金 -->
+<section class="pricing">
+    <div class="container">
+        <div class="pricing-header fade-in">
+            <p class="section-label">PRICING</p>
+            <h2 class="section-title">供養料金</h2>
+            <div class="section-underline" style="margin: 0 auto 16px;"></div>
+            <p class="section-subtitle">数量・分量に応じた料金をご用意しています</p>
+        </div>
+        <div class="pricing-cards">
+            <div class="pricing-card fade-in">
+                <p class="pricing-card-label">SMALL</p>
+                <h3 class="pricing-card-name">少量</h3>
+                <p class="pricing-card-price">2,000<span>円〜</span></p>
+                <p class="pricing-card-tax">（税込 2,200円〜）</p>
+                <p class="pricing-card-desc">写真約50枚以内・薄いアルバム1冊程度まで</p>
+            </div>
+            <div class="pricing-card fade-in">
+                <p class="pricing-card-label">MEDIUM</p>
+                <h3 class="pricing-card-name">中量</h3>
+                <p class="pricing-card-price">4,000<span>円〜</span></p>
+                <p class="pricing-card-tax">（税込 4,400円〜）</p>
+                <p class="pricing-card-desc">写真50〜200枚・アルバム2〜3冊程度まで</p>
+            </div>
+            <div class="pricing-card fade-in">
+                <p class="pricing-card-label">LARGE</p>
+                <h3 class="pricing-card-name">大量・まとめて</h3>
+                <p class="pricing-card-price">8,000<span>円〜</span></p>
+                <p class="pricing-card-tax">（税込 8,800円〜）</p>
+                <p class="pricing-card-desc">写真200枚以上・アルバム多数・遺品一式まとめてお任せ</p>
+            </div>
+        </div>
+        <p class="pricing-note fade-in">
+            ※ 料金は数量・分量によって異なります。正確な金額はご相談時にお見積もりいたします。<br>
+            ※ 上記はすべてご供養料・お焚き上げ料込みの金額です。
+        </p>
+    </div>
+</section>
+
+<!-- コラム：写真の扱い方 -->
+<section class="column">
+    <div class="container">
+        <div class="column-inner">
+            <div class="column-image fade-in">
+                <img src="https://images.unsplash.com/photo-1516571748831-5d81767b788d?w=700&h=400&fit=crop&q=80" alt="写真整理イメージ（仮）">
+            </div>
+            <div class="column-body fade-in">
+                <p class="section-label">COLUMN</p>
+                <h2 class="column-catch">遺品整理と写真——どう向き合うか</h2>
+                <div class="column-text">
+                    <p>遺品整理の中でも、写真の処分は特に心が痛むものです。「捨てる」という行為に罪悪感を覚える方も多く、結果として長年手をつけられないまま保管されているケースが少なくありません。</p>
+                    <p>写真供養は、そのような気持ちに区切りをつけるための大切な儀式です。感謝の気持ちを込めて手放すことで、心が軽くなったとおっしゃるご遺族様が多くいらっしゃいます。</p>
+                    <p>「いつか整理しなければ」と思いながら踏み出せずにいる方、ぜひのぞみ葬祭にお任せください。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ご利用の流れ -->
+<section class="flow">
+    <div class="container">
+        <div class="flow-header fade-in">
+            <p class="section-label">HOW TO USE</p>
+            <h2 class="section-title">ご利用の流れ</h2>
+            <div class="section-underline" style="margin: 0 auto 16px;"></div>
+        </div>
+        <div class="flow-steps">
+            <div class="flow-step fade-in">
+                <div class="flow-step-num"><span>STEP</span><span>1</span></div>
+                <div class="flow-step-body">
+                    <h3 class="flow-step-title">お問い合わせ・事前確認</h3>
+                    <p class="flow-step-desc">まずはお電話（0120-209-678）またはLINEにて、写真の枚数・アルバムの冊数をお知らせください。料金のご案内をいたします。</p>
+                </div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-step-num"><span>STEP</span><span>2</span></div>
+                <div class="flow-step-body">
+                    <h3 class="flow-step-title">お持ち込み・お預け</h3>
+                    <p class="flow-step-desc">のぞみ葬祭 琥珀ホール（兵庫県三木市別所町高木933-5）までお持ちください。郵送をご希望の方は、事前にご連絡の上でお送りください。</p>
+                </div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-step-num"><span>STEP</span><span>3</span></div>
+                <div class="flow-step-body">
+                    <h3 class="flow-step-title">供養料のお支払い</h3>
+                    <p class="flow-step-desc">お持ち込みの際に供養料をお支払いいただきます。現金・銀行振込に対応しております。</p>
+                </div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-step-num"><span>STEP</span><span>4</span></div>
+                <div class="flow-step-body">
+                    <h3 class="flow-step-title">読経・ご供養</h3>
+                    <p class="flow-step-desc">提携する僧侶が読経を行い、写真に宿った大切な想い出と故人さまへの感謝を込めてご供養いたします。</p>
+                </div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-step-num"><span>STEP</span><span>5</span></div>
+                <div class="flow-step-body">
+                    <h3 class="flow-step-title">お焚き上げ・個人情報の適切な処理</h3>
+                    <p class="flow-step-desc">ご供養後、適切な方法でお焚き上げいたします。個人情報の保護を徹底し、第三者の目に触れることなく処理いたします。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- よくある質問 -->
+<section class="faq-section">
+    <div class="container">
+        <div class="faq-section-header fade-in">
+            <p class="section-label">FAQ</p>
+            <h2 class="section-title">よくある質問</h2>
+            <div class="section-underline" style="margin: 0 auto 16px;"></div>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item fade-in">
+                <button class="faq-question">
+                    <span class="faq-q">Q</span>
+                    <span class="faq-question-text">写真を誰かに見られることはありませんか？</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <span class="faq-a">A</span>
+                        <p>個人情報・プライバシーの保護を徹底しております。お預かりした写真は第三者の目に触れることなく、スタッフのみが取り扱い、そのままお焚き上げいたします。安心してお預けください。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <button class="faq-question">
+                    <span class="faq-q">Q</span>
+                    <span class="faq-question-text">アルバムごと持ち込んでもよいですか？</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <span class="faq-a">A</span>
+                        <p>はい、アルバムごとお持ちいただけます。写真をアルバムから取り出していただく必要はありません。ただし、アルバムの素材（金属金具・厚いバインダー等）によっては別途対応となる場合がありますので、事前にご連絡ください。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <button class="faq-question">
+                    <span class="faq-q">Q</span>
+                    <span class="faq-question-text">スマートフォンやデジタルデータの写真も供養できますか？</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <span class="faq-a">A</span>
+                        <p>デジタルデータ（スマートフォン・SDカード・USBメモリ等）はお焚き上げの対象外となります。デジタルデータの処分については、データ消去サービス等の専門業者へのご相談をおすすめします。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <button class="faq-question">
+                    <span class="faq-q">Q</span>
+                    <span class="faq-question-text">生きている方が写っている写真でも供養できますか？</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <span class="faq-a">A</span>
+                        <p>はい、大丈夫です。ご遺族さまや友人の方が写っていても、写真供養はご依頼いただけます。「捨てるには忍びない」写真をまとめてお任せください。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <button class="faq-question">
+                    <span class="faq-q">Q</span>
+                    <span class="faq-question-text">供養の立ち合いはできますか？</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <span class="faq-a">A</span>
+                        <p>はい、ご希望の方はご立会いいただけます。ご供養の日程については、お問い合わせの際にご相談ください。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="consultation">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">あなたの"のぞみ"を聞かせてください</h2>
+            <p class="cta-subtitle">事前相談・お問い合わせは24時間365日承っております<br>どんな小さなことでも、お気軽にご相談ください</p>
+            <div class="cta-buttons">
+                <a href="tel:0120209678" class="cta-btn phone-btn">
+                    <i class="fas fa-phone-flip"></i>
+                    <span class="cta-btn-label">お電話で相談</span>
+                    <span class="cta-btn-number">0120-209-678</span>
+                </a>
+                <button class="cta-btn line-btn" onclick="openLineModal()">
+                    <i class="fab fa-line"></i>
+                    <span class="cta-btn-label">LINEで相談</span>
+                    <span class="cta-btn-text">友だち追加はこちら</span>
+                </button>
+                <a href="contact.html" class="cta-btn mail-btn">
+                    <i class="fas fa-envelope"></i>
+                    <span class="cta-btn-label">メールで相談</span>
+                    <span class="cta-btn-text">お問い合わせフォーム</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- フッター -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 class="footer-title"><a href="preview.html" style="color:inherit;text-decoration:none;">のぞみ葬祭</a></h3>
+                <p class="footer-company">株式会社VERDE</p>
+                <p class="footer-address">〒673-0435<br>兵庫県三木市別所町高木933-5</p>
+                <p class="footer-contact">TEL: <a href="tel:0120209678">0120-209-678</a>（24時間365日）</p>
+                <p class="footer-hours">営業時間: 24時間営業<br>定休日: 年中無休</p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">サイトマップ</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">のぞみ葬祭について</a></li>
+                    <li><a href="plan-detail.html">プラン</a></li>
+                    <li><a href="hall.html">会館のご紹介</a></li>
+                    <li><a href="access.html">アクセス</a></li>
+                    <li><a href="faq.html">よくある質問</a></li>
+                    <li><a href="flow.html">葬儀の流れ</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">プラン一覧</h4>
+                <ul class="footer-links">
+                    <li><a href="plan-detail.html#ceremony">ダイヤモンドプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">プラチナプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">ゴールドプラン</a></li>
+                    <li><a href="plan-detail.html#ceremony">シルバープラン</a></li>
+                    <li><a href="plan-detail.html#family">ホワイトプラン</a></li>
+                    <li><a href="plan-detail.html#direct">シンプルプラン</a></li>
+                    <li><a href="plan-detail.html#direct">プチプラン</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">その他</h4>
+                <ul class="footer-links">
+                    <li><a href="doll-memorial.html">人形供養</a></li>
+                    <li><a href="photo-memorial.html">写真供養</a></li>
+                    <li><a href="privacy.html">プライバシーポリシー</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2026 株式会社VERDE All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<button class="page-top" id="pageTop" aria-label="ページトップへ戻る">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const pageTop = document.getElementById('pageTop');
+    window.addEventListener('scroll', () => { if (pageTop) pageTop.classList.toggle('visible', window.scrollY > 300); });
+    if (pageTop) pageTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    const mobileToggle = document.getElementById('mobileMenuToggle');
+    const headerNav    = document.getElementById('headerNav');
+    if (mobileToggle && headerNav) {
+        mobileToggle.addEventListener('click', function () { this.classList.toggle('open'); headerNav.classList.toggle('open'); });
+    }
+    
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const item = this.closest('.faq-item');
+            item.classList.toggle('active');
+        });
+    });
+});
+</script>
+
+<!-- LINEモーダル -->
+<div class="line-modal-overlay" id="lineModal" onclick="if(event.target===this)closeLineModal()">
+    <div class="line-modal">
+        <button class="line-modal-close" onclick="closeLineModal()" aria-label="閉じる">&times;</button>
+        <div class="line-modal-icon"><i class="fab fa-line"></i></div>
+        <h2 class="line-modal-title">LINEで相談する</h2>
+        <p class="line-modal-sub">QRコードを読み取って<br>友だち追加してください</p>
+        <div class="line-modal-qr">
+            <img src="https://placehold.jp/30/00B900/ffffff/200x200.png?text=QR+Code" alt="LINE QRコード（ダミー）">
+        </div>
+        <p class="line-modal-note">24時間いつでもメッセージをお送りいただけます。<br>お気軽にご相談ください。</p>
+    </div>
+</div>
+<script>
+function openLineModal(){ document.getElementById('lineModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLineModal(){ document.getElementById('lineModal').classList.remove('open'); document.body.style.overflow=''; }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLineModal(); });
+</script>
+</body>
+</html>

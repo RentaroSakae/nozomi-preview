@@ -66,15 +66,15 @@ section { padding: 100px 0; }
 /* ヘッダー */
 .header { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--white); box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000; transition: var(--transition); }
 .header-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 30px; height: 80px; }
-.header-logo a { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--primary-color); }
+.header-logo a { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: var(--primary-color); }
 .header-nav ul { display: flex; gap: 18px; }
 .header-nav a { font-size: 0.82rem; font-weight: 500; color: var(--text-dark); position: relative; white-space: nowrap; }
 .header-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: var(--transition); }
 .header-nav a:hover { color: var(--primary-color); }
 .header-nav a:hover::after { width: 100%; }
-.header-cta { display: flex; align-items: center; gap: 20px; }
-.header-phone { font-size: 1.6rem; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 8px; }
-.header-line-btn { background-color: #00B900; color: var(--white); padding: 12px 22px; border-radius: 8px; font-size: 1.05rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.header-cta { display: flex; align-items: center; gap: 14px; }
+.header-phone { font-size: 20px; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 6px; }
+.header-line-btn { background-color: #00B900; color: var(--white); padding: 10px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
 .header-line-btn:hover { background-color: #009900; }
 .mobile-menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 10px; }
 .mobile-menu-toggle span { width: 25px; height: 3px; background-color: var(--text-dark); transition: var(--transition); }
@@ -312,6 +312,7 @@ section { padding: 100px 0; }
 /* レスポンシブ */
 @media (max-width: 1024px) {
     .header-nav { display: none; }
+    .header-cta { display: none; }
     .mobile-menu-toggle { display: flex; }
     .features { grid-template-columns: 1fr; }
     .hall-content { grid-template-columns: 1fr; }
@@ -325,7 +326,6 @@ section { padding: 100px 0; }
     section { padding: 60px 0; }
     .section-title { font-size: 2.4rem; }
     .header-container { height: 64px; padding: 0 15px; }
-    .header-cta { display: none; }
     .hero { min-height: 500px; background-attachment: scroll; }
     .hero-title { font-size: 1.8rem; }
     .hero-subtitle { font-size: 1.2rem; }
@@ -349,7 +349,72 @@ section { padding: 100px 0; }
     .cta-title { font-size: 1.8rem; }
     .faq-question-text { font-size: 1.05rem; }
 }
-    </style>
+    /* ========== モバイルメニュードロワー ========== */
+.header-nav.open {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    z-index: 999;
+    padding: 20px 30px 30px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+.header-nav.open ul {
+    flex-direction: column;
+    gap: 0;
+}
+.header-nav.open ul li {
+    border-bottom: 1px solid #f0f0f0;
+}
+.header-nav.open ul li a {
+    display: block;
+    padding: 14px 0;
+    font-size: 16px;
+}
+.nav-mobile-cta {
+    display: none;
+}
+.header-nav.open .nav-mobile-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+.nav-mobile-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.nav-mobile-line {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #00B900;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.mobile-menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.mobile-menu-toggle.open span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+</style>
 </head>
 <body>
 
@@ -367,11 +432,18 @@ section { padding: 100px 0; }
                 <li><a href="access.html">アクセス</a></li>
                 <li><a href="flowers.html">供花のご注文</a></li>
                 <li><a href="faq.html">よくある質問</a></li>
+                    <li><a href="flow.html">葬儀の流れ</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
             </ul>
+            <!-- モバイル用連絡先 -->
+            <div class="nav-mobile-cta">
+                <a href="tel:0120209678" class="nav-mobile-phone"><i class="fas fa-phone-flip"></i> 0120-209-678</a>
+                <button class="nav-mobile-line" onclick="openLineModal()"><i class="fab fa-line"></i> LINEで相談する</button>
+            </div>
         </nav>
         <div class="header-cta">
             <a href="tel:0120209678" class="header-phone">
-                <i class="fas fa-phone-flip"></i> 0120-20-9678
+                <i class="fas fa-phone-flip"></i> 0120-209-678
             </a>
             <button class="header-line-btn" onclick="openLineModal()">
                 <i class="fab fa-line"></i> LINEで相談
@@ -389,7 +461,7 @@ section { padding: 100px 0; }
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <div class="hero-buttons">
-            <a href="#consultation" class="btn btn-primary">事前相談はこちら</a>
+            <a href="contact.html" class="btn btn-primary">事前相談はこちら</a>
             <button class="btn btn-line" onclick="openLineModal()"><i class="fab fa-line"></i> LINEで相談する</button>
         </div>
     </div>
@@ -407,16 +479,16 @@ section { padding: 100px 0; }
             <div class="section-underline"></div>
         </div>
         <p class="about-lead">
-            故人さまのご意向、ご家族さまのご希望を第一に考え、<br>
+            故人さまのお気持ち、ご家族さまのご希望を第一に考え、<br>
             心に寄り添ったお見送りをお手伝いいたします。<br>
-            三木市で長年地域に根ざした葬儀社として、<br>
+            三木市で地域に根ざした葬儀社として、<br>
             温かく、丁寧なサービスをご提供しております。
         </p>
         <div class="features">
             <div class="feature-card fade-in">
                 <div class="feature-icon"><i class="fas fa-clock"></i></div>
                 <h3 class="feature-title">いつでもご相談いただけます</h3>
-                <p class="feature-text">突然の訃報は、いつ訪れるか分かりません。のぞみ葬祭では、24時間365日、いつでもお電話でご相談を承っております。深夜・早朝を問わず、経験豊富なスタッフが丁寧に対応いたします。まずはお気軽にお電話ください。</p>
+                <p class="feature-text">のぞみ葬祭では、24時間365日、いつでもお電話でご相談を承っております。深夜・早朝を問わず、経験豊富なスタッフが丁寧に対応いたします。突然の訃報は、いつ訪れるか分かりません。まずはお気軽にお電話ください。</p>
             </div>
             <div class="feature-card fade-in">
                 <div class="feature-icon"><i class="fas fa-heart"></i></div>
@@ -460,12 +532,12 @@ section { padding: 100px 0; }
                 <p class="hall-description">三木市別所町に位置する琥珀ホールは、ご家族さまのプライバシーを大切にし、心からのお見送りができる環境を整えております。</p>
                 <p class="hall-description">落ち着いた色調の館内は、故人さまを偲びながら静かに語り合える、穏やかな空間です。</p>
                 <div class="hall-info">
-                    <div class="hall-info-item"><i class="fas fa-users"></i><span>収容人数：最大80名様</span></div>
-                    <div class="hall-info-item"><i class="fas fa-square-parking"></i><span>駐車場：30台完備（無料）</span></div>
+                    <div class="hall-info-item"><i class="fas fa-users"></i><span>収容人数：30名様</span></div>
+                    <div class="hall-info-item"><i class="fas fa-square-parking"></i><span>駐車場：約10台</span></div>
                     <div class="hall-info-item"><i class="fas fa-home"></i><span>設備：親族控室、宿泊施設、キッチン、浴室</span></div>
                     <div class="hall-info-item"><i class="fas fa-wheelchair"></i><span>バリアフリー設計で安心</span></div>
                 </div>
-                <a href="#consultation" class="btn btn-primary">会館の詳細を見る</a>
+                <a href="hall.html" class="btn btn-primary">会館の詳細を見る</a>
             </div>
         </div>
     </div>
@@ -483,25 +555,25 @@ section { padding: 100px 0; }
             <button class="tab-btn active" data-tab="ceremony">
                 <span class="tab-btn-title">セレモニープラン</span>
                 <div class="tab-plan-list">
-                    <span class="tab-plan-tag">💎 ダイヤモンド</span>
-                    <span class="tab-plan-tag">✦ プラチナ</span>
-                    <span class="tab-plan-tag">★ ゴールド</span>
-                    <span class="tab-plan-tag">◇ シルバー</span>
+                    <span class="tab-plan-tag">ダイヤモンド</span>
+                    <span class="tab-plan-tag">プラチナ</span>
+                    <span class="tab-plan-tag">ゴールド</span>
+                    <span class="tab-plan-tag">シルバー</span>
                 </div>
             </button>
             <button class="tab-btn" data-tab="family">
                 <span class="tab-btn-title">ファミリープラン</span>
                 <div class="tab-plan-list">
-                    <span class="tab-plan-tag">★ ゴールド</span>
-                    <span class="tab-plan-tag">◇ シルバー</span>
-                    <span class="tab-plan-tag">○ ホワイト（一日葬）</span>
+                    <span class="tab-plan-tag">ゴールド</span>
+                    <span class="tab-plan-tag">シルバー</span>
+                    <span class="tab-plan-tag">ホワイト（一日葬）</span>
                 </div>
             </button>
             <button class="tab-btn" data-tab="direct">
                 <span class="tab-btn-title">直葬プラン</span>
                 <div class="tab-plan-list">
-                    <span class="tab-plan-tag">□ シンプル</span>
-                    <span class="tab-plan-tag">♦ プチ</span>
+                    <span class="tab-plan-tag">シンプル</span>
+                    <span class="tab-plan-tag">プチ</span>
                 </div>
             </button>
         </div>
@@ -669,7 +741,7 @@ section { padding: 100px 0; }
 
         <p class="plans-note">
             ※写真はイメージです。<br>
-            ※各プランには寝台車（初回20kmまで）・棺搬送車料金（初回）が含まれております。<br>
+            ※各プランには寝台車（初回20kmまで）・ご遺体冷却保全（初回）が含まれております。<br>
             ※ご希望に応じて、追加オプションもご用意しております。詳しくはお問い合わせください。
         </p>
     </div>
@@ -688,7 +760,7 @@ section { padding: 100px 0; }
                 <div class="service-overlay">
                     <h3 class="service-title">人形供養</h3>
                     <p class="service-description">大切にしてきた人形やぬいぐるみを、心を込めてご供養いたします</p>
-                    <a href="#consultation" class="btn btn-white-outline">詳しく見る</a>
+                    <a href="doll-memorial.html" class="btn btn-white-outline">詳しく見る</a>
                 </div>
             </div>
             <div class="service-card fade-in">
@@ -696,7 +768,7 @@ section { padding: 100px 0; }
                 <div class="service-overlay">
                     <h3 class="service-title">写真供養</h3>
                     <p class="service-description">故人さまや大切な方の写真を、心を込めてご供養いたします</p>
-                    <a href="#consultation" class="btn btn-white-outline">詳しく見る</a>
+                    <a href="photo-memorial.html" class="btn btn-white-outline">詳しく見る</a>
                 </div>
             </div>
         </div>
@@ -712,7 +784,7 @@ section { padding: 100px 0; }
                 <p class="greeting-name">代表取締役　松田 康代</p>
                 <div class="greeting-message">
                     <p>皆さまの"のぞみ"に、心から寄り添いたい。</p>
-                    <p>のぞみ葬祭は、故人さまのご意向とご家族さまのお気持ちを何よりも大切にする葬儀社でありたいと考えております。</p>
+                    <p>のぞみ葬祭は、故人さまのお気持ちとご家族さまのお気持ちを何よりも大切にする葬儀社でありたいと考えております。</p>
                     <p>葬儀は、故人さまとの最後の大切な時間です。その一瞬一瞬を、心に残る温かなものにしていただけるよう、私たちスタッフ一同、誠心誠意お手伝いさせていただきます。</p>
                     <p>「こんな小さなことでも相談していいのだろうか」そんな遠慮は、どうか無用です。些細なことでも、どんなことでも、まずはお気軽にご相談ください。</p>
                     <p>皆さまの"のぞみ"を、ぜひお聞かせください。私たちが、心を込めてお応えいたします。</p>
@@ -721,9 +793,7 @@ section { padding: 100px 0; }
                 </div>
             </div>
             <div class="greeting-image fade-in">
-                <div class="greeting-placeholder">
-                    <i class="fas fa-user"></i>
-                </div>
+                <img src="https://nozomi-sousai.jp/wp-content/uploads/2023/06/Yasuyo_Matsuda.jpg" alt="代表取締役 松田 康代" style="width:320px;height:320px;object-fit:cover;object-position:center top;border-radius:50%;box-shadow:0 8px 24px rgba(0,0,0,0.12);border:8px solid var(--white);">
             </div>
         </div>
     </div>
@@ -743,7 +813,7 @@ section { padding: 100px 0; }
             </div>
             <div class="faq-item fade-in">
                 <button class="faq-question"><span class="faq-q">Q</span><span class="faq-question-text">深夜や早朝でも対応していただけますか？</span><i class="fas fa-chevron-down"></i></button>
-                <div class="faq-answer"><div class="faq-answer-content"><span class="faq-a">A</span><p>はい、24時間365日、いつでも対応いたします。深夜・早朝を問わず、まずはお電話（0120-20-9678）ください。経験豊富なスタッフが、すぐに駆けつけます。</p></div></div>
+                <div class="faq-answer"><div class="faq-answer-content"><span class="faq-a">A</span><p>はい、24時間365日、いつでも対応いたします。深夜・早朝を問わず、まずはお電話（0120-209-678）ください。経験豊富なスタッフが、すぐに駆けつけます。</p></div></div>
             </div>
             <div class="faq-item fade-in">
                 <button class="faq-question"><span class="faq-q">Q</span><span class="faq-question-text">葬儀費用の支払いはいつですか？</span><i class="fas fa-chevron-down"></i></button>
@@ -763,7 +833,7 @@ section { padding: 100px 0; }
             </div>
             <div class="faq-item fade-in">
                 <button class="faq-question"><span class="faq-q">Q</span><span class="faq-question-text">駐車場はありますか？</span><i class="fas fa-chevron-down"></i></button>
-                <div class="faq-answer"><div class="faq-answer-content"><span class="faq-a">A</span><p>はい、琥珀ホールには30台分の無料駐車場を完備しております。大型車でもご利用いただけます。</p></div></div>
+                <div class="faq-answer"><div class="faq-answer-content"><span class="faq-a">A</span><p>はい、琥珀ホールには約10台分の無料駐車場を完備しております。大型車でもご利用いただけます。</p></div></div>
             </div>
             <div class="faq-item fade-in">
                 <button class="faq-question"><span class="faq-q">Q</span><span class="faq-question-text">生前予約（事前契約）はできますか？</span><i class="fas fa-chevron-down"></i></button>
@@ -795,7 +865,7 @@ section { padding: 100px 0; }
                 </div>
                 <div class="access-item">
                     <div class="access-icon"><i class="fas fa-phone"></i></div>
-                    <div class="access-text"><h4>電話</h4><p><a href="tel:0120209678">0120-20-9678</a>（通話無料）</p></div>
+                    <div class="access-text"><h4>電話</h4><p><a href="tel:0120209678">0120-209-678</a>（通話無料）</p></div>
                 </div>
                 <div class="access-item">
                     <div class="access-icon"><i class="fas fa-train-subway"></i></div>
@@ -807,7 +877,7 @@ section { padding: 100px 0; }
                 </div>
                 <div class="access-item">
                     <div class="access-icon"><i class="fas fa-square-parking"></i></div>
-                    <div class="access-text"><h4>駐車場</h4><p>30台完備（無料）<br>大型車も駐車可能です</p></div>
+                    <div class="access-text"><h4>駐車場</h4><p>約10台<br>大型車も駐車可能です</p></div>
                 </div>
             </div>
         </div>
@@ -824,14 +894,14 @@ section { padding: 100px 0; }
                 <a href="tel:0120209678" class="cta-btn phone-btn">
                     <i class="fas fa-phone-flip"></i>
                     <span class="cta-btn-label">お電話で相談</span>
-                    <span class="cta-btn-number">0120-20-9678</span>
+                    <span class="cta-btn-number">0120-209-678</span>
                 </a>
                 <button class="cta-btn line-btn" onclick="openLineModal()">
                     <i class="fab fa-line"></i>
                     <span class="cta-btn-label">LINEで相談</span>
                     <span class="cta-btn-text">友だち追加はこちら</span>
                 </button>
-                <a href="#" class="cta-btn mail-btn">
+                <a href="contact.html" class="cta-btn mail-btn">
                     <i class="fas fa-envelope"></i>
                     <span class="cta-btn-label">メールで相談</span>
                     <span class="cta-btn-text">お問い合わせフォーム</span>
@@ -849,7 +919,7 @@ section { padding: 100px 0; }
                 <h3 class="footer-title"><a href="preview.html" style="color:inherit;text-decoration:none;">のぞみ葬祭</a></h3>
                 <p class="footer-company">株式会社VERDE</p>
                 <p class="footer-address">〒673-0435<br>兵庫県三木市別所町高木933-5</p>
-                <p class="footer-contact">TEL: <a href="tel:0120209678">0120-20-9678</a>（24時間365日）</p>
+                <p class="footer-contact">TEL: <a href="tel:0120209678">0120-209-678</a>（24時間365日）</p>
                 <p class="footer-hours">営業時間: 24時間営業<br>定休日: 年中無休</p>
             </div>
             <div class="footer-column">
@@ -860,6 +930,8 @@ section { padding: 100px 0; }
                     <li><a href="hall.html">会館のご紹介</a></li>
                     <li><a href="access.html">アクセス</a></li>
                     <li><a href="faq.html">よくある質問</a></li>
+                    <li><a href="flow.html">葬儀の流れ</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -877,14 +949,14 @@ section { padding: 100px 0; }
             <div class="footer-column">
                 <h4 class="footer-heading">その他</h4>
                 <ul class="footer-links">
-                    <li><a href="#flowers">人形供養</a></li>
-                    <li><a href="#flowers">写真供養</a></li>
-                    <li><a href="#">プライバシーポリシー</a></li>
+                    <li><a href="doll-memorial.html">人形供養</a></li>
+                    <li><a href="photo-memorial.html">写真供養</a></li>
+                    <li><a href="privacy.html">プライバシーポリシー</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p class="copyright">&copy; 2025 株式会社VERDE All Rights Reserved.</p>
+            <p class="copyright">&copy; 2026 株式会社VERDE All Rights Reserved.</p>
         </div>
     </div>
 </footer>
@@ -918,12 +990,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const toggle = document.getElementById('mobileMenuToggle');
     const nav    = document.getElementById('headerNav');
     if (toggle && nav) {
-        toggle.addEventListener('click', function () { this.classList.toggle('active'); nav.classList.toggle('active'); });
+        toggle.addEventListener('click', function () { this.classList.toggle('open'); nav.classList.toggle('open'); });
     }
 
-    const mobileStyle = document.createElement('style');
-    mobileStyle.textContent = `.header-nav.active{display:block!important;position:fixed;top:60px;left:0;width:100%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:999}.header-nav.active ul{flex-direction:column;padding:20px;gap:0}.header-nav.active li{border-bottom:1px solid #f0f0f0}.header-nav.active a{display:block;padding:15px 10px}.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.mobile-menu-toggle.active span:nth-child(2){opacity:0}.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}`;
-    document.head.appendChild(mobileStyle);
+    
 
     const slides = document.querySelectorAll('.hall-slide');
     const dots   = document.querySelectorAll('.slider-dot');

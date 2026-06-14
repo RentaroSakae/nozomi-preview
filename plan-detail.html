@@ -40,15 +40,15 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 /* ========== ヘッダー ========== */
 .header { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--white); box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000; transition: var(--transition); }
 .header-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 30px; height: 80px; }
-.header-logo a { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--primary-color); }
+.header-logo a { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: var(--primary-color); }
 .header-nav ul { display: flex; gap: 18px; }
 .header-nav a { font-size: 14.76px; font-weight: 500; color: var(--text-dark); position: relative; white-space: nowrap; }
 .header-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: var(--transition); }
 .header-nav a:hover { color: var(--primary-color); }
 .header-nav a:hover::after { width: 100%; }
-.header-cta { display: flex; align-items: center; gap: 20px; }
-.header-phone { font-size: 1.6rem; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 8px; }
-.header-line-btn { background-color: #00B900; color: var(--white); padding: 12px 22px; border-radius: 8px; font-size: 1.05rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.header-cta { display: flex; align-items: center; gap: 14px; }
+.header-phone { font-size: 20px; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 6px; }
+.header-line-btn { background-color: #00B900; color: var(--white); padding: 10px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
 .header-line-btn:hover { background-color: #009900; }
 .mobile-menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 10px; }
 .mobile-menu-toggle span { width: 25px; height: 3px; background-color: var(--text-dark); transition: var(--transition); }
@@ -236,9 +236,12 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* ========== レスポンシブ ========== */
 @media (max-width: 1024px) {
+    .header-nav { display: none; }
+    .header-cta { display: none; }
+    .mobile-menu-toggle { display: flex; }
     .plans-detail-grid { grid-template-columns: 1fr; }
     .costs-grid { grid-template-columns: repeat(2, 1fr); }
-    .footer-content { grid-template-columns: 1fr 1fr; }
+    .footer-content { grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width: 768px) {
     html { font-size: 18px; }
@@ -246,18 +249,93 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     .category-tabs { flex-direction: column; align-items: stretch; }
     .cat-tab { border-radius: 8px; margin-right: 0; margin-bottom: 4px; border-bottom: 2px solid #e0e0e0; }
     .costs-grid { grid-template-columns: 1fr; }
-    .footer-content { grid-template-columns: 1fr 1fr; }
-    .footer-column:first-child { grid-column: 1 / -1; }
+    .footer-content { grid-template-columns: repeat(2,1fr); }
     .cta-buttons { flex-direction: column; align-items: center; }
     .plan-includes { grid-template-columns: 1fr; }
-    .header-nav { display: none; }
-    .mobile-menu-toggle { display: flex; }
     .header-container { height: 64px; padding: 0 15px; }
-    .header-cta { display: none; }
     .compare-table { font-size: 0.8rem; }
     .compare-table th, .compare-table td { padding: 10px 8px; }
 }
-    </style>
+@media (max-width: 480px) {
+    .footer-content { grid-template-columns: 1fr; }
+}
+/* ========== 花祭壇カラー切り替え ========== */
+.color-switcher { text-align: center; margin-bottom: 40px; }
+.color-switcher-label { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 14px; letter-spacing: 0.05em; }
+.color-switcher-tabs { display: inline-flex; gap: 12px; background: #f5f5f5; padding: 6px; border-radius: 40px; }
+.color-tab { display: flex; align-items: center; gap: 8px; padding: 10px 24px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; color: var(--text-gray); background: transparent; border: none; cursor: pointer; transition: all 0.2s; }
+.color-tab.active { background: var(--white); color: var(--text-dark); box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+.color-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+
+/* ========== 祭壇画像 ========== */
+.plan-altar-img { overflow: hidden; border-radius: 8px 8px 0 0; }
+.altar-img { width: 100%; height: 200px; object-fit: cover; object-position: center top; display: block; transition: opacity 0.3s; }
+    /* ========== モバイルメニュードロワー ========== */
+.header-nav.open {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    z-index: 999;
+    padding: 20px 30px 30px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+.header-nav.open ul {
+    flex-direction: column;
+    gap: 0;
+}
+.header-nav.open ul li {
+    border-bottom: 1px solid #f0f0f0;
+}
+.header-nav.open ul li a {
+    display: block;
+    padding: 14px 0;
+    font-size: 16px;
+}
+.nav-mobile-cta {
+    display: none;
+}
+.header-nav.open .nav-mobile-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+.nav-mobile-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.nav-mobile-line {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #00B900;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.mobile-menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.mobile-menu-toggle.open span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+</style>
 </head>
 <body>
 
@@ -275,11 +353,18 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
                 <li><a href="preview.html#access">アクセス</a></li>
                 <li><a href="flowers.html">供花のご注文</a></li>
                 <li><a href="faq.html">よくある質問</a></li>
+                    <li><a href="flow.html">葬儀の流れ</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
             </ul>
+            <!-- モバイル用連絡先 -->
+            <div class="nav-mobile-cta">
+                <a href="tel:0120209678" class="nav-mobile-phone"><i class="fas fa-phone-flip"></i> 0120-209-678</a>
+                <button class="nav-mobile-line" onclick="openLineModal()"><i class="fab fa-line"></i> LINEで相談する</button>
+            </div>
         </nav>
         <div class="header-cta">
             <a href="tel:0120209678" class="header-phone">
-                <i class="fas fa-phone-flip"></i> 0120-20-9678
+                <i class="fas fa-phone-flip"></i> 0120-209-678
             </a>
             <button class="header-line-btn" onclick="openLineModal()">
                 <i class="fab fa-line"></i> LINEで相談
@@ -334,100 +419,16 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
             </p>
         </div>
 
-        <!-- プラン比較表 -->
-        <div class="plan-compare fade-in">
-            <h3 class="plan-compare-title">プラン比較表</h3>
-            <div style="overflow-x:auto;">
-            <table class="compare-table">
-                <thead>
-                    <tr>
-                        <th class="plan-col-name" style="min-width:180px;">含まれる内容</th>
-                        <th style="min-width:130px;">💎 ダイヤモンド</th>
-                        <th style="min-width:130px;">✦ プラチナ</th>
-                        <th style="min-width:130px;">★ ゴールド</th>
-                        <th style="min-width:130px;">◇ シルバー</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="price-row">
-                        <td class="item-label">税抜価格</td>
-                        <td>990,000円</td>
-                        <td>770,000円</td>
-                        <td>590,000円</td>
-                        <td>490,000円</td>
-                    </tr>
-                    <tr class="price-row">
-                        <td class="item-label">税込価格</td>
-                        <td>1,089,000円</td>
-                        <td>847,000円</td>
-                        <td>649,000円</td>
-                        <td>539,000円</td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">花祭壇</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span> 最上級</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span> 上質</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span> 華やか</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span> 標準</td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">飾台車・遺影台</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">焼香用具一式</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">御霊供台全装束</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">基本祭壇</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">受付用品一式</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">後飾り一式</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">司会</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">式場・施行スタッフ</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- 花祭壇カラー切り替え -->
+        <div class="color-switcher fade-in">
+            <p class="color-switcher-label"><i class="fas fa-palette"></i> 祭壇の背景カラーを選択</p>
+            <div class="color-switcher-tabs">
+                <button class="color-tab active" data-color="pink" onclick="switchColor('pink')">
+                    <span class="color-dot" style="background:#f5b8c8;"></span> ピンク
+                </button>
+                <button class="color-tab" data-color="purple" onclick="switchColor('purple')">
+                    <span class="color-dot" style="background:#c8b8e8;"></span> ムラサキ
+                </button>
             </div>
         </div>
 
@@ -442,6 +443,10 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
                         <h3 class="plan-detail-name">ダイヤモンドプラン</h3>
                         <p class="plan-detail-desc">最上級の花祭壇で、華やかに故人さまをお送りします</p>
                     </div>
+                </div>
+                <div class="plan-altar-img">
+                    <img class="altar-img altar-img-pink" src="images/plan/plan-pink-04.jpg" alt="ダイヤモンドプラン 花祭壇イメージ（ピンク）">
+                    <img class="altar-img altar-img-purple" src="images/plan/plan-purple-04.jpg" alt="ダイヤモンドプラン 花祭壇イメージ（ムラサキ）" style="display:none;">
                 </div>
                 <div class="plan-detail-price-area">
                     <p class="plan-detail-price">990,000<span>円</span></p>
@@ -476,6 +481,10 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
                         <p class="plan-detail-desc">上質な花祭壇で、温かく故人さまをお送りします</p>
                     </div>
                 </div>
+                <div class="plan-altar-img">
+                    <img class="altar-img altar-img-pink" src="images/plan/plan-pink-03.jpg" alt="プラチナプラン 花祭壇イメージ（ピンク）">
+                    <img class="altar-img altar-img-purple" src="images/plan/plan-purple-03.jpg" alt="プラチナプラン 花祭壇イメージ（ムラサキ）" style="display:none;">
+                </div>
                 <div class="plan-detail-price-area">
                     <p class="plan-detail-price">770,000<span>円</span></p>
                     <p class="plan-detail-price-tax">税込 847,000円</p>
@@ -509,6 +518,10 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
                         <p class="plan-detail-desc">華やかな花祭壇で、心を込めてお送りします</p>
                     </div>
                 </div>
+                <div class="plan-altar-img">
+                    <img class="altar-img altar-img-pink" src="images/plan/plan-pink-02.jpg" alt="ゴールドプラン 花祭壇イメージ（ピンク）">
+                    <img class="altar-img altar-img-purple" src="images/plan/plan-purple-02.jpg" alt="ゴールドプラン 花祭壇イメージ（ムラサキ）" style="display:none;">
+                </div>
                 <div class="plan-detail-price-area">
                     <p class="plan-detail-price">590,000<span>円</span></p>
                     <p class="plan-detail-price-tax">税込 649,000円</p>
@@ -541,6 +554,10 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
                         <h3 class="plan-detail-name">シルバープラン</h3>
                         <p class="plan-detail-desc">優しい花祭壇で、温かくお送りします</p>
                     </div>
+                </div>
+                <div class="plan-altar-img">
+                    <img class="altar-img altar-img-pink" src="images/plan/plan-pink-01.jpg" alt="シルバープラン 花祭壇イメージ（ピンク）">
+                    <img class="altar-img altar-img-purple" src="images/plan/plan-purple-01.jpg" alt="シルバープラン 花祭壇イメージ（ムラサキ）" style="display:none;">
                 </div>
                 <div class="plan-detail-price-area">
                     <p class="plan-detail-price">490,000<span>円</span></p>
@@ -584,84 +601,6 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
             </p>
         </div>
 
-        <!-- プラン比較表 -->
-        <div class="plan-compare fade-in">
-            <h3 class="plan-compare-title">プラン比較表</h3>
-            <div style="overflow-x:auto;">
-            <table class="compare-table">
-                <thead>
-                    <tr>
-                        <th class="plan-col-name" style="min-width:180px;">含まれる内容</th>
-                        <th style="min-width:160px;">★ ゴールド</th>
-                        <th style="min-width:160px;">◇ シルバー</th>
-                        <th style="min-width:180px;">○ ホワイト（一日葬）</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="price-row">
-                        <td class="item-label">税抜価格</td>
-                        <td>680,000円</td>
-                        <td>480,000円</td>
-                        <td>390,000円</td>
-                    </tr>
-                    <tr class="price-row">
-                        <td class="item-label">税込価格</td>
-                        <td>748,000円</td>
-                        <td>528,000円</td>
-                        <td>429,000円</td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">葬儀スタイル</td>
-                        <td>2日間（お通夜あり）</td>
-                        <td>2日間（お通夜あり）</td>
-                        <td>1日（お通夜なし）</td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">花祭壇</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span> 充実</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span> 標準</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span> 標準</td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">飾台車・遺影台</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">棺・柩布団・仏衣・位牌</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">御霊供台全装束</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">受付用品一式</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">後飾り一式</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">司会</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                </tbody>
-            </table>
-            </div>
-        </div>
 
         <!-- 各プラン詳細 -->
         <div class="plans-detail-grid">
@@ -791,88 +730,6 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
             </div>
         </div>
 
-        <!-- プラン比較表 -->
-        <div class="plan-compare fade-in">
-            <h3 class="plan-compare-title">プラン比較表</h3>
-            <div style="overflow-x:auto;">
-            <table class="compare-table">
-                <thead>
-                    <tr>
-                        <th class="plan-col-name" style="min-width:180px;">含まれる内容</th>
-                        <th style="min-width:200px;">□ シンプルプラン</th>
-                        <th style="min-width:200px;">♦ プチプラン</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="price-row">
-                        <td class="item-label">税抜価格</td>
-                        <td>134,546円</td>
-                        <td>80,000円</td>
-                    </tr>
-                    <tr class="price-row">
-                        <td class="item-label">税込価格</td>
-                        <td>148,000円</td>
-                        <td>88,000円</td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">寝台車</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">棺</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">遺影</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">防水布団</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td>搬送布団</td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">御霊供台全装束</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td>御霊供台装束</td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">基本祭壇</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="cross">—</span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">納棺一式</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="cross">—</span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">骨箱</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">花束</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="cross">—</span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">役所手続き</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-label">施行スタッフ</td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                        <td><span class="check"><i class="fas fa-check"></i></span></td>
-                    </tr>
-                </tbody>
-            </table>
-            </div>
-        </div>
 
         <!-- 各プラン詳細 -->
         <div class="plans-detail-grid direct-plans-single">
@@ -961,7 +818,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
             <div class="cost-card fade-in">
                 <div class="cost-card-icon"><i class="fas fa-fire"></i></div>
                 <h3 class="cost-card-title">火葬料</h3>
-                <p class="cost-card-text">火葬場の使用料です。市町村の施設か民間施設かにより金額が異なります。三木市火葬場の場合は市が定める料金となります。</p>
+                <p class="cost-card-text">火葬場の使用料です。三木市火葬場の場合は市が定める料金となります。</p>
             </div>
             <div class="cost-card fade-in">
                 <div class="cost-card-icon"><i class="fas fa-pray"></i></div>
@@ -1055,6 +912,44 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     </div>
 </section>
 
+<!-- お支払いについて -->
+<section class="plan-payment" style="padding:60px 0; background:#F8F9F5;">
+    <div class="container">
+        <div class="section-title-wrap fade-in" style="text-align:center; margin-bottom:40px;">
+            <p class="section-label">PAYMENT</p>
+            <h2 class="section-title">お支払いについて</h2>
+            <div class="section-underline" style="margin:0 auto;"></div>
+        </div>
+        <div class="fade-in" style="background:#fff; border-radius:12px; padding:36px 40px; max-width:700px; margin:0 auto; box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+            <p style="font-size:1rem; line-height:2; color:var(--text-dark);">
+                お支払い方法は、<strong>現金・クレジットカード・銀行振込</strong>など各種対応しております。<br>
+                詳しくはスタッフまでお気軽にお問い合わせください。
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ご葬儀以外のメニュー -->
+<section class="other-services" style="padding:60px 0;">
+    <div class="container">
+        <div class="section-title-wrap fade-in" style="text-align:center; margin-bottom:40px;">
+            <p class="section-label">OTHER SERVICES</p>
+            <h2 class="section-title">ご葬儀以外のメニュー</h2>
+            <div class="section-underline" style="margin:0 auto;"></div>
+        </div>
+        <div class="fade-in" style="display:flex; gap:24px; justify-content:center; flex-wrap:wrap;">
+            <a href="doll-memorial.html" style="display:flex; flex-direction:column; align-items:center; background:#fff; border:2px solid var(--primary-color); border-radius:12px; padding:32px 40px; text-decoration:none; color:var(--text-dark); min-width:200px; transition:all 0.2s; box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+                <i class="fas fa-hands-praying" style="font-size:2.4rem; color:var(--primary-color); margin-bottom:14px;"></i>
+                <span style="font-family:var(--font-serif); font-size:1.1rem; font-weight:700;">人形供養</span>
+            </a>
+            <a href="photo-memorial.html" style="display:flex; flex-direction:column; align-items:center; background:#fff; border:2px solid var(--primary-color); border-radius:12px; padding:32px 40px; text-decoration:none; color:var(--text-dark); min-width:200px; transition:all 0.2s; box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+                <i class="fas fa-image" style="font-size:2.4rem; color:var(--primary-color); margin-bottom:14px;"></i>
+                <span style="font-family:var(--font-serif); font-size:1.1rem; font-weight:700;">写真供養</span>
+            </a>
+        </div>
+    </div>
+</section>
+
 <!-- CTA -->
 <section class="cta" id="consultation">
     <div class="container">
@@ -1065,14 +960,14 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
                 <a href="tel:0120209678" class="cta-btn phone-btn">
                     <i class="fas fa-phone-flip"></i>
                     <span class="cta-btn-label">お電話で相談</span>
-                    <span class="cta-btn-number">0120-20-9678</span>
+                    <span class="cta-btn-number">0120-209-678</span>
                 </a>
                 <button class="cta-btn line-btn" onclick="openLineModal()">
                     <i class="fab fa-line"></i>
                     <span class="cta-btn-label">LINEで相談</span>
                     <span class="cta-btn-text">友だち追加はこちら</span>
                 </button>
-                <a href="#" class="cta-btn mail-btn">
+                <a href="contact.html" class="cta-btn mail-btn">
                     <i class="fas fa-envelope"></i>
                     <span class="cta-btn-label">メールで相談</span>
                     <span class="cta-btn-text">お問い合わせフォーム</span>
@@ -1090,17 +985,19 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
                 <h3 class="footer-title"><a href="preview.html" style="color:inherit;text-decoration:none;">のぞみ葬祭</a></h3>
                 <p class="footer-company">株式会社VERDE</p>
                 <p class="footer-address">〒673-0435<br>兵庫県三木市別所町高木933-5</p>
-                <p class="footer-contact">TEL: <a href="tel:0120209678">0120-20-9678</a>（24時間365日）</p>
+                <p class="footer-contact">TEL: <a href="tel:0120209678">0120-209-678</a>（24時間365日）</p>
                 <p class="footer-hours">営業時間: 24時間営業<br>定休日: 年中無休</p>
             </div>
             <div class="footer-column">
                 <h4 class="footer-heading">サイトマップ</h4>
                 <ul class="footer-links">
-                    <li><a href="preview.html#about">のぞみ葬祭について</a></li>
+                    <li><a href="about.html">のぞみ葬祭について</a></li>
                     <li><a href="plan-detail.html">プラン</a></li>
                     <li><a href="hall.html">会館のご紹介</a></li>
-                    <li><a href="preview.html#access">アクセス</a></li>
+                    <li><a href="access.html">アクセス</a></li>
                     <li><a href="faq.html">よくある質問</a></li>
+                    <li><a href="flow.html">葬儀の流れ</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -1118,14 +1015,14 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
             <div class="footer-column">
                 <h4 class="footer-heading">その他</h4>
                 <ul class="footer-links">
-                    <li><a href="preview.html#flowers">人形供養</a></li>
-                    <li><a href="preview.html#flowers">写真供養</a></li>
-                    <li><a href="#">プライバシーポリシー</a></li>
+                    <li><a href="doll-memorial.html">人形供養</a></li>
+                    <li><a href="photo-memorial.html">写真供養</a></li>
+                    <li><a href="privacy.html">プライバシーポリシー</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p class="copyright">&copy; 2025 株式会社VERDE All Rights Reserved.</p>
+            <p class="copyright">&copy; 2026 株式会社VERDE All Rights Reserved.</p>
         </div>
     </div>
 </footer>
@@ -1148,14 +1045,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const headerNav    = document.getElementById('headerNav');
     if (mobileToggle && headerNav) {
         mobileToggle.addEventListener('click', function () {
-            this.classList.toggle('active');
-            headerNav.classList.toggle('active');
+            this.classList.toggle('open');
+            headerNav.classList.toggle('open');
         });
     }
     // モバイルメニュースタイル注入
-    const mobileStyle = document.createElement('style');
-    mobileStyle.textContent = `.header-nav.active{display:block!important;position:fixed;top:64px;left:0;width:100%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:999}.header-nav.active ul{flex-direction:column;padding:20px;gap:0}.header-nav.active li{border-bottom:1px solid #f0f0f0}.header-nav.active a{display:block;padding:15px 10px}.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.mobile-menu-toggle.active span:nth-child(2){opacity:0}.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}`;
-    document.head.appendChild(mobileStyle);
+    
 
     // カテゴリタブ切り替え
     const catTabs = document.querySelectorAll('.cat-tab');
@@ -1198,6 +1093,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 });
+
+// 花祭壇カラー切り替え
+function switchColor(color) {
+    document.querySelectorAll('.altar-img-pink').forEach(function(img) {
+        img.style.display = color === 'pink' ? 'block' : 'none';
+    });
+    document.querySelectorAll('.altar-img-purple').forEach(function(img) {
+        img.style.display = color === 'purple' ? 'block' : 'none';
+    });
+    document.querySelectorAll('.color-tab').forEach(function(tab) {
+        tab.classList.toggle('active', tab.dataset.color === color);
+    });
+}
 
 // フッターリンク用
 function switchTab(catId) {

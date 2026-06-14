@@ -41,7 +41,7 @@ section { padding: 100px 0; }
 /* ========== ヘッダー ========== */
 .header { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--white); box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000; transition: var(--transition); }
 .header-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 30px; height: 80px; }
-.header-logo a { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--primary-color); }
+.header-logo a { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: var(--primary-color); }
 .header-nav ul { display: flex; gap: 18px; }
 .header-nav a { font-size: 14.76px; font-weight: 500; color: var(--text-dark); position: relative; white-space: nowrap; }
 .header-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: var(--transition); }
@@ -49,16 +49,14 @@ section { padding: 100px 0; }
 .header-nav a:hover::after { width: 100%; }
 .header-nav a.current { color: var(--primary-color); }
 .header-nav a.current::after { width: 100%; }
-.header-cta { display: flex; align-items: center; gap: 20px; }
-.header-phone { font-size: 1.6rem; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 8px; }
-.header-line-btn { background-color: #00B900; color: var(--white); padding: 12px 22px; border-radius: 8px; font-size: 1.05rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.header-cta { display: flex; align-items: center; gap: 14px; }
+.header-phone { font-size: 20px; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 6px; }
+.header-line-btn { background-color: #00B900; color: var(--white); padding: 10px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
 .header-line-btn:hover { background-color: #009900; }
 .mobile-menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px; }
 .mobile-menu-toggle span { display: block; width: 26px; height: 2px; background: var(--text-dark); border-radius: 2px; transition: var(--transition); }
-@media (max-width: 1100px) { .header-phone { font-size: 1.3rem; } }
+
 @media (max-width: 900px) {
-    .header-nav { display: none; }
-    .mobile-menu-toggle { display: flex; }
     .header-phone { font-size: 1.1rem; }
     .header-line-btn { padding: 10px 14px; font-size: 0.9rem; }
 }
@@ -283,16 +281,14 @@ section { padding: 100px 0; }
 /* ========== フッター ========== */
 .footer { background-color: var(--dark-gray); color: var(--white); padding: 60px 0 30px; }
 .footer-content { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-.footer-title { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 600; margin-bottom: 12px; }
-.footer-company { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 12px; }
-.footer-address, .footer-contact, .footer-hours { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 8px; }
-.footer-contact a { color: rgba(255,255,255,0.9); }
-.footer-heading { font-size: 0.95rem; font-weight: 600; margin-bottom: 16px; color: rgba(255,255,255,0.9); padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.footer-links li { margin-bottom: 8px; }
-.footer-links a { font-size: 0.85rem; color: rgba(255,255,255,0.65); transition: var(--transition); }
+.footer-title { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--primary-color); margin-bottom: 15px; }
+.footer-company, .footer-address, .footer-contact, .footer-hours { font-size: 1.05rem; line-height: 1.9; margin-bottom: 10px; }
+.footer-contact a { color: var(--primary-color); font-weight: 600; }
+.footer-heading { font-size: 1.2rem; font-weight: 600; margin-bottom: 20px; }
+.footer-links li { margin-bottom: 14px; }
+.footer-links a { font-size: 1.05rem; color: rgba(255,255,255,0.8); }
 .footer-links a:hover { color: var(--primary-color); }
-.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; }
-.copyright { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; }
 
 /* ========== ページトップボタン ========== */
 .page-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: var(--primary-color); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); opacity: 0; pointer-events: none; transition: var(--transition); z-index: 500; font-size: 1rem; }
@@ -315,7 +311,10 @@ section { padding: 100px 0; }
 
 /* ========== レスポンシブ ========== */
 @media (max-width: 1024px) {
-    .footer-content { grid-template-columns: 1fr 1fr; }
+    .header-nav { display: none; }
+    .header-cta { display: none; }
+    .mobile-menu-toggle { display: flex; }
+    .footer-content { grid-template-columns: repeat(2,1fr); }
     .cta-buttons { gap: 20px; }
 }
 @media (max-width: 768px) {
@@ -326,7 +325,7 @@ section { padding: 100px 0; }
     .faq-cat-title { font-size: 1.25rem; }
     .cta-title { font-size: 1.8rem; }
     .cta-buttons { grid-template-columns: 1fr; gap: 16px; max-width: 400px; }
-    .footer-content { grid-template-columns: 1fr 1fr; gap: 30px; }
+    .footer-content { grid-template-columns: repeat(2,1fr); }
     .faq-nav-btn { padding: 14px 16px; font-size: 0.8rem; }
 }
 @media (max-width: 480px) {
@@ -335,7 +334,72 @@ section { padding: 100px 0; }
     .footer-content { grid-template-columns: 1fr; }
     .faq-question-text { font-size: 1rem; }
 }
-    </style>
+    /* ========== モバイルメニュードロワー ========== */
+.header-nav.open {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    z-index: 999;
+    padding: 20px 30px 30px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+.header-nav.open ul {
+    flex-direction: column;
+    gap: 0;
+}
+.header-nav.open ul li {
+    border-bottom: 1px solid #f0f0f0;
+}
+.header-nav.open ul li a {
+    display: block;
+    padding: 14px 0;
+    font-size: 16px;
+}
+.nav-mobile-cta {
+    display: none;
+}
+.header-nav.open .nav-mobile-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+.nav-mobile-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.nav-mobile-line {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #00B900;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.mobile-menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.mobile-menu-toggle.open span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+</style>
 </head>
 <body>
 
@@ -354,10 +418,15 @@ section { padding: 100px 0; }
                 <li><a href="flowers.html">供花のご注文</a></li>
                 <li><a href="faq.html" class="current">よくある質問</a></li>
             </ul>
+            <!-- モバイル用連絡先 -->
+            <div class="nav-mobile-cta">
+                <a href="tel:0120209678" class="nav-mobile-phone"><i class="fas fa-phone-flip"></i> 0120-209-678</a>
+                <button class="nav-mobile-line" onclick="openLineModal()"><i class="fab fa-line"></i> LINEで相談する</button>
+            </div>
         </nav>
         <div class="header-cta">
             <a href="tel:0120209678" class="header-phone">
-                <i class="fas fa-phone-flip"></i> 0120-20-9678
+                <i class="fas fa-phone-flip"></i> 0120-209-678
             </a>
             <button class="header-line-btn" onclick="openLineModal()">
                 <i class="fab fa-line"></i> LINEで相談
@@ -581,7 +650,7 @@ section { padding: 100px 0; }
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             <span class="faq-a">A</span>
-                            <p>はい、<strong>24時間365日いつでもお電話ください</strong>（0120-20-9678）。危篤の状態からでもご相談いただけます。搬送のご準備やご葬儀の流れについて、丁寧にご説明いたします。焦らず、まずはお電話一本、スタッフにお任せください。</p>
+                            <p>はい、<strong>24時間365日いつでもお電話ください</strong>（0120-209-678）。危篤の状態からでもご相談いただけます。搬送のご準備やご葬儀の流れについて、丁寧にご説明いたします。焦らず、まずはお電話一本、スタッフにお任せください。</p>
                         </div>
                     </div>
                 </div>
@@ -595,7 +664,7 @@ section { padding: 100px 0; }
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             <span class="faq-a">A</span>
-                            <p>まず落ち着いて、<strong>のぞみ葬祭（0120-20-9678）にお電話ください</strong>。病院でお亡くなりになった場合は、担当医師に死亡診断書を発行していただき、その後当社がご遺体の搬送を行います。ご自宅でお亡くなりになった場合はかかりつけ医か救急・警察へのご連絡が先になる場合があります。いずれもスタッフが順を追ってご案内しますので、まずはお電話ください。</p>
+                            <p>まず落ち着いて、<strong>のぞみ葬祭（0120-209-678）にお電話ください</strong>。病院でお亡くなりになった場合は、担当医師に死亡診断書を発行していただき、その後当社がご遺体の搬送を行います。ご自宅でお亡くなりになった場合はかかりつけ医か救急・警察へのご連絡が先になる場合があります。いずれもスタッフが順を追ってご案内しますので、まずはお電話ください。</p>
                         </div>
                     </div>
                 </div>
@@ -815,7 +884,7 @@ section { padding: 100px 0; }
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             <span class="faq-a">A</span>
-                            <p>琥珀ホールは<strong>最大80名様</strong>まで対応可能です。家族葬から大規模な一般葬まで、フレキシブルにレイアウトを調整いたします。参列者が多い場合はご相談ください。</p>
+                            <p>琥珀ホールは<strong>30名様</strong>まで対応可能です。家族葬から大規模な一般葬まで、フレキシブルにレイアウトを調整いたします。参列者が多い場合はご相談ください。</p>
                         </div>
                     </div>
                 </div>
@@ -829,7 +898,7 @@ section { padding: 100px 0; }
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             <span class="faq-a">A</span>
-                            <p>琥珀ホールには<strong>30台分の無料駐車場</strong>を完備しております。大型車でもご利用いただけます。参列者が多く駐車場に限りがある場合はスタッフにご相談ください。</p>
+                            <p>琥珀ホールには<strong>約10台分の無料駐車場</strong>を完備しております。大型車でもご利用いただけます。参列者が多く駐車場に限りがある場合はスタッフにご相談ください。</p>
                         </div>
                     </div>
                 </div>
@@ -1077,7 +1146,7 @@ section { padding: 100px 0; }
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             <span class="faq-a">A</span>
-                            <p>はい、<strong>24時間365日、いつでも対応しております</strong>。深夜・早朝・年末年始・お盆期間中も変わらず対応します。まずはお電話（0120-20-9678）ください。経験豊富なスタッフがすぐに駆けつけます。</p>
+                            <p>はい、<strong>24時間365日、いつでも対応しております</strong>。深夜・早朝・年末年始・お盆期間中も変わらず対応します。まずはお電話（0120-209-678）ください。経験豊富なスタッフがすぐに駆けつけます。</p>
                         </div>
                     </div>
                 </div>
@@ -1126,14 +1195,14 @@ section { padding: 100px 0; }
                 <a href="tel:0120209678" class="cta-btn phone-btn">
                     <i class="fas fa-phone-flip"></i>
                     <span class="cta-btn-label">お電話で相談</span>
-                    <span class="cta-btn-number">0120-20-9678</span>
+                    <span class="cta-btn-number">0120-209-678</span>
                 </a>
                 <button class="cta-btn line-btn" onclick="openLineModal()">
                     <i class="fab fa-line"></i>
                     <span class="cta-btn-label">LINEで相談</span>
                     <span class="cta-btn-text">友だち追加はこちら</span>
                 </button>
-                <a href="#" class="cta-btn mail-btn">
+                <a href="contact.html" class="cta-btn mail-btn">
                     <i class="fas fa-envelope"></i>
                     <span class="cta-btn-label">メールで相談</span>
                     <span class="cta-btn-text">お問い合わせフォーム</span>
@@ -1151,7 +1220,7 @@ section { padding: 100px 0; }
                 <h3 class="footer-title"><a href="preview.html" style="color:inherit;text-decoration:none;">のぞみ葬祭</a></h3>
                 <p class="footer-company">株式会社VERDE</p>
                 <p class="footer-address">〒673-0435<br>兵庫県三木市別所町高木933-5</p>
-                <p class="footer-contact">TEL: <a href="tel:0120209678">0120-20-9678</a>（24時間365日）</p>
+                <p class="footer-contact">TEL: <a href="tel:0120209678">0120-209-678</a>（24時間365日）</p>
                 <p class="footer-hours">営業時間: 24時間営業<br>定休日: 年中無休</p>
             </div>
             <div class="footer-column">
@@ -1162,6 +1231,8 @@ section { padding: 100px 0; }
                     <li><a href="hall.html">会館のご紹介</a></li>
                     <li><a href="access.html">アクセス</a></li>
                     <li><a href="faq.html">よくある質問</a></li>
+                    <li><a href="flow.html">葬儀の流れ</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -1179,15 +1250,14 @@ section { padding: 100px 0; }
             <div class="footer-column">
                 <h4 class="footer-heading">その他</h4>
                 <ul class="footer-links">
-                    <li><a href="flowers.html">供花のご注文</a></li>
-                    <li><a href="preview.html#flowers">人形供養</a></li>
-                    <li><a href="preview.html#flowers">写真供養</a></li>
-                    <li><a href="#">プライバシーポリシー</a></li>
+                    <li><a href="doll-memorial.html">人形供養</a></li>
+                    <li><a href="photo-memorial.html">写真供養</a></li>
+                    <li><a href="privacy.html">プライバシーポリシー</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p class="copyright">&copy; 2025 株式会社VERDE All Rights Reserved.</p>
+            <p class="copyright">&copy; 2026 株式会社VERDE All Rights Reserved.</p>
         </div>
     </div>
 </footer>
@@ -1212,13 +1282,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const headerNav    = document.getElementById('headerNav');
     if (mobileToggle && headerNav) {
         mobileToggle.addEventListener('click', function () {
-            this.classList.toggle('active');
-            headerNav.classList.toggle('active');
+            this.classList.toggle('open');
+            headerNav.classList.toggle('open');
         });
     }
-    const mobileStyle = document.createElement('style');
-    mobileStyle.textContent = `.header-nav.active{display:block!important;position:fixed;top:80px;left:0;width:100%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:999}.header-nav.active ul{flex-direction:column;padding:20px;gap:0}.header-nav.active li{border-bottom:1px solid #f0f0f0}.header-nav.active a{display:block;padding:15px 10px}.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.mobile-menu-toggle.active span:nth-child(2){opacity:0}.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}`;
-    document.head.appendChild(mobileStyle);
+    
 
     // フェードイン
     const observer = new IntersectionObserver(entries => {

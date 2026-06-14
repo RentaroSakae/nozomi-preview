@@ -41,7 +41,7 @@ section { padding: 100px 0; }
 /* ========== ヘッダー ========== */
 .header { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--white); box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000; transition: var(--transition); }
 .header-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 30px; height: 80px; }
-.header-logo a { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--primary-color); }
+.header-logo a { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: var(--primary-color); }
 .header-nav ul { display: flex; gap: 18px; }
 .header-nav a { font-size: 14.76px; font-weight: 500; color: var(--text-dark); position: relative; white-space: nowrap; }
 .header-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: var(--transition); }
@@ -49,9 +49,9 @@ section { padding: 100px 0; }
 .header-nav a:hover::after { width: 100%; }
 .header-nav a.current { color: var(--primary-color); }
 .header-nav a.current::after { width: 100%; }
-.header-cta { display: flex; align-items: center; gap: 20px; }
-.header-phone { font-size: 1.6rem; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 8px; }
-.header-line-btn { background-color: #00B900; color: var(--white); padding: 12px 22px; border-radius: 8px; font-size: 1.05rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.header-cta { display: flex; align-items: center; gap: 14px; }
+.header-phone { font-size: 20px; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 6px; }
+.header-line-btn { background-color: #00B900; color: var(--white); padding: 10px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
 .header-line-btn:hover { background-color: #009900; }
 .mobile-menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 10px; }
 .mobile-menu-toggle span { width: 25px; height: 3px; background-color: var(--text-dark); transition: var(--transition); }
@@ -255,7 +255,6 @@ section { padding: 100px 0; }
 .footer-links a { font-size: 1.05rem; color: rgba(255,255,255,0.8); }
 .footer-links a:hover { color: var(--primary-color); }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; }
-.copyright { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
 
 /* ========== ページトップ ========== */
 .page-top { position: fixed; bottom: 30px; right: 30px; width: 52px; height: 52px; background-color: var(--primary-color); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); opacity: 0; pointer-events: none; transition: var(--transition); cursor: pointer; z-index: 999; font-size: 1.1rem; }
@@ -281,25 +280,93 @@ section { padding: 100px 0; }
 
 /* ========== レスポンシブ ========== */
 @media (max-width: 1024px) {
+    .header-nav { display: none; }
+    .header-cta { display: none; }
+    .mobile-menu-toggle { display: flex; }
     .menu-grid { grid-template-columns: repeat(2, 1fr); }
-    .footer-content { grid-template-columns: 1fr 1fr; }
+    .footer-content { grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width: 768px) {
     html { font-size: 16px; }
-    .header-nav, .header-cta { display: none; }
-    .mobile-menu-toggle { display: flex; }
+
     .menu-grid { grid-template-columns: 1fr 1fr; }
     .method-cards { grid-template-columns: 1fr; }
     .order-form-wrap { padding: 36px 24px; }
     .form-row { grid-template-columns: 1fr; }
     .cta-buttons { grid-template-columns: 1fr; }
-    .footer-content { grid-template-columns: 1fr; gap: 28px; }
+    .footer-content { grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width: 480px) {
     .menu-grid { grid-template-columns: 1fr; }
     .page-hero-title { font-size: 2.2rem; }
+    .footer-content { grid-template-columns: 1fr; }
 }
-    </style>
+    /* ========== モバイルメニュードロワー ========== */
+.header-nav.open {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    z-index: 999;
+    padding: 20px 30px 30px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+.header-nav.open ul {
+    flex-direction: column;
+    gap: 0;
+}
+.header-nav.open ul li {
+    border-bottom: 1px solid #f0f0f0;
+}
+.header-nav.open ul li a {
+    display: block;
+    padding: 14px 0;
+    font-size: 16px;
+}
+.nav-mobile-cta {
+    display: none;
+}
+.header-nav.open .nav-mobile-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+.nav-mobile-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.nav-mobile-line {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #00B900;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.mobile-menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.mobile-menu-toggle.open span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+</style>
 </head>
 <body>
 
@@ -317,11 +384,18 @@ section { padding: 100px 0; }
                 <li><a href="access.html">アクセス</a></li>
                 <li><a href="flowers.html" class="current">供花のご注文</a></li>
                 <li><a href="faq.html">よくある質問</a></li>
+                    <li><a href="flow.html">葬儀の流れ</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
             </ul>
+            <!-- モバイル用連絡先 -->
+            <div class="nav-mobile-cta">
+                <a href="tel:0120209678" class="nav-mobile-phone"><i class="fas fa-phone-flip"></i> 0120-209-678</a>
+                <button class="nav-mobile-line" onclick="openLineModal()"><i class="fab fa-line"></i> LINEで相談する</button>
+            </div>
         </nav>
         <div class="header-cta">
             <a href="tel:0120209678" class="header-phone">
-                <i class="fas fa-phone-flip"></i> 0120-20-9678
+                <i class="fas fa-phone-flip"></i> 0120-209-678
             </a>
             <button class="header-line-btn" onclick="openLineModal()">
                 <i class="fab fa-line"></i> LINEで相談
@@ -346,7 +420,7 @@ section { padding: 100px 0; }
 <div class="page-lead">
     <div class="container">
         <div class="page-lead-inner">
-            <p class="page-lead-text">下記に掲載されている商品をご覧いただき、ページ下部のフォーム・LINE・FAXのいずれかよりご注文ください。<br>ご不明な点はお電話（0120-20-9678）にてお気軽にお問い合わせください。</p>
+            <p class="page-lead-text">下記に掲載されている商品をご覧いただき、ページ下部のフォーム・LINE・FAXのいずれかよりご注文ください。<br>ご不明な点はお電話（0120-209-678）にてお気軽にお問い合わせください。</p>
         </div>
     </div>
 </div>
@@ -392,14 +466,37 @@ section { padding: 100px 0; }
             <div class="method-card fade-in">
                 <div class="method-icon"><i class="fab fa-line"></i></div>
                 <h3 class="method-title">LINEから注文</h3>
-                <p class="method-desc">公式LINEアカウントにメッセージをお送りください。QRコードはヘッダーの「LINEで相談」よりご確認いただけます。</p>
+                <p class="method-desc">QRコードを読み取って友だち追加の上、ご希望の商品をメッセージでお送りください。</p>
+                <div style="margin:16px auto 0;width:160px;height:160px;border:3px solid #00B900;border-radius:12px;overflow:hidden;">
+                    <img src="https://placehold.jp/30/00B900/ffffff/160x160.png?text=QR+Code" alt="LINE QRコード" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <p style="font-size:0.78rem;color:var(--text-gray);margin-top:10px;">24時間いつでもメッセージをお送りいただけます</p>
             </div>
             <div class="method-card fade-in">
                 <div class="method-icon"><i class="fas fa-fax"></i></div>
                 <h3 class="method-title">FAXから注文</h3>
-                <p class="method-desc">FAX注文用紙をダウンロードの上、下記番号へ送信してください。</p>
+                <p class="method-desc">ご注文の商品に合わせた注文用紙をダウンロードし、記入のうえ下記番号へ送信してください。</p>
                 <p class="method-note">FAX：0794-XX-XXXX</p>
+                <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px;">
+                    <a href="order-form.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--primary-color);color:#fff;border-radius:8px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#6A9A3E'" onmouseout="this.style.background='var(--primary-color)'"><i class="fas fa-file-pdf"></i> 供花　注文用紙</a>
+                    <a href="order-form-basket.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--primary-color);color:#fff;border-radius:8px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#6A9A3E'" onmouseout="this.style.background='var(--primary-color)'"><i class="fas fa-file-pdf"></i> 盛かご・灯ろう・はす　注文用紙</a>
+                </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- 供花カタログ -->
+<section style="padding:60px 0; background:var(--bg-light);">
+    <div class="container">
+        <div class="fade-in" style="text-align:center;">
+            <p class="section-label">CATALOG</p>
+            <h2 class="section-title" style="text-align:center; font-size:1.8rem;">供花カタログ</h2>
+            <div class="section-underline" style="margin:0 auto 20px;"></div>
+            <p style="font-size:0.95rem; color:var(--text-gray); line-height:2; margin-bottom:28px;">商品の詳細はカタログをご確認ください。<br>FAXでご注文の場合は、カタログの注文用紙もご利用いただけます。</p>
+            <a href="flower-catalog.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:var(--primary-color);color:#fff;border-radius:30px;font-size:1rem;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(140,192,78,0.3);transition:all 0.2s;" onmouseover="this.style.background='#6A9A3E';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--primary-color)';this.style.transform='translateY(0)'">
+                <i class="fas fa-file-pdf" style="font-size:1.2rem;"></i> 供花カタログを見る（PDF）
+            </a>
         </div>
     </div>
 </section>
@@ -529,7 +626,7 @@ section { padding: 100px 0; }
                             <p>のぞみ葬祭（株式会社VERDE）は、お客様の個人情報を適切に管理し、以下の目的にのみ使用いたします。</p>
                             <p style="margin-top:8px;">【利用目的】ご注文内容の確認・ご連絡、サービスのご提供、請求書の発行。</p>
                             <p style="margin-top:8px;">【第三者提供】法令に基づく場合を除き、お客様の同意なく第三者へ提供することはありません。</p>
-                            <p style="margin-top:8px;">【お問い合わせ】個人情報に関するお問い合わせは TEL：0120-20-9678 までご連絡ください。</p>
+                            <p style="margin-top:8px;">【お問い合わせ】個人情報に関するお問い合わせは TEL：0120-209-678 までご連絡ください。</p>
                         </div>
                     </div>
                     <label class="privacy-check">
@@ -557,14 +654,14 @@ section { padding: 100px 0; }
                 <a href="tel:0120209678" class="cta-btn phone-btn">
                     <i class="fas fa-phone-flip"></i>
                     <span class="cta-btn-label">お電話で相談</span>
-                    <span class="cta-btn-number">0120-20-9678</span>
+                    <span class="cta-btn-number">0120-209-678</span>
                 </a>
                 <button class="cta-btn line-btn" onclick="openLineModal()">
                     <i class="fab fa-line"></i>
                     <span class="cta-btn-label">LINEで相談</span>
                     <span class="cta-btn-text">友だち追加はこちら</span>
                 </button>
-                <a href="#" class="cta-btn mail-btn">
+                <a href="contact.html" class="cta-btn mail-btn">
                     <i class="fas fa-envelope"></i>
                     <span class="cta-btn-label">メールで相談</span>
                     <span class="cta-btn-text">お問い合わせフォーム</span>
@@ -582,7 +679,7 @@ section { padding: 100px 0; }
                 <h3 class="footer-title"><a href="preview.html" style="color:inherit;text-decoration:none;">のぞみ葬祭</a></h3>
                 <p class="footer-company">株式会社VERDE</p>
                 <p class="footer-address">〒673-0435<br>兵庫県三木市別所町高木933-5</p>
-                <p class="footer-contact">TEL: <a href="tel:0120209678">0120-20-9678</a>（24時間365日）</p>
+                <p class="footer-contact">TEL: <a href="tel:0120209678">0120-209-678</a>（24時間365日）</p>
                 <p class="footer-hours">営業時間: 24時間営業<br>定休日: 年中無休</p>
             </div>
             <div class="footer-column">
@@ -592,8 +689,9 @@ section { padding: 100px 0; }
                     <li><a href="plan-detail.html">プラン</a></li>
                     <li><a href="hall.html">会館のご紹介</a></li>
                     <li><a href="access.html">アクセス</a></li>
-                    <li><a href="flowers.html">供花のご注文</a></li>
                     <li><a href="faq.html">よくある質問</a></li>
+                    <li><a href="flow.html">葬儀の流れ</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -608,9 +706,17 @@ section { padding: 100px 0; }
                     <li><a href="plan-detail.html#direct">プチプラン</a></li>
                 </ul>
             </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">その他</h4>
+                <ul class="footer-links">
+                    <li><a href="doll-memorial.html">人形供養</a></li>
+                    <li><a href="photo-memorial.html">写真供養</a></li>
+                    <li><a href="privacy.html">プライバシーポリシー</a></li>
+                </ul>
+            </div>
         </div>
         <div class="footer-bottom">
-            <p class="copyright">© 2024 のぞみ葬祭（株式会社VERDE） All Rights Reserved.</p>
+            <p class="copyright">&copy; 2026 株式会社VERDE All Rights Reserved.</p>
         </div>
     </div>
 </footer>
@@ -797,9 +903,9 @@ document.addEventListener('DOMContentLoaded', () => {
     pageTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
     // モバイルメニュー
-    document.getElementById('mobileMenuToggle').addEventListener('click', () => {
-        const nav = document.getElementById('headerNav');
-        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+        document.getElementById('headerNav').classList.toggle('open');
+        this.classList.toggle('open');
     });
 
     // フォーム送信
