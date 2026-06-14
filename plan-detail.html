@@ -66,6 +66,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* ========== カテゴリ選択タブ ========== */
 .category-nav { background-color: var(--white); padding: 40px 0 0; position: sticky; top: 72px; z-index: 100; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+@media (max-width: 768px) { .category-nav { position: relative; top: auto; } }
 .category-tabs { display: flex; justify-content: center; gap: 0; border-bottom: 3px solid var(--primary-color); }
 .cat-tab {
     padding: 18px 40px; font-size: 1rem; font-weight: 600;
@@ -250,7 +251,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     .cat-tab { border-radius: 8px; margin-right: 0; margin-bottom: 4px; border-bottom: 2px solid #e0e0e0; }
     .costs-grid { grid-template-columns: 1fr; }
     .footer-content { grid-template-columns: repeat(2,1fr); }
-    .cta-buttons { flex-direction: column; align-items: center; }
+    .cta-title { font-size: 1.8rem; }
+    .cta-buttons { grid-template-columns: 1fr; gap: 16px; max-width: 400px; }
     .plan-includes { grid-template-columns: 1fr; }
     .header-container { height: 64px; padding: 0 15px; }
     .compare-table { font-size: 0.8rem; }
