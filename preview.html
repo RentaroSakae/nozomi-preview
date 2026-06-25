@@ -68,7 +68,7 @@ section { padding: 100px 0; }
 .header-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 30px; height: 80px; }
 .header-logo a { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: var(--primary-color); }
 .header-nav ul { display: flex; gap: 18px; }
-.header-nav a { font-size: 0.82rem; font-weight: 500; color: var(--text-dark); position: relative; white-space: nowrap; }
+.header-nav a { font-size: 0.9rem; font-weight: 500; color: var(--text-dark); position: relative; white-space: nowrap; }
 .header-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: var(--transition); }
 .header-nav a:hover { color: var(--primary-color); }
 .header-nav a:hover::after { width: 100%; }
@@ -89,7 +89,7 @@ section { padding: 100px 0; }
 .hero-buttons { display: flex; gap: 20px; flex-wrap: wrap; justify-content: flex-start; }
 .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); text-align: center; color: var(--white); z-index: 2; }
 .scroll-indicator span { display: block; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 10px; }
-.scroll-arrow { width: 2px; height: 30px; background-color: var(--white); margin: 0 auto; animation: scrollDown 1.5s infinite; }
+.scroll-arrow { font-size: 1.6rem; animation: scrollDown 1.5s infinite; line-height: 1; }
 @keyframes scrollDown { 0%,100% { transform: translateY(0); opacity: 0.3; } 50% { transform: translateY(10px); opacity: 1; } }
 
 /* のぞみ葬祭について */
@@ -467,7 +467,7 @@ section { padding: 100px 0; }
     </div>
     <div class="scroll-indicator">
         <span>SCROLL</span>
-        <div class="scroll-arrow"></div>
+        <div class="scroll-arrow">↓</div>
     </div>
 </section>
 
@@ -534,7 +534,7 @@ section { padding: 100px 0; }
                 <div class="hall-info">
                     <div class="hall-info-item"><i class="fas fa-users"></i><span>収容人数：30名様</span></div>
                     <div class="hall-info-item"><i class="fas fa-square-parking"></i><span>駐車場：約10台</span></div>
-                    <div class="hall-info-item"><i class="fas fa-home"></i><span>設備：親族控室、宿泊施設、キッチン、浴室</span></div>
+                    <div class="hall-info-item"><i class="fas fa-home"></i><span>設備：親族控室、宗教者控え室、シャワー・洗面室</span></div>
                     <div class="hall-info-item"><i class="fas fa-wheelchair"></i><span>バリアフリー設計で安心</span></div>
                 </div>
                 <a href="hall.html" class="btn btn-primary">会館の詳細を見る</a>
