@@ -137,10 +137,10 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .plan-detail-title-wrap {}
 .plan-detail-name { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; margin-bottom: 6px; }
 .plan-detail-desc { font-size: 0.88rem; color: var(--text-gray); line-height: 1.7; }
-.plan-detail-price-area { padding: 20px 28px; background-color: var(--bg-light); border-bottom: 1px solid #e8e8e8; display: flex; align-items: baseline; gap: 10px; }
-.plan-detail-price { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 700; color: var(--secondary-color); }
+.plan-detail-price-area { padding: 20px 28px; background-color: var(--bg-light); border-bottom: 1px solid #e8e8e8; display: flex; align-items: baseline; gap: 10px; white-space: nowrap; flex-wrap: nowrap; }
+.plan-detail-price { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 700; color: var(--secondary-color); white-space: nowrap; }
 .plan-detail-price span { font-size: 1rem; }
-.plan-detail-price-tax { font-size: 0.82rem; color: var(--text-gray); }
+.plan-detail-price-tax { font-size: 0.82rem; color: var(--text-gray); white-space: nowrap; }
 .plan-detail-body { padding: 24px 28px; display: flex; flex-direction: column; flex: 1; }
 .plan-detail-section-title { font-size: 0.85rem; font-weight: 700; color: var(--primary-color); letter-spacing: 0.1em; margin-bottom: 12px; margin-top: 20px; display: flex; align-items: center; gap: 6px; }
 .plan-detail-section-title:first-child { margin-top: 0; }
@@ -148,8 +148,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .plan-includes { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
 .plan-include-item { display: flex; align-items: flex-start; gap: 8px; font-size: 0.85rem; line-height: 1.6; }
 .plan-include-item i { color: var(--primary-color); font-size: 0.7rem; margin-top: 5px; flex-shrink: 0; }
-.plan-note-box { background-color: #f0f8e8; border-left: 3px solid var(--primary-color); padding: 12px 16px; border-radius: 0 8px 8px 0; font-size: 0.82rem; color: var(--text-gray); line-height: 1.7; margin-top: 16px; }
-.plan-cta-btn { display: block; width: 100%; padding: 14px; background-color: var(--primary-color); color: var(--white); text-align: center; font-weight: 600; font-size: 0.95rem; border-radius: 8px; margin-top: auto; padding-top: 14px; transition: var(--transition); }
+.plan-note-box { background-color: #f0f8e8; border-left: 3px solid var(--primary-color); padding: 12px 16px; border-radius: 0 8px 8px 0; font-size: 0.82rem; color: var(--text-gray); line-height: 1.7; margin-top: auto; }
+.plan-cta-btn { display: block; width: 100%; padding: 14px; background-color: var(--primary-color); color: var(--white); text-align: center; font-weight: 600; font-size: 0.95rem; border-radius: 8px; margin-top: 16px; transition: var(--transition); }
 .plan-cta-btn:hover { background-color: var(--secondary-color); }
 
 /* 一日葬バッジ */
