@@ -71,7 +71,7 @@ section { padding: 100px 0; }
 }
 .page-hero::before {
     content: ''; position: absolute; inset: 0;
-    background: url('https://images.unsplash.com/photo-1665686306574-1ace09918530?w=1920&q=60') center/cover no-repeat;
+    background: url('images/flowers-hero.jpg') center/cover no-repeat;
     opacity: 0.18;
 }
 .page-hero-inner { position: relative; z-index: 1; }
@@ -461,7 +461,7 @@ section { padding: 100px 0; }
                 <div class="method-icon"><i class="fas fa-fax"></i></div>
                 <h3 class="method-title">FAXから注文</h3>
                 <p class="method-desc">ご注文の商品に合わせた注文用紙をダウンロードし、記入のうえ下記番号へ送信してください。</p>
-                <p class="method-note">FAX：0794-XX-XXXX</p>
+                <p class="method-note">FAX：0794-88-8338</p>
                 <p class="method-note" style="margin-top:6px; color:#222; font-weight:600;">※FAX受信後に、こちらからお電話で確認させていただきます</p>
                 <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px;">
                     <a href="order-form.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--primary-color);color:#fff;border-radius:8px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#6A9A3E'" onmouseout="this.style.background='var(--primary-color)'"><i class="fas fa-file-pdf"></i> 供花　注文用紙</a>
@@ -589,7 +589,7 @@ section { padding: 100px 0; }
         <h2 class="line-modal-title">LINEで相談する</h2>
         <p class="line-modal-sub">QRコードを読み取って<br>友だち追加してください</p>
         <div class="line-modal-qr">
-            <img src="images/line-qr.jpg" alt="LINE QRコード（ダミー）">
+            <img src="images/line-qr.jpg" alt="LINE QRコード">
         </div>
         <p class="line-modal-note">24時間いつでもメッセージをお送りいただけます。<br>お気軽にご相談ください。</p>
     </div>
@@ -632,7 +632,7 @@ function buildMenuCard(item) {
     return `
     <div class="menu-card fade-in">
         <div class="menu-card-img">
-            <img src="${item.img}" alt="${item.name}（プレースホルダー）" loading="lazy">
+            <img src="${item.img}" alt="${item.name}" loading="lazy">
             <span class="menu-card-badge">${item.label}</span>
         </div>
         <div class="menu-card-body">
