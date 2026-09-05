@@ -159,6 +159,7 @@ section { padding: 100px 0; }
 .plans-content { display: none; }
 .plans-content.active { display: block; }
 .plans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 30px; }
+.plans-grid.plans-grid-3col { grid-template-columns: repeat(3, 1fr); }
 .plans-grid.single-plan { grid-template-columns: 1fr; max-width: 700px; margin: 0 auto 30px; }
 /* 3枚の場合：最後の1枚を中央に */
 .plans-grid > .plan-card:last-child:nth-child(odd):not(:first-child) {
@@ -600,7 +601,7 @@ section { padding: 100px 0; }
         </div>
 
         <div class="plans-content" id="family">
-            <div class="plans-grid">
+            <div class="plans-grid plans-grid-3col">
                 <div class="plan-card family-plan fade-in">
                     <div class="plan-image"><img src="images/plan/plan-pink-03.jpg" alt="ゴールドプラン 花祭壇イメージ" style="width:100%;height:200px;object-fit:cover;object-position:center top;display:block;border-radius:8px 8px 0 0;"></div>
                     <div class="plan-content">
