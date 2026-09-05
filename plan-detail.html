@@ -126,6 +126,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     padding: 28px 28px 20px;
     background: linear-gradient(135deg, var(--bg-warm), var(--bg-light));
     display: flex; align-items: flex-start; gap: 16px;
+    height: 180px;
+    box-sizing: border-box;
 }
 .plan-detail-badge {
     width: 56px; height: 56px; border-radius: 50%;
@@ -377,7 +379,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     <div class="container">
         <p class="page-hero-label">FUNERAL PLANS</p>
         <h1 class="page-hero-title">プランのご紹介</h1>
-        <p class="page-hero-sub">故人さま・ご家族さまのご意向に合わせた<br>多彩なプランをご用意しております。<br>どうぞお気軽にご相談ください。</p>
+        <p class="page-hero-sub">大切な方への想いと、ご家族さまの願いを叶える<br>多彩なプランをご用意しております。<br>どうぞお気軽にご相談ください。</p>
     </div>
 </section>
 
@@ -409,7 +411,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
             <div class="category-intro-icon"><i class="fas fa-spa"></i></div>
             <h2 class="category-intro-title">セレモニープラン</h2>
             <p class="category-intro-text">
-                通夜・葬儀・火葬を2日間でお執り行いする、一般的な葬儀スタイルです。花祭壇のグレードや内容によって2つのプランをご用意しております。ご予算・ご要望に合わせてお選びください。
+                通夜・葬儀を2日間でお執り行いする、一般的なスタイルです。花祭壇のグレードや内容によって2つのプランをご用意しております。ご予算・ご要望に合わせてお選びください。
             </p>
         </div>
 
@@ -493,7 +495,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
             <div class="category-intro-icon"><i class="fas fa-home"></i></div>
             <h2 class="category-intro-title">ファミリープラン</h2>
             <p class="category-intro-text">
-                ご家族・近しい方々だけで故人さまをゆっくりお見送りする「家族葬」スタイルです。少人数ならではのアットホームな雰囲気で、心のこもった葬儀をお手伝いします。通夜あり（2日間）と一日葬（1日）からお選びいただけます。
+                ご家族・近しい方々だけで故人さまをゆっくりお見送りする「家族葬」スタイルです。少人数ならではのアットホームな雰囲気で、心を込めてお手伝いします。通夜あり（2日間）と一日葬（1日）からお選びいただけます。
             </p>
         </div>
 
@@ -570,8 +572,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
             <!-- ホワイト（一日葬）- 3枚目なので中央配置はCSSで制御 -->
             <div class="plan-detail-card fade-in">
                 <div class="plan-detail-header" style="background: linear-gradient(135deg,#fdf0f5,#f8e0ec);">                    <div class="plan-detail-title-wrap">
-                        <h3 class="plan-detail-name">ホワイトプラン</h3>
-                        <p class="plan-detail-desc">通夜を行わない葬儀のみのプラン</p>
+                        <h3 class="plan-detail-name" style="font-size:1.15rem; white-space:nowrap;">ホワイトプラン（一日葬）</h3>
+                        <p class="plan-detail-desc" style="margin-top:16px;">通夜を行わない葬儀のみのプラン</p>
                     </div>
                 </div>
                 <div class="plan-altar-img">
@@ -621,7 +623,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
             <div class="chokuso-info-text">
                 <h3>直葬（火葬式）とは</h3>
                 <p>
-                    通夜・葬儀・葬儀などの儀式を省き、お別れをするスタイルです。のぞみ葬祭では心のこもったお見送りができるよう、丁寧にサポートいたします。
+                    通夜・葬儀などの儀式を省き、お別れをするスタイルです。のぞみ葬祭では心のこもったお見送りができるよう、丁寧にサポートいたします。
                 </p>
             </div>
         </div>
@@ -705,7 +707,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
             <p class="section-subtitle">プラン料金のほかに、以下の費用が別途必要となる場合があります。</p>
         </div>
         <p class="costs-note fade-in">
-            葬儀費用は「プラン料金」以外にも、様々な費用が発生します。事前にご説明しておりますので、ご不明な点はお気軽にご相談ください。
+            葬儀費用は「プラン料金」以外にも、様々な費用が発生します。ご不明な点はお気軽にご相談ください。
         </p>
         <div class="costs-grid">
             <div class="cost-card fade-in">
@@ -721,7 +723,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
             <div class="cost-card fade-in">
                 <div class="cost-card-icon"><i class="fas fa-utensils"></i></div>
                 <h3 class="cost-card-title">飲食費</h3>
-                <p class="cost-card-text">通夜振る舞い・精進落としなど、参列者へのお食事代です。参列者の人数・料理内容によって変動します。</p>
+                <p class="cost-card-text">通夜振る舞い・精進落としなどのお食事代です。人数・料理内容によって変動します。</p>
             </div>
             <div class="cost-card fade-in">
                 <div class="cost-card-icon"><i class="fas fa-gift"></i></div>
