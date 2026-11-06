@@ -98,7 +98,7 @@ section { padding: 100px 0; }
 }
 .menu-section-title { font-family: var(--font-serif); font-size: 2rem; font-weight: 700; }
 
-.menu-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
 .menu-card {
     background-color: var(--white); border-radius: 16px; overflow: hidden;
@@ -121,9 +121,9 @@ section { padding: 100px 0; }
 .menu-card-name { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; color: var(--text-dark); }
 .menu-card-desc { font-size: 0.88rem; color: var(--text-gray); line-height: 1.9; margin-bottom: 16px; min-height: 52px; }
 .menu-card-price { background-color: var(--bg-light); border-radius: 10px; padding: 12px 16px; }
-.menu-price-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; }
-.menu-price-row + .menu-price-row { margin-top: 6px; border-top: 1px dashed #ddd; padding-top: 6px; }
-.menu-price-unit { color: var(--text-gray); font-weight: 600; }
+.menu-price-row { display: flex; flex-direction: column; align-items: flex-start; font-size: 0.9rem; margin-bottom: 8px; }
+.menu-price-row + .menu-price-row { margin-top: 6px; border-top: 1px dashed #ddd; padding-top: 10px; }
+.menu-price-unit { color: var(--text-dark); font-weight: 700; font-size: 1.05rem; margin-bottom: 2px; }
 .menu-price-val { font-family: var(--font-serif); font-weight: 700; color: var(--secondary-color); font-size: 1.05rem; }
 .menu-price-tax { font-size: 0.8rem; color: var(--text-gray); }
 
@@ -412,7 +412,7 @@ section { padding: 100px 0; }
     <div class="page-hero-inner">
         <p class="page-hero-label">FLOWERS & OFFERINGS</p>
         <h1 class="page-hero-title">供花・盛かごのご注文</h1>
-        <p class="page-hero-sub">ご家族さま、故人さまへの想いを<br>美しい花やかごに込めてお届けします</p>
+        <p class="page-hero-sub">故人さまへの想いを<br>美しい花やかごに込めてお届けします</p>
     </div>
 </div>
 
@@ -430,7 +430,7 @@ section { padding: 100px 0; }
     <div class="container">
         <div class="menu-section-header fade-in">
             <h2 class="menu-section-title">供花</h2>
-            <p style="font-size:0.82rem; color:var(--text-gray); margin-top:8px;">季節によって花の色味が変わることがあります。</p>
+            <p style="font-size:0.82rem; color:var(--text-gray); margin-top:8px;">季節によって花の内容が変わることがあります。</p>
         </div>
         <div class="menu-grid" id="flowerGrid"></div>
     </div>
@@ -627,8 +627,29 @@ const MENU_ITEMS = {
    ============================================================ */
 
 
+// 価格文字列を「ラベル」と「金額」に分割（例: "1基：11,000円（税込）" → {unit:"1基", val:"11,000円（税込）"}）
+function splitPrice(str) {
+    if (!str) return null;
+    const m = str.match(/^(1[基対])[：:](.+)$/);
+    if (m) return { unit: m[1], val: m[2] };
+    return { unit: '', val: str };
+}
+
 // メニューカード生成
 function buildMenuCard(item) {
+    const p1 = splitPrice(item.price1);
+    const p2 = splitPrice(item.price2);
+    const priceRows = [];
+    if (p1) priceRows.push(`
+        <div class="menu-price-row">
+            ${p1.unit ? `<span class="menu-price-unit">${p1.unit}</span>` : ''}
+            <span class="menu-price-val">${p1.val}</span>
+        </div>`);
+    if (p2) priceRows.push(`
+        <div class="menu-price-row">
+            ${p2.unit ? `<span class="menu-price-unit">${p2.unit}</span>` : ''}
+            <span class="menu-price-val">${p2.val}</span>
+        </div>`);
     return `
     <div class="menu-card fade-in">
         <div class="menu-card-img">
@@ -639,14 +660,7 @@ function buildMenuCard(item) {
             <h3 class="menu-card-name">${item.name}</h3>
             ${item.desc ? `<p class="menu-card-desc">${item.desc}</p>` : ""}
             <div class="menu-card-price">
-                <div class="menu-price-row">
-                    <span class="menu-price-unit">1基</span>
-                    <span class="menu-price-val">${item.price1} <span class="menu-price-tax"></span></span>
-                </div>
-                <div class="menu-price-row">
-                    <span class="menu-price-unit">1対</span>
-                    <span class="menu-price-val">${item.price2} <span class="menu-price-tax"></span></span>
-                </div>
+                ${priceRows.join('')}
             </div>
         </div>
     </div>`;
