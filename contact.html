@@ -467,35 +467,6 @@ section { padding: 100px 0; }
                     </div>
                 </div>
 
-                <div class="form-row">
-                    <!-- お問い合わせの種類 -->
-                    <div class="form-group">
-                        <label class="form-label" for="type">お問い合わせの種類<span class="required">必須</span></label>
-                        <select id="type" name="type" class="form-select" required>
-                            <option value="" disabled selected>選択してください</option>
-                            <option value="ceremony">葬儀・葬儀について</option>
-                            <option value="plan">プラン・費用について</option>
-                            <option value="advance">事前相談・生前予約について</option>
-                            <option value="hall">会館（琥珀ホール）について</option>
-                            <option value="flowers">供花のご注文について</option>
-                            <option value="doll">人形供養について</option>
-                            <option value="photo">写真供養について</option>
-                            <option value="other">その他</option>
-                        </select>
-                        <p class="form-error" id="type-error">お問い合わせの種類を選択してください。</p>
-                    </div>
-                    <!-- ご連絡希望時間帯 -->
-                    <div class="form-group">
-                        <label class="form-label" for="time">ご連絡希望時間帯<span class="optional">任意</span></label>
-                        <select id="time" name="time" class="form-select">
-                            <option value="">特に指定なし</option>
-                            <option value="morning">午前（9時〜12時）</option>
-                            <option value="afternoon">午後（12時〜18時）</option>
-                            <option value="evening">夜間（18時〜21時）</option>
-                        </select>
-                    </div>
-                </div>
-
                 <!-- ご質問・ご要望 -->
                 <div class="form-group">
                     <label class="form-label" for="message">ご質問・ご要望<span class="required">必須</span></label>
@@ -625,7 +596,6 @@ const requiredFields = [
     { id: 'name',    errorId: 'name-error',    msg: 'お名前を入力してください。' },
     { id: 'kana',    errorId: 'kana-error',    msg: 'ふりがなを入力してください。' },
     { id: 'tel',     errorId: 'tel-error',     msg: '電話番号を入力してください。' },
-    { id: 'type',    errorId: 'type-error',    msg: 'お問い合わせの種類を選択してください。' },
     { id: 'message', errorId: 'message-error', msg: 'ご質問・ご要望を入力してください。' },
 ];
 
